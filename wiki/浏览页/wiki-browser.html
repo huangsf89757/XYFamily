@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档浏览器 - XYFamily Wiki</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* ===== Unified Top Navigation (Task D) ===== */
+        .topnav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        .topnav::after {
+            content: '';
+            position: absolute;
+            top: -40%; right: -8%;
+            width: 360px; height: 360px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .topnav-inner { position: relative; z-index: 1; }
+        .topnav-title { font-size: 2rem; font-weight: 800; margin-bottom: 6px; line-height: 1.25; display: flex; align-items: center; gap: 10px; }
+        .topnav-title .uicon { width: 1.7rem; height: 1.7rem; vertical-align: -0.3rem; }
+        .topnav-sub { font-size: 1rem; opacity: 0.88; margin-bottom: 18px; }
+        .topnav-stats { display: flex; gap: 14px; flex-wrap: wrap; }
+        .topnav-stat {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            padding: 12px 22px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 110px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .topnav-stat .stat-value { font-size: 1.7rem; font-weight: 800; }
+        .topnav-stat .stat-label { font-size: 0.78rem; opacity: 0.82; margin-top: 2px; }
+        .topnav-home {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.15);
+            color: white; text-decoration: none;
+            border-radius: 999px;
+            font-size: 0.85rem; font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: background 0.2s;
+            margin-bottom: 18px;
+        }
+        .topnav-home:hover { background: rgba(255,255,255,0.28); }
+        .topnav-home svg { width: 16px; height: 16px; }
+
+        /* === Breadcrumb Path Bar === */
+        .breadcrumb-bar {
+            background: white;
+            border-radius: 10px;
+            padding: 10px 18px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+            border-left: 4px solid #667eea;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+
+        .crumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #4a5568;
+            transition: all 0.15s;
+            user-select: none;
+            position: relative;
+        }
+
+        .crumb:hover { background: #f0f0ff; color: #667eea; }
+
+        .crumb-root { font-weight: 700; color: #667eea; font-size: 0.95rem; }
+        .crumb-root:hover { background: #f0f0ff; }
+
+        .crumb-active {
+            background: #ebf4ff;
+            color: #3182ce;
+            font-weight: 600;
+        }
+
+        .crumb-sep { color: #cbd5e0; font-size: 0.8rem; margin: 0 1px; user-select: none; }
+
+        .crumb-arrow { font-size: 0.65rem; color: #64748b; margin-left: 2px; }
+
+        /* Dropdown for path segments */
+        .path-dropdown {
+            position: fixed;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+            max-height: 400px;
+            overflow-y: auto;
+            min-width: 300px;
+            z-index: 10000;
+            padding: 6px;
+        }
+
+        .path-dropdown::-webkit-scrollbar { width: 5px; }
+        .path-dropdown::-webkit-scrollbar-thumb { background: #c3cfe2; border-radius: 3px; }
+
+        .dd-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.12s;
+            font-size: 0.86rem;
+        }
+        .dd-item:hover { background: #f7fafc; }
+        .dd-item-active { background: #ebf4ff; color: #3182ce; }
+
+        .dd-folder { color: #2d3748; font-weight: 600; }
+        .dd-file { color: #4a5568; }
+        .dd-icon { flex-shrink: 0; display: flex; align-items: center; }
+        .dd-icon svg { width: 16px; height: 16px; }
+
+        .dd-count {
+            background: #edf2f7; color: #718096;
+            padding: 1px 8px; border-radius: 10px;
+            font-size: 0.7rem; margin-left: auto; flex-shrink: 0;
+        }
+        .dd-meta { font-size: 0.7rem; color: #64748b; margin-left: auto; flex-shrink: 0; }
+        .dd-empty { padding: 20px; text-align: center; color: #64748b; font-size: 0.85rem; }
+
+        /* === Content Area === */
+        .content-area {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .content-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: linear-gradient(135deg, rgba(102,126,234,0.04) 0%, rgba(118,75,162,0.04) 100%);
+        }
+
+        .content-title { font-size: 1.2rem; font-weight: 700; color: #2d3748; }
+        .content-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; align-items: center; }
+
+        /* Back button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.15s;
+            flex-shrink: 0;
+        }
+
+        .back-btn svg { width: 18px; height: 18px; }
+        .back-btn:hover { background: #5568d3; transform: translateX(-2px); }
+
+        .content-title svg { width: 22px; height: 22px; vertical-align: text-bottom; margin-right: 4px; }
+        .crumb svg, .crumb-root svg { width: 16px; height: 16px; vertical-align: text-bottom; margin-right: 2px; }
+
+        .badge-version {
+            background: #ebf4ff; color: #3182ce;
+            padding: 2px 10px; border-radius: 10px;
+            font-size: 0.74rem; font-weight: 600; white-space: nowrap;
+        }
+        .badge-date {
+            background: #f0fff4; color: #38a169;
+            padding: 2px 10px; border-radius: 10px;
+            font-size: 0.74rem; font-weight: 600; white-space: nowrap;
+        }
+        .badge-count {
+            background: #edf2f7; color: #718096;
+            padding: 2px 10px; border-radius: 10px;
+            font-size: 0.74rem; font-weight: 600; white-space: nowrap;
+        }
+
+        .content-body { padding: 0; }
+
+        /* Folder grid view */
+        .folder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            padding: 24px;
+        }
+
+        .grid-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .grid-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.12);
+            transform: translateY(-2px);
+        }
+
+        .grid-card-icon { flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; }
+        .grid-card-icon svg { width: 28px; height: 28px; }
+        .grid-card-body { flex: 1; min-width: 0; }
+        .grid-card-name { font-size: 0.95rem; font-weight: 600; color: #2d3748; margin-bottom: 4px; word-break: break-all; }
+        .grid-card-desc { font-size: 0.8rem; color: #64748b; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .grid-card-meta { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+
+        .grid-card-folder { border-left: 4px solid #667eea; }
+        .grid-card-file { border-left: 4px solid #38a169; }
+
+        /* === List View === */
+        .folder-list { padding: 8px 24px 24px; }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.12s;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .list-item:last-child { border-bottom: none; }
+        .list-item:hover { background: #f7fafc; }
+
+        .list-item-icon { flex-shrink: 0; width: 28px; text-align: center; display: flex; align-items: center; justify-content: center; }
+        .list-item-icon svg { width: 18px; height: 18px; }
+        .list-item-body { flex: 1; min-width: 0; }
+        .list-item-name { font-size: 0.9rem; font-weight: 600; color: #2d3748; }
+        .list-item-desc { font-size: 0.78rem; color: #64748b; margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .list-item-meta { display: flex; gap: 6px; flex-shrink: 0; align-items: center; }
+
+        /* === View Toggle === */
+        .view-toggle {
+            display: inline-flex;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f7fafc;
+        }
+
+        .view-toggle-btn {
+            padding: 5px 12px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .view-toggle-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .view-toggle-btn:hover:not(.active) {
+            background: #edf2f7;
+            color: #4a5568;
+        }
+
+        /* File content iframe */
+        .file-iframe { width: 100%; height: 75vh; border: none; display: block; }
+
+        /* Empty state */
+        .empty-state { text-align: center; padding: 80px 20px; color: #64748b; }
+        .empty-state-icon { margin-bottom: 12px; display: flex; justify-content: center; }
+        .empty-state-icon svg { width: 48px; height: 48px; }
+        .empty-state-text { font-size: 1rem; }
+
+        @media (max-width: 768px) {
+            .folder-grid { grid-template-columns: 1fr; }
+            .topnav-title { font-size: 1.6rem; }
+            .breadcrumb-bar { position: relative; top: 0; }
+            .topnav-home { display: inline-flex; }
+        }
+    
+/* === ui-ux-pro-max optimizations === */
+.uicon{width:1.5em;height:1.5em;vertical-align:-0.25em;flex:0 0 auto;}
+.func-icon .uicon{width:44px;height:44px;vertical-align:middle;}
+.stat-icon .uicon{width:2rem;height:2rem;}
+.wiki-icon .uicon{width:1.3rem;height:1.3rem;}
+.info-item .uicon{width:1.7rem;height:1.7rem;}
+.grid-card .uicon,.list-item .uicon{width:1.4rem;height:1.4rem;}
+.grid-card,.list-item,.crumb,.view-toggle-btn,.back-btn,.milestone-detail-header,.func-card,.wiki-link,.detail-ms-link,.task-item,.topnav-home{cursor:pointer;}
+a,button{outline:none;}
+a:focus-visible,button:focus-visible,.func-card:focus-visible,.wiki-link:focus-visible,.grid-card:focus-visible,.list-item:focus-visible,.crumb:focus-visible,.view-toggle-btn:focus-visible,.topnav-home:focus-visible{border-radius:8px;outline:2px solid #2563eb;outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="topnav">
+            <div class="topnav-inner">
+                <a href="index.html" class="topnav-home">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    返回首页
+                </a>
+                <h1 class="topnav-title"><svg class="uicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> XYFamily 文档浏览器</h1>
+                <div class="topnav-sub">基于标准多级目录结构的软件研发全生命周期文档库</div>
+                <div class="topnav-stats">
+                    <div class="topnav-stat"><div class="stat-value">106</div><div class="stat-label">文档总数</div></div>
+                    <div class="topnav-stat"><div class="stat-value">11</div><div class="stat-label">一级目录</div></div>
+                    <div class="topnav-stat"><div class="stat-value">2026-07-13</div><div class="stat-label">最后更新</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Breadcrumb path bar -->
+        <div class="breadcrumb-bar" id="breadcrumbBar"></div>
+
+        <!-- Unified content area -->
+        <div class="content-area">
+            <div class="content-body" id="contentBody"></div>
+        </div>
+
+    </div>
+
+    <script>
+        const wikiData = [{"path": "../00-项目总览/00.01-项目简介/项目简介-V1.0.0.md", "name": "项目简介-V1.0.0.md", "title": "XYFamily 项目简介", "desc": "XYFamily 项目简介", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M0-文档与设计冻结-V1.0.0.md", "name": "M0-文档与设计冻结-V1.0.0.md", "title": "M0 — 文档与设计冻结", "desc": "XYFamily 项目文档与设计冻结里程碑，完成全部 PRD、架构设计、开发规范与接口规范。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M1-项目脚手架与数据库初始化-V1.0.0.md", "name": "M1-项目脚手架与数据库初始化-V1.0.0.md", "title": "M1 — 后端项目脚手架 + 数据库初始化", "desc": "XYFamily 后端 Go 项目脚手架搭建、数据库迁移初始化、CI 流水线配置。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M10-前端Android原生App-V1.0.0.md", "name": "M10-前端Android原生App-V1.0.0.md", "title": "M10 — 前端 Android 原生 App", "desc": "XYFamily Android（Kotlin + Jetpack Compose）原生 App 开发，移动端三阶段之第二阶段。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M11-集成测试与安全审查-V1.0.0.md", "name": "M11-集成测试与安全审查-V1.0.0.md", "title": "M11 — 集成测试 + 安全审查", "desc": "XYFamily 全端集成测试、安全扫描、渗透测试与多租户隔离验证。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M12-生产部署与上线-V1.0.0.md", "name": "M12-生产部署与上线-V1.0.0.md", "title": "M12 — 生产部署 + 上线", "desc": "XYFamily 生产环境部署上线：K8s 部署、PG 主从、Redis Sentinel、监控告警、上线验证。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M13-前端鸿蒙HarmonyOS-V1.0.0.md", "name": "M13-前端鸿蒙HarmonyOS-V1.0.0.md", "title": "M13 — 前端鸿蒙 HarmonyOS App", "desc": "XYFamily 鸿蒙 HarmonyOS（ArkTS + ArkUI）原生 App 开发，移动端三阶段之第三阶段。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M14-P2功能开发-V1.0.0.md", "name": "M14-P2功能开发-V1.0.0.md", "title": "M14 — P2 功能开发（延后）", "desc": "XYFamily P2 优先级功能开发：微信登录、第三方身份绑定、登录自动注册。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M2-核心认证能力-V1.0.0.md", "name": "M2-核心认证能力-V1.0.0.md", "title": "M2 — 核心认证能力", "desc": "XYFamily 用户认证模块开发：注册、登录、登出、Token 刷新、验证码、密码重置。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M3-账号管理与RBAC权限引擎-V1.0.0.md", "name": "M3-账号管理与RBAC权限引擎-V1.0.0.md", "title": "M3 — 账号管理 + RBAC 权限引擎", "desc": "XYFamily 账号管理模块与 RBAC 权限引擎开发，包含个人信息、密码修改、注销/恢复、权限中间件、Redis 缓存。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M4-组织管理-V1.0.0.md", "name": "M4-组织管理-V1.0.0.md", "title": "M4 — 组织管理", "desc": "XYFamily 组织管理模块开发：组织 CRUD、成员邀请、成员列表、角色分配/降级、成员移除。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M5-团队与小组管理-V1.0.0.md", "name": "M5-团队与小组管理-V1.0.0.md", "title": "M5 — 团队 + 小组管理", "desc": "XYFamily 团队与小组管理模块开发：团队 CRUD/归档、小组 CRUD、成员管理、接棒机制。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M6-审计日志与超级管理员-V1.0.0.md", "name": "M6-审计日志与超级管理员-V1.0.0.md", "title": "M6 — 审计日志 + 超级管理员", "desc": "XYFamily 审计日志模块（Redis Stream 异步写入）与超级管理员模块（CLI 初始化、系统配置、全局审计、强制降级）。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M7-前端Web管理后台-V1.0.0.md", "name": "M7-前端Web管理后台-V1.0.0.md", "title": "M7 — 前端 Web 管理后台（PC）", "desc": "XYFamily Web 管理后台前端开发：React 18+ / TypeScript / Vite / Ant Design 5.x，覆盖登录、Dashboard、组织/团队/小组管理、审计日志、系统配置。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M8-前端H5与微信小程序-V1.0.0.md", "name": "M8-前端H5与微信小程序-V1.0.0.md", "title": "M8 — 前端 H5 + 微信小程序", "desc": "XYFamily H5 移动浏览器端（React + Vant）与微信小程序端（原生/uni-app）前端开发。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/M9-前端iOS原生App-V1.0.0.md", "name": "M9-前端iOS原生App-V1.0.0.md", "title": "M9 — 前端 iOS 原生 App", "desc": "XYFamily iOS（Swift + SwiftUI）原生 App 开发，移动端三阶段之第一阶段。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.03-项目里程碑/项目里程碑-V1.0.0.md", "name": "项目里程碑-V1.0.0.md", "title": "项目里程碑", "desc": "XYFamily 多租户账号权限底座关键里程碑、阶段交付物与时间节点。", "version": "V2.2.0", "date": "2026-07-12"}, {"path": "../00-项目总览/00.04-Wiki使用全规范/Wiki使用全规范-V1.0.0.md", "name": "Wiki使用全规范-V1.0.0.md", "title": "Wiki 使用全规范", "desc": "XYFamily Wiki 完整操作手册，涵盖目录维护、标签使用、文档编写、版本管理、权限管控、密级管理全流程规则。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../00-项目总览/00.06-项目风险台账/项目风险台账-V1.0.0.md", "name": "项目风险台账-V1.0.0.md", "title": "项目风险台账", "desc": "XYFamily 项目风险登记、评估与应对措施。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../00-项目总览/README.md", "name": "README.md", "title": "项目总览", "desc": "XYFamily 项目全局入口、新人快速上手通道。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../01-立项与项目管理前置/01.01-立项全套材料/立项报告-V1.0.0.md", "name": "立项报告-V1.0.0.md", "title": "立项报告", "desc": "XYFamily 项目立项正式文件：项目背景、目标、范围、资源、风险与立项审批。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../01-立项与项目管理前置/01.02-项目管控资料/项目管理规范-V1.0.0.md", "name": "项目管理规范-V1.0.0.md", "title": "项目管理规范", "desc": "XYFamily 项目管理规范：会议制度、文档管理、进度跟踪、变更控制。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../01-立项与项目管理前置/README.md", "name": "README.md", "title": "立项与项目管理前置", "desc": "XYFamily 立项材料、项目管控、第三方外包管理入口。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/01-需求背景与目标/需求背景与目标-V1.0.0.md", "name": "需求背景与目标-V1.0.0.md", "title": "需求背景与目标", "desc": "XYFamily 多租户账号权限底座的需求来源、业务价值、战略意义、目标用户与详细用户故事。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.02-产品PRD/02-用户认证模块/01-注册认证/注册认证-V1.0.0.md", "name": "注册认证-V1.0.0.md", "title": "注册认证", "desc": "用户注册功能，支持手机号/邮箱注册。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/02-用户认证模块/02-登录认证/登录认证-V1.0.0.md", "name": "登录认证-V1.0.0.md", "title": "登录认证", "desc": "用户登录功能，支持密码登录、验证码登录、微信扫码登录等多种方式。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/02-用户认证模块/03-Token管理/Token管理-V1.0.0.md", "name": "Token管理-V1.0.0.md", "title": "Token 管理", "desc": "Token 刷新与登出功能，管理用户会话生命周期。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/02-用户认证模块/04-密码管理/密码管理-V1.0.0.md", "name": "密码管理-V1.0.0.md", "title": "密码管理", "desc": "密码重置功能，用户忘记密码时通过验证码重置。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/02-用户认证模块/用户认证模块总览-V1.0.0.md", "name": "用户认证模块总览-V1.0.0.md", "title": "用户认证模块 - 模块总览", "desc": "用户认证模块负责注册、登录、Token 管理、密码重置等身份认证全流程。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/03-账号管理模块/01-个人信息管理/个人信息管理-V1.0.0.md", "name": "个人信息管理-V1.0.0.md", "title": "个人信息管理", "desc": "用户个人信息的查看与修改。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/03-账号管理模块/02-密码与安全/密码与安全-V1.0.0.md", "name": "密码与安全-V1.0.0.md", "title": "密码与安全", "desc": "已登录用户修改密码功能。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/03-账号管理模块/03-账号生命周期/账号生命周期-V1.0.0.md", "name": "账号生命周期-V1.0.0.md", "title": "账号生命周期", "desc": "账号注销与恢复功能，包含 30 天宽限期机制。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/03-账号管理模块/04-第三方身份绑定/第三方身份绑定-V1.0.0.md", "name": "第三方身份绑定-V1.0.0.md", "title": "第三方身份绑定", "desc": "用户绑定/解绑微信等第三方身份。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/03-账号管理模块/账号管理模块总览-V1.0.0.md", "name": "账号管理模块总览-V1.0.0.md", "title": "账号管理模块 - 模块总览", "desc": "账号管理模块负责用户个人信息管理、密码修改、账号生命周期管理。第三方身份绑定延后到 P2。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/04-组织管理模块/01-组织信息管理/组织信息管理-V1.0.0.md", "name": "组织信息管理-V1.0.0.md", "title": "组织信息管理", "desc": "组织的创建、信息查看与更新。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/04-组织管理模块/02-成员管理/成员管理-V1.0.0.md", "name": "成员管理-V1.0.0.md", "title": "成员管理", "desc": "组织成员的邀请、移除与列表查看。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/04-组织管理模块/03-角色与权限/角色与权限-V1.0.0.md", "name": "角色与权限-V1.0.0.md", "title": "角色与权限", "desc": "组织级别的角色分配与核心管理员降级。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.02-产品PRD/04-组织管理模块/04-团队创建/团队创建-V1.0.0.md", "name": "团队创建-V1.0.0.md", "title": "团队创建", "desc": "组织管理员在组织下创建团队。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/04-组织管理模块/组织管理模块总览-V1.0.0.md", "name": "组织管理模块总览-V1.0.0.md", "title": "组织管理模块 - 模块总览", "desc": "组织管理模块负责组织的创建、信息维护、成员管理和角色分配，是多租户架构的顶层管理单元。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.02-产品PRD/05-团队管理模块/01-团队信息管理/团队信息管理-V1.0.0.md", "name": "团队信息管理-V1.0.0.md", "title": "团队信息管理", "desc": "团队信息查看、更新与归档。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.02-产品PRD/05-团队管理模块/02-成员管理/成员管理-V1.0.0.md", "name": "成员管理-V1.0.0.md", "title": "成员管理", "desc": "团队成员的邀请、移除与列表查看。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/05-团队管理模块/03-角色与权限/角色与权限-V1.0.0.md", "name": "角色与权限-V1.0.0.md", "title": "角色与权限", "desc": "团队级别的角色分配与核心管理员降级。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/05-团队管理模块/04-小组创建/小组创建-V1.0.0.md", "name": "小组创建-V1.0.0.md", "title": "小组创建", "desc": "团队管理员在团队下创建小组。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/05-团队管理模块/团队管理模块总览-V1.0.0.md", "name": "团队管理模块总览-V1.0.0.md", "title": "团队管理模块 - 模块总览", "desc": "团队管理模块负责团队信息维护、成员管理、角色分配和小组创建，是组织与小组之间的中间管理层。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/06-小组管理模块/01-小组信息管理/小组信息管理-V1.0.0.md", "name": "小组信息管理-V1.0.0.md", "title": "小组信息管理", "desc": "小组信息查看、更新与删除。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.02-产品PRD/06-小组管理模块/02-成员管理/成员管理-V1.0.0.md", "name": "成员管理-V1.0.0.md", "title": "成员管理", "desc": "小组成员的邀请、移除与列表查看。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/06-小组管理模块/03-角色与权限/角色与权限-V1.0.0.md", "name": "角色与权限-V1.0.0.md", "title": "角色与权限", "desc": "小组级别的角色分配与核心管理员降级。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.02-产品PRD/06-小组管理模块/小组管理模块总览-V1.0.0.md", "name": "小组管理模块总览-V1.0.0.md", "title": "小组管理模块 - 模块总览", "desc": "小组管理模块负责小组信息维护、成员管理和角色分配，是组织架构中的最底层管理单元。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.02-产品PRD/07-权限管理模块/权限管理模块-V1.0.0.md", "name": "权限管理模块-V1.0.0.md", "title": "权限管理模块", "desc": "RBAC 权限管理，包含预定义角色初始化、权限点校验、数据范围控制和权限继承。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/08-审计日志模块/审计日志模块-V1.0.0.md", "name": "审计日志模块-V1.0.0.md", "title": "审计日志模块", "desc": "登录审计日志与操作审计日志的记录与查询。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.02-产品PRD/09-超级管理员模块/超级管理员模块-V1.0.0.md", "name": "超级管理员模块-V1.0.0.md", "title": "超级管理员模块", "desc": "超级管理员的系统配置管理、强制降级和全局审计日志功能。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/10-非功能需求/非功能需求-V1.0.0.md", "name": "非功能需求-V1.0.0.md", "title": "非功能需求", "desc": "性能、安全、兼容性、可扩展性等非功能需求规格。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/12-数据字典与实体关系/数据字典与实体关系-V1.0.0.md", "name": "数据字典与实体关系-V1.0.0.md", "title": "数据字典与实体关系", "desc": "核心数据库表结构定义与实体关系图。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/13-接口需求规范/接口需求规范-V1.0.0.md", "name": "接口需求规范-V1.0.0.md", "title": "接口需求规范", "desc": "统一响应格式、错误码规范和核心接口列表。", "version": "V1.0.2", "date": "2026-07-13"}, {"path": "../02-需求与产品设计/02.02-产品PRD/14-约束条件与风险评估/约束条件与风险评估-V1.0.0.md", "name": "约束条件与风险评估-V1.0.0.md", "title": "约束条件与风险评估", "desc": "技术/业务/合规约束条件及风险评估。", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/PRD-V1.0.0.md", "name": "PRD-V1.0.0.md", "title": "XYFamily 多租户账号权限底座 - 产品需求文档（PRD）", "desc": "XYFamily 多租户账号权限底座 - 产品需求文档", "version": "V1.0.1", "date": "2026-07-12"}, {"path": "../02-需求与产品设计/02.02-产品PRD/PRD模块总览-V1.0.0.md", "name": "PRD模块总览-V1.0.0.md", "title": "XYFamily 多租户账号权限底座 - PRD 模块总览", "desc": "PRD 模块化拆分索引，按业务模块分类组织，提供多级目录导航。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/02.04-需求复盘/PRD审查报告-V1.0.0.md", "name": "PRD审查报告-V1.0.0.md", "title": "PRD 审查报告", "desc": "PRD 审查报告", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../02-需求与产品设计/README.md", "name": "README.md", "title": "需求与产品设计", "desc": "XYFamily 产品需求、产品方案、原型逻辑入口。", "version": "V1.0.0", "date": "2026-07-10"}, {"path": "../03-技术架构与方案设计/03.01-整体架构设计/整体架构设计-V1.0.0.md", "name": "整体架构设计-V1.0.0.md", "title": "整体架构设计", "desc": "XYFamily 多租户账号权限底座整体技术架构。", "version": "V1.0.2", "date": "2026-07-13"}, {"path": "../03-技术架构与方案设计/03.02-数据库设计/数据库设计-V1.0.0.md", "name": "数据库设计-V1.0.0.md", "title": "数据库设计", "desc": "XYFamily 完整数据库 DDL（PostgreSQL 17）。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../03-技术架构与方案设计/03.03-中间件专项方案/中间件专项方案-V1.0.0.md", "name": "中间件专项方案-V1.0.0.md", "title": "中间件专项方案", "desc": "XYFamily Gin 中间件链实现细节、Redis 缓存标准、Token 黑名单、审计 Stream、限流中间件。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../03-技术架构与方案设计/03.04-核心技术专项方案/核心技术专项方案-V1.0.0.md", "name": "核心技术专项方案-V1.0.0.md", "title": "核心技术专项方案", "desc": "XYFamily 多租户隔离、RBAC 权限引擎、JWT 鉴权链、审计日志实现方案。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../03-技术架构与方案设计/03.05-ADR架构决策记录/ADR架构决策记录-V1.0.0.md", "name": "ADR架构决策记录-V1.0.0.md", "title": "ADR 架构决策记录", "desc": "记录 XYFamily 关键架构决策，每条 ADR 含背景、决策、理由和后果。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../03-技术架构与方案设计/03.06-业务流程图集/业务流程图集-V1.0.0.md", "name": "业务流程图集-V1.0.0.md", "title": "业务流程图集", "desc": "XYFamily 核心业务流程时序图：注册、登录、权限校验、Token 刷新、成员邀请。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../03-技术架构与方案设计/03.07-容灾多活架构/容灾多活架构-V1.0.0.md", "name": "容灾多活架构-V1.0.0.md", "title": "容灾多活架构", "desc": "XYFamily 高可用部署架构：PG 主从、负载均衡、备份策略、Redis 高可用。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../03-技术架构与方案设计/README.md", "name": "README.md", "title": "技术架构与方案设计", "desc": "XYFamily 技术架构核心文档入口。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.01-全局开发规范/全局开发规范-V1.0.0.md", "name": "全局开发规范-V1.0.0.md", "title": "全局开发规范", "desc": "XYFamily 后端全局开发规范，覆盖工程目录、分层职责、错误处理、日志规范、配置管理。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.02-分端代码规范/H5代码规范-V1.0.0.md", "name": "H5代码规范-V1.0.0.md", "title": "H5 代码规范", "desc": "XYFamily H5 端开发规范：React + TypeScript，移动浏览器。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.02-分端代码规范/Web代码规范-V1.0.0.md", "name": "Web代码规范-V1.0.0.md", "title": "Web 代码规范", "desc": "XYFamily Web 端开发规范：React + TypeScript，PC 管理后台。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.02-分端代码规范/iOS_Swift代码规范-V1.0.0.md", "name": "iOS_Swift代码规范-V1.0.0.md", "title": "iOS（Swift）代码规范", "desc": "XYFamily iOS 端开发规范：Swift + SwiftUI。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.02-分端代码规范/前端通用代码规范-V1.0.0.md", "name": "前端通用代码规范-V1.0.0.md", "title": "前端通用代码规范", "desc": "XYFamily 前端通用代码规范，适用于安卓、iOS、H5、微信小程序、Web 五个平台。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.02-分端代码规范/后端Go代码规范-V1.0.0.md", "name": "后端Go代码规范-V1.0.0.md", "title": "后端 Go 代码规范", "desc": "XYFamily 后端 Go 代码命名、惯用法、数据库操作、单元测试规范。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.02-分端代码规范/安卓Kotlin代码规范-V1.0.0.md", "name": "安卓Kotlin代码规范-V1.0.0.md", "title": "安卓（Kotlin）代码规范", "desc": "XYFamily 安卓端开发规范：Kotlin + Jetpack Compose。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.02-分端代码规范/微信小程序代码规范-V1.0.0.md", "name": "微信小程序代码规范-V1.0.0.md", "title": "微信小程序代码规范", "desc": "XYFamily 微信小程序开发规范：原生框架 / uni-app。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.03-Git版本管控规范/Git版本管控规范-V1.0.0.md", "name": "Git版本管控规范-V1.0.0.md", "title": "Git 版本管控规范", "desc": "XYFamily Git 分支策略、提交信息规范、Code Review 规则、版本标签规范。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/04.04-研发工具规范/研发工具规范-V1.0.0.md", "name": "研发工具规范-V1.0.0.md", "title": "研发工具规范", "desc": "XYFamily 开发环境配置、构建工具、代码质量工具、调试方法。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../04-开发规范与编码手册/README.md", "name": "README.md", "title": "开发规范与编码手册", "desc": "XYFamily 开发规范总入口。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../05-接口与模块落地文档/README.md", "name": "README.md", "title": "接口与模块落地文档", "desc": "XYFamily 多租户账号权限底座 — 接口与模块落地文档入口。", "version": "V1.0.0", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/审查记录/审查记录-V1.0.0.md", "name": "审查记录-V1.0.0.md", "title": "V1.0.0 审查记录", "desc": "XYFamily 接口文档 V1.0.0 审查记录 — 完整性、一致性、规范性审查分析。", "version": "V1.0.0", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/README.md", "name": "总览.md", "title": "接口总览", "desc": "XYFamily RESTful API 完整接口索引（base path `/api/v1/`）。", "version": "V1.0.1", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/接口规范-V1.0.0.md", "name": "接口规范-V1.0.0.md", "title": "接口规范", "desc": "XYFamily 多租户账号权限底座 — 接口设计规范要求", "version": "V1.0.0", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/接口设计/认证模块-V1.0.0.md", "name": "认证模块-V1.0.0.md", "title": "认证模块接口设计", "desc": "Auth 模块接口定义与详细设计（注册、登录、登出、Token 刷新、密码重置）。", "version": "V1.0.0", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/接口设计/账号管理模块-V1.0.0.md", "name": "账号管理模块-V1.0.0.md", "title": "账号管理模块接口设计", "desc": "当前登录用户的个人信息管理接口（查看/修改个人信息、修改密码、账号注销/恢复）。", "version": "V1.0.0", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/接口设计/邀请模块-V1.0.0.md", "name": "邀请模块-V1.0.0.md", "title": "邀请模块接口设计", "desc": "邀请查看、接受、拒绝接口定义与设计。", "version": "V1.0.0", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/标准接口/README.md", "name": "总览.md", "title": "标准接口总览", "desc": "XYFamily RESTful API 标准接口文档索引。", "version": "V1.0.1", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/标准接口/认证模块-V1.0.0.md", "name": "认证模块-V1.0.0.md", "title": "认证模块标准接口", "desc": "认证模块 6 个接口的标准化文档。", "version": "V1.0.1", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/标准接口/账号管理模块-V1.0.0.md", "name": "账号管理模块-V1.0.0.md", "title": "账号管理模块标准接口", "desc": "账号管理模块 5 个接口的标准化文档。", "version": "V1.0.1", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/标准接口/邀请模块-V1.0.0.md", "name": "邀请模块-V1.0.0.md", "title": "邀请模块标准接口", "desc": "邀请模块 3 个接口的标准化文档。", "version": "V1.0.1", "date": "2026-07-13"}, {"path": "../05-接口与模块落地文档/错误码-V1.0.0.md", "name": "错误码-V1.0.0.md", "title": "错误码", "desc": "XYFamily 接口完整错误码体系（5 位分段，全局唯一）。", "version": "V1.0.0", "date": "2026-07-13"}, {"path": "../06-测试与质量保障/06.01-测试策略/测试策略-V1.0.0.md", "name": "测试策略-V1.0.0.md", "title": "测试策略", "desc": "XYFamily 测试策略：分层测试、覆盖率目标、测试数据管理、CI 集成。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../06-测试与质量保障/06.02-测试用例规范/测试用例规范-V1.0.0.md", "name": "测试用例规范-V1.0.0.md", "title": "测试用例规范", "desc": "XYFamily 测试用例模板、分类与编写规范。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../06-测试与质量保障/README.md", "name": "README.md", "title": "测试与质量保障", "desc": "XYFamily 测试计划、用例库、质量门禁入口。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../07-部署运维与应急故障/07.01-Docker Compose生产配置/Docker Compose生产配置-V1.0.0.md", "name": "Docker Compose生产配置-V1.0.0.md", "title": "Docker Compose 生产配置", "desc": "XYFamily 生产级 Docker Compose 配置，含 PG 主从、Redis Sentinel、应用多实例。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../07-部署运维与应急故障/07.02-K8s部署清单/K8s部署清单-V1.0.0.md", "name": "K8s部署清单-V1.0.0.md", "title": "K8s 部署清单", "desc": "XYFamily Kubernetes 部署清单：Deployment、Service、Ingress、ConfigMap、Secret。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../07-部署运维与应急故障/README.md", "name": "README.md", "title": "部署运维与应急故障", "desc": "XYFamily 部署手册、运维手册、故障复盘入口。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../08-合规安全与数据治理/08.01-数据合规规范/数据合规规范-V1.0.0.md", "name": "数据合规规范-V1.0.0.md", "title": "数据合规规范", "desc": "XYFamily 数据合规规范：PII 保护、匿名化规则、审计日志合规、数据保留策略。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../08-合规安全与数据治理/08.03-安全基线管理/安全基线管理-V1.0.0.md", "name": "安全基线管理-V1.0.0.md", "title": "安全基线管理", "desc": "XYFamily 安全基线：代码安全、运行时安全、依赖安全、部署安全最低要求。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../08-合规安全与数据治理/README.md", "name": "README.md", "title": "合规安全与数据治理", "desc": "XYFamily 数据合规、隐私治理、安全审计入口。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../09-迭代复盘与业务沉淀/README.md", "name": "README.md", "title": "迭代复盘与业务沉淀", "desc": "XYFamily 版本迭代记录、问题复盘、流程优化入口。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../10-团队资产与培训模板/10.01-标准化文档模板库/标准化文档模板库-V1.0.0.md", "name": "标准化文档模板库-V1.0.0.md", "title": "标准化文档模板库", "desc": "XYFamily 标准化文档模板：接口设计、ADR、测试用例、PRD 模板。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../10-团队资产与培训模板/10.03-新人培训知识库/新人培训知识库-V1.0.0.md", "name": "新人培训知识库-V1.0.0.md", "title": "新人培训知识库", "desc": "XYFamily 新人入职培训：项目概览、技术栈、开发环境搭建、代码规范。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../10-团队资产与培训模板/README.md", "name": "README.md", "title": "团队资产与培训模板", "desc": "XYFamily 公共模板、自研工具、培训资料入口。", "version": "V1.0.0", "date": "2026-07-12"}, {"path": "../README.md", "name": "README.md", "title": "XYFamily Wiki - 知识库", "desc": "XYFamily 知识库总入口", "version": "V1.0.2", "date": "2026-07-12"}];
+
+        // === Build tree from flat data ===
+        const tree = (function() {
+            const root = { name: 'Wiki', children: {}, files: [] };
+            for (const file of wikiData) {
+                // 去掉开头的 '..' 段（所有 path 形如 ../XX/...），让树根直接挂载真实一级目录，
+                // 与 deep-link 计算出的 currentPath（已 slice(1)）保持一致，避免 '..' 成为无效节点。
+                const parts = file.path.split('/').slice(1);
+                let cur = root;
+                for (let i = 0; i < parts.length - 1; i++) {
+                    if (!cur.children[parts[i]]) cur.children[parts[i]] = { name: parts[i], children: {}, files: [] };
+                    cur = cur.children[parts[i]];
+                }
+                cur.files.push(file);
+            }
+            return root;
+        })();
+
+        function countFiles(node) {
+            let c = node.files.length;
+            for (const k in node.children) c += countFiles(node.children[k]);
+            return c;
+        }
+
+        function getNodeAtPath(segs) {
+            let n = tree;
+            for (const s of segs) { if (n.children[s]) n = n.children[s]; else return null; }
+            return n;
+        }
+
+        function escapeHtml(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+
+        // === Preview CSS for rendered markdown (injected into the iframe document) ===
+        const MD_CSS = [
+            '*{margin:0;padding:0;box-sizing:border-box;}',
+            'body{font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,\'Helvetica Neue\',Arial,\'PingFang SC\',\'Microsoft YaHei\',sans-serif;padding:24px 28px;color:#1a202c;background:#fff;line-height:1.7;font-size:15px;word-wrap:break-word;}',
+            '.md-content{max-width:900px;margin:0 auto;}',
+            '.md-content>:first-child{margin-top:0;}',
+            'h1,h2,h3,h4,h5,h6{color:#2d3748;line-height:1.3;margin:1.4em 0 .6em;font-weight:700;}',
+            'h1{font-size:1.9rem;border-bottom:2px solid #edf2f7;padding-bottom:.3em;}',
+            'h2{font-size:1.5rem;border-bottom:1px solid #edf2f7;padding-bottom:.25em;}',
+            'h3{font-size:1.25rem;}',
+            'h4{font-size:1.1rem;}',
+            'h5{font-size:1rem;}',
+            'h6{font-size:.9rem;color:#718096;}',
+            'p{margin:.8em 0;}',
+            'a{color:#667eea;text-decoration:none;}',
+            'a:hover{text-decoration:underline;}',
+            'code{font-family:\'JetBrains Mono\',\'SF Mono\',Consolas,\'Liberation Mono\',monospace;background:#f1f5f9;color:#d6336c;padding:2px 6px;border-radius:4px;font-size:.88em;}',
+            'pre{background:#1e293b;color:#e2e8f0;padding:16px;border-radius:8px;overflow-x:auto;margin:1em 0;}',
+            'pre code{background:transparent;color:inherit;padding:0;font-size:.85rem;line-height:1.5;}',
+            'blockquote{border-left:4px solid #667eea;background:#f7fafc;padding:10px 16px;margin:1em 0;color:#4a5568;border-radius:0 6px 6px 0;}',
+            'ul,ol{margin:.8em 0;padding-left:1.8em;}',
+            'li{margin:.35em 0;}',
+            'hr{border:none;border-top:1px solid #e2e8f0;margin:1.5em 0;}',
+            'table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem;display:block;overflow-x:auto;}',
+            'th,td{border:1px solid #e2e8f0;padding:8px 12px;text-align:left;}',
+            'th{background:#f7fafc;color:#2d3748;font-weight:600;}',
+            'tbody tr:nth-child(even){background:#fbfcfe;}',
+            '@media (max-width:600px){body{padding:16px;font-size:14px;}pre{font-size:.78rem;}.md-content{max-width:100%;}}'
+        ].join('\n');
+
+        // === Minimal Markdown -> HTML renderer (no external libs) ===
+        // Inline-level formatting: code, links, bold, italic.
+        function inlineFormat(text) {
+            // `text` is already HTML-escaped.
+            // 1. Protect inline code spans.
+            const codes = [];
+            text = text.replace(/`([^`]+)`/g, function(m, c) {
+                codes.push(c);
+                return '\u0000' + (codes.length - 1) + '\u0000';
+            });
+            // 2. Links [text](url) — sanitize the URL to prevent XSS.
+            //    Allow balanced parentheses inside the URL (e.g. wiki links).
+            text = text.replace(/\[([^\]]+)\]\(([^()\s]+(?:\([^()]*\)[^()\s]*)*)\)/g, function(m, t, url) {
+                const safe = sanitizeUrl(url);
+                return '<a href="' + safe + '" target="_blank" rel="noopener">' + t + '</a>';
+            });
+            // 3. Bold then italic.
+            text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+            // 4. Restore inline code.
+            text = text.replace(/\u0000(\d+)\u0000/g, function(m, idx) {
+                return '<code>' + codes[parseInt(idx, 10)] + '</code>';
+            });
+            return text;
+        }
+
+        // Only allow safe URL schemes to avoid javascript:/data: XSS via links.
+        function sanitizeUrl(url) {
+            const u = url.trim();
+            if (/^javascript:/i.test(u)) return '#';
+            if (/^data:/i.test(u) && !/^data:image\//i.test(u)) return '#';
+            return u;
+        }
+
+        function isListLine(line) { return /^(\s*)([-*+]|\d+\.)\s+/.test(line); }
+        function getIndent(line) { const m = line.match(/^(\s*)/); return m ? m[1].length : 0; }
+
+        // Detect a markdown table separator row, e.g. |---|---| or | --- | :--: |
+        function isTableSeparator(s) {
+            s = s.trim();
+            if (s === '') return false;
+            if (s[0] === '|') s = s.slice(1);
+            if (s[s.length - 1] === '|') s = s.slice(0, -1);
+            const cols = s.split('|');
+            if (cols.length === 0) return false;
+            return cols.every(function(c) { return /^:?-+:?$/.test(c.trim()); });
+        }
+
+        // Split a table row into trimmed cells (handles leading/trailing pipes).
+        function splitRow(s) {
+            s = s.trim();
+            if (s[0] === '|') s = s.slice(1);
+            if (s[s.length - 1] === '|') s = s.slice(0, -1);
+            return s.split('|').map(function(c) { return c.trim(); });
+        }
+
+        function alignAttr(a) { return a ? ' style="text-align:' + a + '"' : ''; }
+
+        // Build a nested list AST from lines starting at index i with base indentation.
+        function buildList(lines, i, baseIndent) {
+            const items = [];
+            const n = lines.length;
+            while (i < n) {
+                // Skip blank lines between items (loose lists) when next is a sibling item.
+                if (lines[i].trim() === '') {
+                    let j = i + 1;
+                    while (j < n && lines[j].trim() === '') j++;
+                    if (j < n && isListLine(lines[j]) && getIndent(lines[j]) >= baseIndent) { i = j; continue; }
+                    break;
+                }
+                if (!isListLine(lines[i])) break;
+                const m = lines[i].match(/^(\s*)([-*+]|\d+\.)\s+(.*)$/);
+                const indent = m[1].length;
+                if (indent < baseIndent) break; // belongs to an outer list
+                if (indent > baseIndent) {
+                    if (items.length > 0) {
+                        const deeper = indent;
+                        const child = buildList(lines, i, deeper);
+                        items[items.length - 1].children = child;
+                        i = child._next;
+                        continue;
+                    }
+                    break;
+                }
+                // Sibling item at baseIndent.
+                const item = { text: m[3], ordered: /\d+\./.test(m[2]), children: null };
+                i++;
+                // Nested children (indent greater than baseIndent).
+                while (i < n && isListLine(lines[i]) && getIndent(lines[i]) > baseIndent) {
+                    const deeper = getIndent(lines[i]);
+                    const child = buildList(lines, i, deeper);
+                    item.children = child;
+                    i = child._next;
+                }
+                // Continuation text (indented, non-list, non-blank) appended to item text.
+                const cont = [];
+                while (i < n && lines[i].trim() !== '' && !isListLine(lines[i]) && getIndent(lines[i]) > baseIndent) {
+                    cont.push(lines[i].trim());
+                    i++;
+                }
+                if (cont.length) item.text += '<br>' + cont.join('<br>');
+                items.push(item);
+            }
+            items._next = i; // stash next index as a non-enumerable-ish custom prop
+            return items;
+        }
+
+        // Render a nested list AST to HTML.
+        function renderListTree(items) {
+            if (!items || items.length === 0) return '';
+            const ordered = items[0].ordered;
+            let html = ordered ? '<ol>' : '<ul>';
+            for (const it of items) {
+                html += '<li>' + inlineFormat(it.text);
+                if (it.children && it.children.length) html += renderListTree(it.children);
+                html += '</li>';
+            }
+            html += ordered ? '</ol>' : '</ul>';
+            return html;
+        }
+
+        // Block-level parser over an array of (already escaped) lines.
+        function parseBlocks(lines) {
+            let html = '';
+            let i = 0;
+            const n = lines.length;
+            while (i < n) {
+                const line = lines[i];
+
+                if (line.trim() === '') { i++; continue; }
+
+                // Fenced code block ```lang
+                const fence = line.match(/^```(\w*)\s*$/);
+                if (fence) {
+                    const lang = fence[1];
+                    const code = [];
+                    i++;
+                    while (i < n && !/^```\s*$/.test(lines[i])) { code.push(lines[i]); i++; }
+                    i++; // closing fence
+                    html += '<pre><code' + (lang ? ' class="language-' + lang + '"' : '') + '>' + code.join('\n') + '</code></pre>';
+                    continue;
+                }
+
+                // Heading # ~ ######
+                const h = line.match(/^(#{1,6})\s+(.*?)\s*#*\s*$/);
+                if (h) {
+                    const level = h[1].length;
+                    html += '<h' + level + '>' + inlineFormat(h[2]) + '</h' + level + '>';
+                    i++;
+                    continue;
+                }
+
+                // Horizontal rule --- / *** / ___
+                if (/^(-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+                    html += '<hr>';
+                    i++;
+                    continue;
+                }
+
+                // Blockquote > (note: '>' is HTML-escaped to '&gt;' before parsing)
+                if (/^&gt;\s?/.test(line)) {
+                    const quoteLines = [];
+                    while (i < n && /^&gt;\s?/.test(lines[i])) {
+                        quoteLines.push(lines[i].replace(/^&gt;\s?/, ''));
+                        i++;
+                    }
+                    html += '<blockquote>' + parseBlocks(quoteLines) + '</blockquote>';
+                    continue;
+                }
+
+                // Table (header + separator + body rows)
+                if (line.indexOf('|') !== -1 && i + 1 < n && isTableSeparator(lines[i + 1])) {
+                    const header = splitRow(line);
+                    const sep = splitRow(lines[i + 1]);
+                    const aligns = sep.map(function(c) {
+                        c = c.trim();
+                        if (c.length >= 2 && c[0] === ':' && c[c.length - 1] === ':') return 'center';
+                        if (c[0] === ':') return 'left';
+                        if (c[c.length - 1] === ':') return 'right';
+                        return '';
+                    });
+                    i += 2;
+                    const rows = [];
+                    while (i < n && lines[i].trim() !== '' && lines[i].indexOf('|') !== -1) {
+                        rows.push(splitRow(lines[i]));
+                        i++;
+                    }
+                    let t = '<table><thead><tr>';
+                    header.forEach(function(c, idx) { t += '<th' + alignAttr(aligns[idx]) + '>' + inlineFormat(c) + '</th>'; });
+                    t += '</tr></thead><tbody>';
+                    rows.forEach(function(r) {
+                        t += '<tr>';
+                        r.forEach(function(c, idx) { t += '<td' + alignAttr(aligns[idx]) + '>' + inlineFormat(c) + '</td>'; });
+                        t += '</tr>';
+                    });
+                    t += '</tbody></table>';
+                    html += t;
+                    continue;
+                }
+
+                // List (ordered / unordered), supports arbitrary nesting depth.
+                if (isListLine(line)) {
+                    const base = getIndent(line);
+                    const tree = buildList(lines, i, base);
+                    html += renderListTree(tree);
+                    i = tree._next;
+                    continue;
+                }
+
+                // Paragraph: gather consecutive non-block lines.
+                const paraLines = [];
+                while (i < n && lines[i].trim() !== '' &&
+                       !/^```/.test(lines[i]) &&
+                       !/^(#{1,6})\s+/.test(lines[i]) &&
+                       !/^(-{3,}|\*{3,}|_{3,})\s*$/.test(lines[i]) &&
+                       !/^>\s?/.test(lines[i]) &&
+                       !isListLine(lines[i]) &&
+                       !(lines[i].indexOf('|') !== -1 && i + 1 < n && isTableSeparator(lines[i + 1]))) {
+                    paraLines.push(lines[i]);
+                    i++;
+                }
+                if (paraLines.length) {
+                    html += '<p>' + paraLines.map(inlineFormat).join('<br>') + '</p>';
+                }
+            }
+            return html;
+        }
+
+        // Entry point: render markdown string to HTML (with HTML-escaping first).
+        function renderMarkdown(md) {
+            if (!md) return '';
+            md = md.replace(/\r\n?/g, '\n');
+            md = escapeHtml(md); // XSS-safe first
+            return parseBlocks(md.split('\n'));
+        }
+
+        // === 文件加载工具函数 ===
+        // 优先 fetch；file:// 协议下回退 XMLHttpRequest（部分浏览器允许）
+        function loadFileText(url) {
+            // HTTP(S) 协议直接用 fetch
+            if (location.protocol.startsWith('http')) {
+                return fetch(url).then(r => {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.text();
+                });
+            }
+            // file:// 协议：先试 fetch，失败后回退 XHR
+            return fetch(url)
+                .then(r => r.text())
+                .catch(function() {
+                    return new Promise(function(resolve, reject) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', url, true);
+                        xhr.overrideMimeType('text/plain; charset=utf-8');
+                        xhr.onload = function() {
+                            if (xhr.status === 200 || xhr.status === 0) {
+                                resolve(xhr.responseText);
+                            } else {
+                                reject(new Error('HTTP ' + xhr.status));
+                            }
+                        };
+                        xhr.onerror = function() {
+                            reject(new Error('Failed to fetch (file:// protocol may block local file access)'));
+                        };
+                        xhr.send();
+                    });
+                });
+        }
+
+        // === State ===
+        let currentPath = [];   // array of folder names
+        let selectedFile = null; // file object or null
+        let viewMode = 'list';  // 'grid' or 'list'
+        let fileViewMode = 'preview'; // 'preview' | 'source' — 文件内容预览/源码切换，默认预览
+
+        // === Render breadcrumb bar ===
+        function renderBreadcrumb() {
+            const bar = document.getElementById('breadcrumbBar');
+            bar.innerHTML = '';
+
+            // Root crumb
+            const root = document.createElement('span');
+            root.className = 'crumb crumb-root';
+            root.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Wiki';
+            if (currentPath.length === 0 && !selectedFile) root.classList.add('crumb-active');
+            root.onclick = function(e) {
+                e.stopPropagation();
+                currentPath = [];
+                selectedFile = null;
+                renderAll();
+            };
+            bar.appendChild(root);
+
+            // Path segments
+            for (let i = 0; i < currentPath.length; i++) {
+                const sep = document.createElement('span');
+                sep.className = 'crumb-sep';
+                sep.textContent = '/';
+                bar.appendChild(sep);
+
+                const crumb = document.createElement('span');
+                crumb.className = 'crumb';
+                if (i === currentPath.length - 1 && !selectedFile) crumb.classList.add('crumb-active');
+                crumb.innerHTML = escapeHtml(currentPath[i]) + '<span class="crumb-arrow">\u25BE</span>';
+                crumb.onclick = function(e) {
+                    e.stopPropagation();
+                    showDropdown(i, this);
+                };
+                bar.appendChild(crumb);
+            }
+
+            // Selected file crumb
+            if (selectedFile) {
+                const sep = document.createElement('span');
+                sep.className = 'crumb-sep';
+                sep.textContent = '/';
+                bar.appendChild(sep);
+
+                const crumb = document.createElement('span');
+                crumb.className = 'crumb crumb-active';
+                crumb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> ' + escapeHtml(selectedFile.name) + '<span class="crumb-arrow">\u25BE</span>';
+                crumb.onclick = function(e) {
+                    e.stopPropagation();
+                    showFileDropdown(this);
+                };
+                bar.appendChild(crumb);
+            }
+
+            // "Select" trigger at the end (for current level)
+            const sep = document.createElement('span');
+            sep.className = 'crumb-sep';
+            sep.textContent = '/';
+            bar.appendChild(sep);
+
+            const trigger = document.createElement('span');
+            trigger.className = 'crumb';
+            trigger.style.border = '2px dashed #cbd5e0';
+            trigger.style.color = '#64748b';
+            trigger.innerHTML = (selectedFile ? '\u21C5 \u5207\u6362\u6587\u4EF6' : '<svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> \u9009\u62E9') + '<span class="crumb-arrow">\u25BE</span>';
+            trigger.onclick = function(e) {
+                e.stopPropagation();
+                if (selectedFile) {
+                    showFileDropdown(this);
+                } else {
+                    showDropdown(currentPath.length, this);
+                }
+            };
+            bar.appendChild(trigger);
+        }
+
+        // === Show dropdown at a given path depth ===
+        function showDropdown(depth, anchorEl) {
+            closeDropdown();
+            // depth = number of path segments already selected; show children at that level
+            const segs = currentPath.slice(0, depth);
+            const node = getNodeAtPath(segs);
+            if (!node) return;
+
+            const dd = document.createElement('div');
+            dd.className = 'path-dropdown';
+            dd.id = 'pathDropdown';
+
+            // Folders
+            const folderKeys = Object.keys(node.children).sort();
+            for (const key of folderKeys) {
+                const child = node.children[key];
+                const cnt = countFiles(child);
+                const item = document.createElement('div');
+                item.className = 'dd-item dd-folder';
+                if (depth < currentPath.length && currentPath[depth] === key) item.classList.add('dd-item-active');
+                item.innerHTML = '<span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span><span>' + escapeHtml(key) + '</span><span class="dd-count">' + cnt + '</span>';
+                item.onclick = function(e) {
+                    e.stopPropagation();
+                    currentPath = segs.concat([key]);
+                    selectedFile = null;
+                    closeDropdown();
+                    renderAll();
+                };
+                dd.appendChild(item);
+            }
+
+            // Files
+            const files = node.files.slice().sort(function(a, b) { return a.name.localeCompare(b.name); });
+            for (const file of files) {
+                const item = document.createElement('div');
+                item.className = 'dd-item dd-file';
+                if (selectedFile && selectedFile.path === file.path) item.classList.add('dd-item-active');
+                const ver = file.version ? '<span class="dd-meta">' + escapeHtml(file.version) + '</span>' : '';
+                item.innerHTML = '<span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span>' + escapeHtml(file.name) + '</span>' + ver;
+                item.onclick = function(e) {
+                    e.stopPropagation();
+                    currentPath = segs;
+                    selectedFile = file;
+                    closeDropdown();
+                    renderAll();
+                };
+                dd.appendChild(item);
+            }
+
+            if (folderKeys.length === 0 && files.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'dd-empty';
+                empty.textContent = '\u6B64\u76EE\u5F55\u4E3A\u7A7A';
+                dd.appendChild(empty);
+            }
+
+            positionDropdown(dd, anchorEl);
+        }
+
+        // === Show file dropdown (switch file at current folder level) ===
+        function showFileDropdown(anchorEl) {
+            closeDropdown();
+            const node = getNodeAtPath(currentPath);
+            if (!node) return;
+
+            const dd = document.createElement('div');
+            dd.className = 'path-dropdown';
+            dd.id = 'pathDropdown';
+
+            // Also show folders so user can switch to a folder
+            const folderKeys = Object.keys(node.children).sort();
+            for (const key of folderKeys) {
+                const child = node.children[key];
+                const cnt = countFiles(child);
+                const item = document.createElement('div');
+                item.className = 'dd-item dd-folder';
+                item.innerHTML = '<span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span><span>' + escapeHtml(key) + '</span><span class="dd-count">' + cnt + '</span>';
+                item.onclick = function(e) {
+                    e.stopPropagation();
+                    currentPath = currentPath.concat([key]);
+                    selectedFile = null;
+                    closeDropdown();
+                    renderAll();
+                };
+                dd.appendChild(item);
+            }
+
+            const files = node.files.slice().sort(function(a, b) { return a.name.localeCompare(b.name); });
+            for (const file of files) {
+                const item = document.createElement('div');
+                item.className = 'dd-item dd-file';
+                if (selectedFile && selectedFile.path === file.path) item.classList.add('dd-item-active');
+                const ver = file.version ? '<span class="dd-meta">' + escapeHtml(file.version) + '</span>' : '';
+                item.innerHTML = '<span class="dd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span>' + escapeHtml(file.name) + '</span>' + ver;
+                item.onclick = function(e) {
+                    e.stopPropagation();
+                    selectedFile = file;
+                    closeDropdown();
+                    renderAll();
+                };
+                dd.appendChild(item);
+            }
+
+            positionDropdown(dd, anchorEl);
+        }
+
+        function positionDropdown(dd, anchorEl) {
+            document.body.appendChild(dd);
+            const rect = anchorEl.getBoundingClientRect();
+            let left = rect.left;
+            if (left + 320 > window.innerWidth) left = window.innerWidth - 330;
+            if (left < 10) left = 10;
+            dd.style.left = left + 'px';
+            dd.style.top = (rect.bottom + 6) + 'px';
+            setTimeout(function() { document.addEventListener('click', closeDropdown); }, 0);
+        }
+
+        function closeDropdown() {
+            const dd = document.getElementById('pathDropdown');
+            if (dd) dd.remove();
+            document.removeEventListener('click', closeDropdown);
+        }
+
+        // === Render content area ===
+        function renderContent() {
+            const body = document.getElementById('contentBody');
+
+            if (selectedFile) {
+                // Show file content
+                body.innerHTML = '';
+
+                const header = document.createElement('div');
+                header.className = 'content-header';
+
+                const verHtml = selectedFile.version ? '<span class="badge-version">' + escapeHtml(selectedFile.version) + '</span>' : '';
+                const dateHtml = selectedFile.date ? '<span class="badge-date">' + escapeHtml(selectedFile.date) + '</span>' : '';
+
+                // 预览 / 源码 切换按钮（复用 .view-toggle 样式）
+                const fileToggleHtml =
+                    '<div class="view-toggle">' +
+                        '<button class="view-toggle-btn' + (fileViewMode === 'preview' ? ' active' : '') + '" onclick="setFileViewMode(\'preview\')" title="预览渲染后的网页"><svg class="uicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 预览</button>' +
+                        '<button class="view-toggle-btn' + (fileViewMode === 'source' ? ' active' : '') + '" onclick="setFileViewMode(\'source\')" title="查看原始 Markdown 源码"><svg class="uicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> 源码</button>' +
+                    '</div>';
+
+                header.innerHTML =
+                    '<button class="back-btn" onclick="goBack()" title="返回上一级"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>' +
+                    '<div class="content-title"><svg viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> ' + escapeHtml(selectedFile.title || selectedFile.name) + '</div>' +
+                    '<div class="content-meta">' + verHtml + dateHtml + fileToggleHtml + '</div>';
+
+                body.appendChild(header);
+
+                const iframe = document.createElement('iframe');
+                iframe.className = 'file-iframe';
+                body.appendChild(iframe);
+                // 加载 Markdown 文件内容
+                // 优先使用 fetch（HTTP 场景）；file:// 协议下 fetch 可能被浏览器拦截，回退到 XMLHttpRequest
+                loadFileText(selectedFile.path)
+                    .then(text => {
+                        let innerHtml;
+                        if (fileViewMode === 'source') {
+                            // 源码模式：保留原始 Markdown 文本
+                            innerHtml = '<pre>' + escapeHtml(text) + '</pre>';
+                        } else {
+                            // 预览模式：渲染为排版后的网页
+                            innerHtml = '<div class="md-content">' + renderMarkdown(text) + '</div>';
+                        }
+                        const html = '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>' + MD_CSS + '</style></head><body>' + innerHtml + '</body></html>';
+                        const blob = new Blob([html], { type: 'text/html; charset=utf-8' });
+                        iframe.src = URL.createObjectURL(blob);
+                    })
+                    .catch(err => {
+                        var hint = location.protocol === 'file:'
+                            ? '<br><br>提示：直接打开 HTML 文件时浏览器可能限制本地文件访问。请使用开发服务器：<code>python3 server.py</code>'
+                            : '';
+                        iframe.srcdoc = '<!DOCTYPE html><html><body style="padding:20px;color:#e53e3e">无法加载文档：' + escapeHtml(err.message) + hint + '</body></html>';
+                    });
+
+            } else {
+                // Show folder contents
+                const node = getNodeAtPath(currentPath);
+                if (!node) {
+                    body.innerHTML = '<div class="empty-state"><div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><div class="empty-state-text">\u672A\u627E\u5230\u76EE\u5F55</div></div>';
+                    return;
+                }
+
+                body.innerHTML = '';
+
+                const header = document.createElement('div');
+                header.className = 'content-header';
+                const folderName = currentPath.length === 0 ? 'Wiki \u6839\u76EE\u5F55' : currentPath[currentPath.length - 1];
+                const totalFolders = Object.keys(node.children).length;
+                const totalFiles = node.files.length;
+
+                // View toggle
+                const toggleHtml =
+                    '<div class="view-toggle">' +
+                        '<button class="view-toggle-btn' + (viewMode === 'grid' ? ' active' : '') + '" onclick="setViewMode(\'grid\')"><svg class="uicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> \u5361\u7247</button>' +
+                        '<button class="view-toggle-btn' + (viewMode === 'list' ? ' active' : '') + '" onclick="setViewMode(\'list\')"><svg class="uicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> \u5217\u8868</button>' +
+                    '</div>';
+
+                var backBtnHtml = (currentPath.length > 0)
+                    ? '<button class="back-btn" onclick="goBack()" title="返回上一级"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>'
+                    : '';
+
+                header.innerHTML =
+                    backBtnHtml +
+                    '<div class="content-title"><svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> ' + escapeHtml(folderName) + '</div>' +
+                    '<div class="content-meta">' +
+                        '<span class="badge-count">' + totalFolders + ' \u4E2A\u5B50\u76EE\u5F55</span>' +
+                        '<span class="badge-count">' + totalFiles + ' \u4E2A\u6587\u4EF6</span>' +
+                        toggleHtml +
+                    '</div>';
+                body.appendChild(header);
+
+                const container = document.createElement('div');
+                container.className = viewMode === 'grid' ? 'folder-grid' : 'folder-list';
+
+                // Sub-folders
+                const folderKeys = Object.keys(node.children).sort();
+                for (const key of folderKeys) {
+                    const child = node.children[key];
+                    const cnt = countFiles(child);
+
+                    let folderDesc = '';
+                    const readme = child.files.find(function(f) { return f.name === 'README.md'; });
+                    if (readme) folderDesc = readme.desc || '';
+                    if (!folderDesc && child.files.length > 0) folderDesc = child.files[0].desc || '';
+
+                    if (viewMode === 'grid') {
+                        const card = document.createElement('div');
+                        card.className = 'grid-card grid-card-folder';
+                        card.onclick = function() {
+                            currentPath = currentPath.concat([key]);
+                            selectedFile = null;
+                            renderAll();
+                        };
+                        card.innerHTML =
+                            '<span class="grid-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>' +
+                            '<div class="grid-card-body">' +
+                                '<div class="grid-card-name">' + escapeHtml(key) + '</div>' +
+                                (folderDesc ? '<div class="grid-card-desc">' + escapeHtml(folderDesc) + '</div>' : '') +
+                                '<div class="grid-card-meta"><span class="badge-count">' + cnt + ' \u4E2A\u6587\u4EF6</span></div>' +
+                            '</div>';
+                        container.appendChild(card);
+                    } else {
+                        const item = document.createElement('div');
+                        item.className = 'list-item';
+                        item.onclick = function() {
+                            currentPath = currentPath.concat([key]);
+                            selectedFile = null;
+                            renderAll();
+                        };
+                        item.innerHTML =
+                            '<span class="list-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>' +
+                            '<div class="list-item-body">' +
+                                '<div class="list-item-name">' + escapeHtml(key) + '</div>' +
+                                (folderDesc ? '<div class="list-item-desc">' + escapeHtml(folderDesc) + '</div>' : '<div class="list-item-desc">\u00A0</div>') +
+                            '</div>' +
+                            '<div class="list-item-meta"><span class="badge-count">' + cnt + ' \u4E2A\u6587\u4EF6</span></div>';
+                        container.appendChild(item);
+                    }
+                }
+
+                // Files
+                const files = node.files.slice().sort(function(a, b) { return a.name.localeCompare(b.name); });
+                for (const file of files) {
+                    const verHtml = file.version ? '<span class="badge-version">' + escapeHtml(file.version) + '</span>' : '';
+                    const dateHtml = file.date ? '<span class="badge-date">' + escapeHtml(file.date) + '</span>' : '';
+
+                    if (viewMode === 'grid') {
+                        const card = document.createElement('div');
+                        card.className = 'grid-card grid-card-file';
+                        card.onclick = function() {
+                            selectedFile = file;
+                            renderAll();
+                        };
+                        card.innerHTML =
+                            '<span class="grid-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>' +
+                            '<div class="grid-card-body">' +
+                                '<div class="grid-card-name">' + escapeHtml(file.title || file.name) + '</div>' +
+                                (file.desc ? '<div class="grid-card-desc">' + escapeHtml(file.desc) + '</div>' : '') +
+                                '<div class="grid-card-meta">' + verHtml + dateHtml + '</div>' +
+                            '</div>';
+                        container.appendChild(card);
+                    } else {
+                        const item = document.createElement('div');
+                        item.className = 'list-item';
+                        item.onclick = function() {
+                            selectedFile = file;
+                            renderAll();
+                        };
+                        item.innerHTML =
+                            '<span class="list-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>' +
+                            '<div class="list-item-body">' +
+                                '<div class="list-item-name">' + escapeHtml(file.title || file.name) + '</div>' +
+                                (file.desc ? '<div class="list-item-desc">' + escapeHtml(file.desc) + '</div>' : '<div class="list-item-desc">\u00A0</div>') +
+                            '</div>' +
+                            '<div class="list-item-meta">' + verHtml + dateHtml + '</div>';
+                        container.appendChild(item);
+                    }
+                }
+
+                if (folderKeys.length === 0 && files.length === 0) {
+                    body.innerHTML = '<div class="empty-state"><div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><div class="empty-state-text">\u6B64\u76EE\u5F55\u4E3A\u7A7A</div></div>';
+                    return;
+                }
+
+                body.appendChild(container);
+            }
+        }
+
+        function goBack() {
+            if (selectedFile) {
+                selectedFile = null;
+                renderAll();
+            } else if (currentPath.length > 0) {
+                currentPath = currentPath.slice(0, -1);
+                renderAll();
+            }
+        }
+
+        function setViewMode(mode) {
+            viewMode = mode;
+            renderContent();
+        }
+
+        function setFileViewMode(mode) {
+            if (mode !== 'preview' && mode !== 'source') return;
+            fileViewMode = mode;
+            if (selectedFile) {
+                // 仅重新渲染内容区域，无需重渲染面包屑
+                renderContent();
+            }
+        }
+
+        function renderAll() {
+            renderBreadcrumb();
+            renderContent();
+            // Scroll content into view
+            document.querySelector('.content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // === Deep link via query param ===
+        (function handleDeepLink() {
+            const params = new URLSearchParams(location.search);
+
+            // Task B: 跳转到某个目录（文件夹列表视图）
+            const dirParam = params.get('dir');
+            if (dirParam) {
+                // path 形如 ../00-项目总览；去掉开头的 '..' 段后解析目录树
+                const segs = dirParam.split('/').slice(1);
+                if (getNodeAtPath(segs)) {
+                    currentPath = segs;
+                    selectedFile = null;
+                }
+                // 目录不存在（含非法 path）时回退到根目录树，不崩溃
+                return;
+            }
+
+            // Task A: 打开具体文件
+            const openPath = params.get('open');
+            if (!openPath) return;
+            const file = wikiData.find(f => f.path === openPath);
+            if (file) {
+                selectedFile = file;
+                // 去掉开头的 '..' 段，并去掉文件名，得到真实目录路径
+                currentPath = file.path.split('/').slice(1, -1);
+            } else {
+                const suffix = openPath.replace(/^\.\.\//, '');
+                const found = wikiData.find(f => f.path.endsWith(suffix));
+                if (found) {
+                    selectedFile = found;
+                    currentPath = found.path.split('/').slice(1, -1);
+                }
+            }
+        })();
+
+        // === Init ===
+        renderAll();
+
+    </script>
+</body>
+</html>
