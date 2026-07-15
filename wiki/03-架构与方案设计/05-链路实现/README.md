@@ -6,9 +6,9 @@
 
 | 文档 | 状态 | 说明 |
 |------|------|------|
-| 01-中间件链专项方案.md | ⬜ 待编写 | RateLimiter / JWTValidator / TokenBlacklist / MembershipValidator(层级回溯) / PermissionChecker / 审计 Stream |
-| 02-业务流程时序图集.md | ⬜ 待编写 | 注册 / 登录 / 权限校验 / Token 刷新 / 成员邀请 / 注销 / 组织架构管理时序 |
-| 03-审计日志方案.md | ⬜ 待编写 | 登录+操作审计（含前后快照）、异步写入、不可篡改、1 年保留与匿名化、查询 |
+| 01-中间件链专项方案.md | ✅ 已编写 | RateLimiter / JWTValidator / TokenBlacklist / MembershipValidator(层级回溯) / PermissionChecker / 审计 Stream |
+| 02-业务流程时序图集.md | ✅ 已编写 | 注册 / 登录 / 权限校验 / Token 刷新 / 成员邀请 / 注销 / 组织架构管理时序 |
+| 03-审计日志方案.md | ✅ 已编写 | 登录+操作审计（含前后快照）、异步写入、不可篡改、1 年保留与匿名化、查询 |
 
 ## 依赖
 

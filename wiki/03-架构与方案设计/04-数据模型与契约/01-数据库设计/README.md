@@ -6,11 +6,11 @@
 
 | 文档 | 状态 | 覆盖范围 |
 |------|------|----------|
-| 01-账号与认证域.md | ⬜ 待编写 | `accounts`、`sessions`、`token_blacklist`；UUID 主键、`password_hash`(bcrypt cost12)、`status` 状态机、PII 加密列、软删约定 |
-| 02-租户域.md | ⬜ 待编写 | `organizations` / `teams` / `groups` 及其 `org_members` / `team_members` / `group_members`、`invitations`；三级租户关联与层级回溯 |
-| 03-权限域.md | ⬜ 待编写 | `roles`(9 预定义) / `permission_points`(45) / `role_permissions`；继承在解析层展开；含 Public L0 |
-| 04-审计域.md | ⬜ 待编写 | `audit_logs` 追加不可篡改；`system_configs`（超管系统配置） |
-| 05-ER图与全局约定.md | ⬜ 待编写 | ER 图、枚举定义、索引策略（`org_id` 必带索引）、外键与软删约定、读写分离预留、**预初始化数据**（9 角色 + 45 权限点 + 首个 SuperAdmin 种子） |
+| 01-账号与认证域.md | ✅ 已编写 | `accounts`、`sessions`、`token_blacklist`；UUID 主键、`password_hash`(bcrypt cost12)、`status` 状态机、PII 加密列、软删约定 |
+| 02-租户域.md | ✅ 已编写 | `organizations` / `teams` / `groups` 及其 `org_members` / `team_members` / `group_members`、`invitations`；三级租户关联与层级回溯 |
+| 03-权限域.md | ✅ 已编写 | `roles`(9 预定义) / `permission_points`(45) / `role_permissions`；继承在解析层展开；含 Public L0 |
+| 04-审计域.md | ✅ 已编写 | `audit_logs` 追加不可篡改；`system_configs`（超管系统配置） |
+| 05-ER图与全局约定.md | ✅ 已编写 | ER 图、枚举定义、索引策略（`org_id` 必带索引）、外键与软删约定、读写分离预留、**预初始化数据**（9 角色 + 45 权限点 + 首个 SuperAdmin 种子） |
 
 ## 必含项
 
