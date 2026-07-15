@@ -1,0 +1,289 @@
+{
+  "data": [
+    {
+      "id": "page-login",
+      "title": "登录页",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556800000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/login.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-register",
+      "title": "注册页",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556801000,
+      "canvasData": {
+        "x": 620,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/register.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-reset-password",
+      "title": "重置密码",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556802000,
+      "canvasData": {
+        "x": 1240,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/reset-password.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-profile",
+      "title": "个人信息",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556803000,
+      "canvasData": {
+        "x": 0,
+        "y": 1059,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/profile.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-security",
+      "title": "密码与安全",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556804000,
+      "canvasData": {
+        "x": 620,
+        "y": 1059,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/security.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-account",
+      "title": "账号设置",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556805000,
+      "canvasData": {
+        "x": 1240,
+        "y": 1059,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/account.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-org-detail",
+      "title": "组织详情",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556806000,
+      "canvasData": {
+        "x": 0,
+        "y": 5177,
+        "group": 2
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/org-detail.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-org-members",
+      "title": "组织成员管理",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556807000,
+      "canvasData": {
+        "x": 620,
+        "y": 5177,
+        "group": 2
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/org-members.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-org-permissions",
+      "title": "组织角色权限",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556808000,
+      "canvasData": {
+        "x": 1240,
+        "y": 5177,
+        "group": 2
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/org-permissions.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-team-detail",
+      "title": "团队详情",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556809000,
+      "canvasData": {
+        "x": 0,
+        "y": 6432,
+        "group": 3
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/team-detail.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-team-members",
+      "title": "团队成员管理",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556810000,
+      "canvasData": {
+        "x": 620,
+        "y": 6432,
+        "group": 3
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/team-members.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-group-detail",
+      "title": "小组详情",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556811000,
+      "canvasData": {
+        "x": 0,
+        "y": 7270,
+        "group": 4
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/group-detail.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-group-members",
+      "title": "小组成员管理",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556812000,
+      "canvasData": {
+        "x": 620,
+        "y": 7270,
+        "group": 4
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/group-members.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-permission-overview",
+      "title": "权限概览",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556813000,
+      "canvasData": {
+        "x": 0,
+        "y": 8040,
+        "group": 5
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/permission-overview.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-permission-matrix",
+      "title": "权限矩阵",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556814000,
+      "canvasData": {
+        "x": 620,
+        "y": 8040,
+        "group": 5
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/permission-matrix.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-superadmin-panel",
+      "title": "超级管理员面板",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556815000,
+      "canvasData": {
+        "x": 0,
+        "y": 8696,
+        "group": 6
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/superadmin-panel.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-audit-log",
+      "title": "审计日志",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752556816000,
+      "canvasData": {
+        "x": 620,
+        "y": 8696,
+        "group": 6
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/audit-log.html",
+        "interactions": []
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": true,
+    "deviceType": "desktop",
+    "projectName": "XYFamily 管理后台 UI 设计",
+    "designLibrary": {
+      "name": "苹果",
+      "id": "dl_builtin_apple",
+      "version": null,
+      "scope": "built-in-global",
+      "path": "/Users/hsf/.trae-cn/design_libraries/dl_builtin_apple",
+      "versionSource": "metadata.json"
+    }
+  }
+}

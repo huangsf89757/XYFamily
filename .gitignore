@@ -64,3 +64,8 @@ fastlane/test_output
 # Agent/tool generated dirs
 .serena/
 .workbuddy/
+
+# Generated / build artifacts
+__pycache__/
+graphify-out/
+.obsidian/

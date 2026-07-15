@@ -1,0 +1,28 @@
+{
+  "root": {
+    "nodeId": "gen-project-shell",
+    "kind": "project-shell",
+    "pageIds": [],
+    "output": "partials/admin-shell.html",
+    "sharedRegions": ["sidebar", "page-header"],
+    "privateRegions": [],
+    "mutableSlots": ["activeNavItem", "pageTitle", "breadcrumb"],
+    "status": "planned",
+    "children": [
+      {"nodeId":"gen-page-profile","kind":"page-leaf","pageIds":["page-profile"],"output":"pages/profile.html","sharedRegions":[],"privateRegions":["profile-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-security","kind":"page-leaf","pageIds":["page-security"],"output":"pages/security.html","sharedRegions":[],"privateRegions":["security-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-account","kind":"page-leaf","pageIds":["page-account"],"output":"pages/account.html","sharedRegions":[],"privateRegions":["account-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-org-detail","kind":"page-leaf","pageIds":["page-org-detail"],"output":"pages/org-detail.html","sharedRegions":[],"privateRegions":["org-detail-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-org-members","kind":"page-leaf","pageIds":["page-org-members"],"output":"pages/org-members.html","sharedRegions":[],"privateRegions":["org-members-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-org-permissions","kind":"page-leaf","pageIds":["page-org-permissions"],"output":"pages/org-permissions.html","sharedRegions":[],"privateRegions":["org-permissions-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-team-detail","kind":"page-leaf","pageIds":["page-team-detail"],"output":"pages/team-detail.html","sharedRegions":[],"privateRegions":["team-detail-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-team-members","kind":"page-leaf","pageIds":["page-team-members"],"output":"pages/team-members.html","sharedRegions":[],"privateRegions":["team-members-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-group-detail","kind":"page-leaf","pageIds":["page-group-detail"],"output":"pages/group-detail.html","sharedRegions":[],"privateRegions":["group-detail-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-group-members","kind":"page-leaf","pageIds":["page-group-members"],"output":"pages/group-members.html","sharedRegions":[],"privateRegions":["group-members-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-permission-overview","kind":"page-leaf","pageIds":["page-permission-overview"],"output":"pages/permission-overview.html","sharedRegions":[],"privateRegions":["permission-overview-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-permission-matrix","kind":"page-leaf","pageIds":["page-permission-matrix"],"output":"pages/permission-matrix.html","sharedRegions":[],"privateRegions":["permission-matrix-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-superadmin-panel","kind":"page-leaf","pageIds":["page-superadmin-panel"],"output":"pages/superadmin-panel.html","sharedRegions":[],"privateRegions":["superadmin-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]},
+      {"nodeId":"gen-page-audit-log","kind":"page-leaf","pageIds":["page-audit-log"],"output":"pages/audit-log.html","sharedRegions":[],"privateRegions":["audit-log-content"],"mutableSlots":["activeNavItem","breadcrumb"],"status":"planned","children":[]}
+    ]
+  }
+}

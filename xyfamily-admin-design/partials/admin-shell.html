@@ -1,0 +1,175 @@
+<!-- admin-shell.html - Shared admin layout fragment -->
+<div class="flex min-h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-[240px] bg-[var(--background-50)] border-r border-[var(--background-300)] fixed top-0 left-0 bottom-0 z-50 flex flex-col">
+
+    <!-- Brand -->
+    <div class="h-16 flex items-center px-5 border-b border-[var(--background-300)] shrink-0">
+      <div class="w-8 h-8 bg-[var(--brand-500)] rounded-lg flex items-center justify-center text-white font-bold text-[14px]">XY</div>
+      <span class="ml-2.5 text-[18px] font-bold text-[var(--text-800)]">XYFamily</span>
+    </div>
+
+    <!-- Nav -->
+    <nav class="flex-1 py-4 overflow-y-auto">
+
+      <!-- SLOT: activeNavItem -->
+
+      <!-- ===== 个人设置 ===== -->
+      <div class="px-5 pt-4 pb-1 text-[12px] font-semibold tracking-wide text-[var(--text-400)] uppercase">个人设置</div>
+
+      <!-- 个人信息 -->
+      <a class="h-10 px-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="个人信息">
+        <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 10c-3.3 0-6 1.5-6 3v1h12v-1c0-1.5-2.7-3-6-3Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>个人信息</span>
+      </a>
+
+      <!-- 密码与安全 -->
+      <a class="h-10 px-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="密码与安全">
+        <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="8" cy="10.5" r="1" fill="currentColor"/>
+        </svg>
+        <span>密码与安全</span>
+      </a>
+
+      <!-- 账号设置 -->
+      <a class="h-10 px-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="账号设置">
+        <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M2 13.5c0-2.5 2.7-4.5 6-4.5s6 2 6 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M12 2.5l1.5 1.5M13.5 2.5l-1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span>账号设置</span>
+      </a>
+
+      <!-- ===== 组织管理 ===== -->
+      <div class="px-5 pt-4 pb-1 text-[12px] font-semibold tracking-wide text-[var(--text-400)] uppercase">组织管理</div>
+
+      <!-- 组织详情 -->
+      <a class="h-10 px-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="组织详情">
+        <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="3" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/>
+          <rect x="9" y="3" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/>
+          <rect x="5" y="9" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M4 8h1M11 8h1M8 9v0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span>组织详情</span>
+      </a>
+
+      <!-- 成员管理 -->
+      <a class="h-10 px-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="成员管理">
+        <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM12 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M1 13.5c0-2 1.8-3.5 4-3.5.8 0 1.5.2 2 .5M10 10c.5-.3 1.2-.5 2-.5 2.2 0 4 1.5 4 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span>成员管理</span>
+      </a>
+
+      <!-- 角色权限 -->
+      <a class="h-10 px-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="角色权限">
+        <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 1.5l5 3v4l-5 3-5-3v-4l5-3Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+          <circle cx="8" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <span>角色权限</span>
+      </a>
+
+      <!-- ===== 当前团队 (hidden by default, shown on team pages) ===== -->
+      <div id="team-nav-section" class="hidden">
+        <div class="px-5 pt-4 pb-1 text-[12px] font-semibold tracking-wide text-[var(--text-400)] uppercase">当前团队</div>
+
+        <!-- Parent org -->
+        <div class="h-8 pl-8 flex items-center text-[13px] text-[var(--text-400)]">示例科技有限公司</div>
+
+        <!-- Parent team group -->
+        <div class="h-8 pl-8 flex items-center text-[13px] text-[var(--text-400)]">产品研发部</div>
+
+        <!-- 团队详情 -->
+        <a class="h-10 pl-8 pr-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="团队详情">
+          <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M2 6h12M6 6v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span>团队详情</span>
+        </a>
+
+        <!-- 成员管理 (team) -->
+        <a class="h-10 pl-8 pr-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="团队-成员管理">
+          <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM12 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M1 13.5c0-2 1.8-3.5 4-3.5.8 0 1.5.2 2 .5M10 10c.5-.3 1.2-.5 2-.5 2.2 0 4 1.5 4 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span>成员管理</span>
+        </a>
+
+        <!-- 小组列表 -->
+        <a class="h-10 pl-8 pr-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="小组列表">
+          <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M5 2v4M5 6v4M5 10v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          </svg>
+          <span>小组列表</span>
+        </a>
+      </div>
+
+      <!-- ===== 系统管理 ===== -->
+      <div class="px-5 pt-4 pb-1 text-[12px] font-semibold tracking-wide text-[var(--text-400)] uppercase">系统管理</div>
+
+      <!-- 权限管理 -->
+      <a class="h-10 px-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="权限管理">
+        <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 1L2 4.5v4L8 12l6-3.5v-4L8 1Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+          <path d="M5.5 6.5l2 2 3.5-3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>权限管理</span>
+      </a>
+
+      <!-- 审计日志 -->
+      <a class="h-10 px-5 flex items-center text-sm text-[var(--text-500)] cursor-pointer transition hover:bg-black/[0.04] border-l-[3px] border-transparent" data-nav="审计日志">
+        <svg class="w-4 h-4 mr-3 opacity-70 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M5 6h6M5 8.5h4M5 11h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M12 1v2M12 13v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M1 12h2M13 12h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span>审计日志</span>
+      </a>
+
+    </nav>
+
+    <!-- User Area -->
+    <div class="border-t border-[var(--background-300)] px-5 py-4 flex items-center gap-3 shrink-0">
+      <div class="w-9 h-9 bg-[var(--brand-50)] text-[var(--brand-500)] rounded-full flex items-center justify-center font-semibold text-sm shrink-0">张</div>
+      <div class="min-w-0">
+        <div class="text-sm font-medium text-[var(--text-800)]">张明</div>
+        <div class="text-xs text-[var(--text-400)]">组织核心管理员</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- Content Area -->
+  <div class="ml-[240px] flex-1 flex flex-col min-h-screen bg-[var(--background-200)]">
+
+    <!-- Page Header -->
+    <header class="bg-[var(--background-50)] border-b border-[var(--background-300)] h-14 px-8 flex items-center sticky top-0 z-40">
+      <!-- SLOT: breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm">
+        <a href="#" class="text-[var(--brand-500)] no-underline hover:underline">首页</a>
+        <span class="text-[var(--text-400)]">></span>
+        <span class="text-[var(--text-800)] font-medium">页面标题</span>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <main class="p-8 max-w-[1200px]">
+      <!-- SLOT: pageContent -->
+    </main>
+
+  </div>
+
+</div>
