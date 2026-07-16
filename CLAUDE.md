@@ -41,14 +41,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Canonical Sources (read these before implementing)
 
-- **PRD (product truth)**: `wiki/02-需求与产品设计/02.02-产品PRD/PRD模块总览-V1.0.0.md` and its 39 section docs. Root consolidated version is `PRD-Demo.md`.
-- **PRD review gaps**: `wiki/02-需求与产品设计/02.04-需求复盘/PRD审查报告-V1.0.0.md` — P0 gaps that the architecture layer must close (super-admin init, Session/JWT strategy, multi-tenant isolation, account identity, role binding).
+- **PRD (product truth)**: `wiki/02-需求与产品设计/02.02-产品PRD/PRD模块总览` and its 39 section docs. Root consolidated version is `PRD-Demo.md`.
+- **PRD review gaps**: `wiki/02-需求与产品设计/02.04-需求复盘/PRD审查报告` — P0 gaps that the architecture layer must close (super-admin init, Session/JWT strategy, multi-tenant isolation, account identity, role binding).
 - **Architecture plan**: `.zcode/plans/plan-sess_3defe108-*.md` — describes the 16 docs to author across 03 → 04 → 00 before code begins.
 
 ## Key Design Decisions (already fixed)
 
 - **Hierarchy**: Organization → Team → Group → Member, fully data-isolated between organizations (application-layer + `org_id`, not PG RLS).
-- **RBAC**: 6 层角色体系（含 Public 第 0 层），45 个权限点。Single-role-per-member (role stored in `*_members.role` column). Permission inheritance L5→L1.
+- **RBAC**: 9 种角色（L0~L8，含 Public 第 0 层与 SuperAdmin 第 8 层），45 个权限点。Single-role-per-member (role stored in `*_members.role` column). Permission inheritance L7→L1.
 - **Accounts**: UUID primary key `account_id` + global-unique indexes on phone/email/username.
 - **JWT**: Access = stateless short; Refresh = stateful in `sessions` table + blacklist on logout/password change.
 - **Soft delete** (`deleted_at`) on all entity tables; 30-day grace period for account deactivation.
@@ -56,7 +56,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Wiki Conventions (follow when editing wiki/ docs)
 
-- **Naming**: `文档名称-V1.0.0.md` (semantic version in filename).
+- **Naming**: `文档名称` (semantic version in filename).
 - **Required frontmatter per doc**: 密级 / 版本 / 编写人 / 审核人 / 生效时间 / 废弃时间 / 关联标签 / 关联目录, plus a 变更记录 table.
 - **`编写人` / `变更人`**: use the tool/agent name that performed the edit (e.g., `ClaudeCode`, `CatPaw`, `ZCode`), or the editor's real name for manual edits.
 - **Document hierarchy** is the 10-level directory system documented in `wiki/README.md`.
