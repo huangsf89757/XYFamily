@@ -1,18 +1,18 @@
 {
   "meta": {
-    "generated": "2026-07-16T09:00:03.084372+00:00",
+    "generated": "2026-07-16T09:51:28.396325+00:00",
     "node_count": 163,
-    "edge_count": 889,
-    "drift_edge_count": 159,
+    "edge_count": 898,
+    "drift_edge_count": 0,
     "dir_link_count": 5,
     "asset_link_count": 1,
-    "potential_count": 0,
-    "broken_count": 23,
+    "potential_count": 1,
+    "broken_count": 0,
     "orphan_count": 4,
     "delta": {
       "added": 0,
-      "changed": 38,
-      "unchanged": 125
+      "changed": 63,
+      "unchanged": 100
     }
   },
   "nodes": {
@@ -37,7 +37,7 @@
         "特殊项目场景适配",
         "关联文档"
       ],
-      "sha": "f59392befb65549b7badc41214906ed9b12570a587641a6d6cd35cb5ba9e3eb3",
+      "sha": "1f114cbcf37b2f1e81df7d909793a1b905e4617dfccd60a0d8a5cf9ad2037ffe",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -56,7 +56,7 @@
         "含敏感词:明文",
         "含敏感词:客户隐私"
       ],
-      "size": 12330,
+      "size": 12333,
       "classification": "内部",
       "tags": [
         "规范标准",
@@ -576,7 +576,7 @@
         "文档导航",
         "关联文档"
       ],
-      "sha": "d41f9ffd7b454381d362564e9c49b614ba9854b97d79222267ba9186a8c55a63",
+      "sha": "10abff0770c4e6433d4c10dbfbec8146c87b2ce860451a958c137d6b40633c99",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -590,7 +590,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 1748,
+      "size": 1628,
       "classification": "内部",
       "tags": [
         "团队资产",
@@ -1105,7 +1105,7 @@
         "文档导航",
         "关联文档"
       ],
-      "sha": "a4a70b52d19614b80d2d68a541dc508252debd4da4852286fe00ebc55fd4c922",
+      "sha": "1bbfe89543689df29a028b6f0f74fda22f2a49827f7b86250f09e75db32bd7d1",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -1119,7 +1119,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 1532,
+      "size": 1517,
       "classification": "内部",
       "tags": [
         "规范标准",
@@ -1285,7 +1285,7 @@
         "10.6 其他性能优化",
         "附录：关联文档"
       ],
-      "sha": "3267067431fb000863b30aecb0f0eeb0ae6c36997b1e9f97a34c3731795fea49",
+      "sha": "d5a74de6bde04cd45ed4c0e16ce055f1184a99e252ba0d4563042ff6977b3ae2",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -1307,7 +1307,7 @@
         "含敏感词:access_token",
         "含敏感词:refresh_token"
       ],
-      "size": 86812,
+      "size": 86827,
       "classification": "内部",
       "tags": [
         "设计规范",
@@ -1912,7 +1912,7 @@
         "六、响应式适配（项目约定值）",
         "七、关联文档"
       ],
-      "sha": "85623f1148327a6e1f7a44ffb0b987b46b775531b1211d9b4775c75ab5afe55d",
+      "sha": "b34395f6da8c66ececde2bca5da93f56903a77256ccd398453aa487667842a25",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -1929,7 +1929,7 @@
         "含敏感词:access_token",
         "含敏感词:refresh_token"
       ],
-      "size": 5866,
+      "size": 5751,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -1995,7 +1995,7 @@
         "3.2 测试文件位置",
         "关联文档"
       ],
-      "sha": "574a614779affe0c2a324038bcb7098339ea2b5de943e58600a977e025dab316",
+      "sha": "3a4c66473ea0d1516b2f526fcbdd18d29c54b4aa1f8cf1d0d9c01f5775990495",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -2009,7 +2009,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 3209,
+      "size": 3065,
       "classification": "内部",
       "tags": [
         "开发规范",
@@ -2037,7 +2037,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "54505189d80287057a4c2e75e10ef67267805fdf96a95682580f7bd32ea8698f",
+      "sha": "7a2c87fbdb2746c6ed696f473ee4ef7d521b5cb80f4d2914e247a2026db369ce",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -2051,7 +2051,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 7759,
+      "size": 7784,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2220,7 +2220,7 @@
         "4.4 关联 API 版本",
         "五、关联文档"
       ],
-      "sha": "298655c890102f744e4655b7e99acc00a43eb4f3da6fc6a67e710812826d7cd7",
+      "sha": "ac9deb6447cef23425783b38eb0776d2411af992bf0c5da12316b3b8cd00a68e",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2237,7 +2237,7 @@
         "含敏感词:密钥",
         "含敏感词:密码"
       ],
-      "size": 5069,
+      "size": 5018,
       "classification": "内部",
       "tags": [
         "开发规范",
@@ -2288,7 +2288,7 @@
         "十、关联文档",
         "关联文档"
       ],
-      "sha": "a7f45ed89fbf8d47e1363c76125360277f57e78866b4260c859368dd0fb171c8",
+      "sha": "4da35c86d92e9c3aeec3c1e68835bc5b063b9e5b76c48c03111b2823ebdaf7fc",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2307,7 +2307,7 @@
         "含敏感词:邮箱",
         "含敏感词:access_token"
       ],
-      "size": 11755,
+      "size": 11763,
       "classification": "内部",
       "tags": [
         "接口规范",
@@ -2349,7 +2349,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "d0ebb1a87020cd7099ceeaa384f1cec92a580d24a2647d1150dfcf786df747e5",
+      "sha": "02735964cdf9e983ad621523bbd249ed23dfc8b37ce7bfced026eec8a9013c41",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2367,7 +2367,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 8440,
+      "size": 8420,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2400,7 +2400,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "a342cdad5f34f682047ef4b0bcc48df417fcbddc0fc19785a95d8aeaf03815b9",
+      "sha": "122a28a9da43bde0a10019e76f8993380d9d17f5042eb143ab3edf3130cc181c",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2417,7 +2417,7 @@
         "含敏感词:密码",
         "含敏感词:refresh_token"
       ],
-      "size": 7094,
+      "size": 7100,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2447,7 +2447,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "d0afd49abb1275982fecb84a658c607ae22fa287047b07a448eb494182b284f5",
+      "sha": "4fdcb5757b56f35ab9903c36798b9f7bfbcb08199fd0f53ca2f2fe3e27290863",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2464,7 +2464,7 @@
         "含敏感词:密码",
         "含敏感词:手机号"
       ],
-      "size": 5238,
+      "size": 5244,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2507,7 +2507,7 @@
         "各里程碑详细文档",
         "关联文档"
       ],
-      "sha": "24ac0f0ebe01f9f50bae4e06dd94d3dfeba54b8770f43ff8e413f53869a18f08",
+      "sha": "e4c764fac2953043881f42e34eb85f2d55dae4b3a85b8653e15411ea86665eed",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V2.3.0",
@@ -2525,7 +2525,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 23978,
+      "size": 23864,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2558,7 +2558,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "aaf57ce5811465731cfa978532c4ce0b6c8b31d3ba6c631a6393cc47f13419f4",
+      "sha": "77d2f7debdaf317ec8d5d173e5e53afb08572d4df0802663ad4a79e4634f50cc",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2572,7 +2572,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 7974,
+      "size": 7977,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2605,7 +2605,7 @@
         "六、风险评估",
         "七、关联文档"
       ],
-      "sha": "5ac8f1a2dfc39d4227cfe8f093a8fca021e66a0457fd5c0715ba545ea2aac24a",
+      "sha": "1991ddea77aaa10a27d38851fb8167812103e3f77f7eeff2d7cf59ac50095f73",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2623,7 +2623,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 5637,
+      "size": 5607,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2651,7 +2651,7 @@
         "五、风险评估",
         "六、关联文档"
       ],
-      "sha": "a46a068be676bbf1afd6772d7194c5e19ece775628549959a4bc298203cde330",
+      "sha": "d8d1d716457c864cbc671894bec75c2f8bc59f9d43c810e0d3db3f2d017b1cd6",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2668,7 +2668,7 @@
         "含敏感词:密钥",
         "含敏感词:密码"
       ],
-      "size": 5375,
+      "size": 5255,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2706,7 +2706,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "39dce8654119581e260d8bd6d3440a4de39d11760c12a163e8f199f7edd79ad7",
+      "sha": "e61853cb2b98345171a50956614537f0ccd97c72dc1d7d0aaff5794e93a5779c",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2723,7 +2723,7 @@
         "含敏感词:密码",
         "含敏感词:手机号"
       ],
-      "size": 7451,
+      "size": 7460,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2761,7 +2761,7 @@
         "十、风险评估",
         "十一、关联文档"
       ],
-      "sha": "78ccf40b29585da8342f01812c131e6eecc39b163a3687fd3cecc324c114dd6e",
+      "sha": "4af98405e72d23e8043c0f226c5a2b02b49d9e80dba05ec16a8757ffcf1ec1ae",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V2.0.0",
@@ -2778,7 +2778,7 @@
         "含敏感词:密码",
         "含敏感词:secret"
       ],
-      "size": 17000,
+      "size": 16671,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2811,7 +2811,7 @@
         "六、风险评估",
         "七、关联文档"
       ],
-      "sha": "0575798006179d03eedbd56f1f997576a0c49359a55403f1dfc6e5daa1f3323e",
+      "sha": "6c67dd34dd8aa61be8516701cd4ddd7a9c3020f1feb4804469095016fce6fc57",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2828,7 +2828,7 @@
         "含敏感词:密钥",
         "含敏感词:secret"
       ],
-      "size": 5900,
+      "size": 5909,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2856,7 +2856,7 @@
         "六、风险评估",
         "七、关联文档"
       ],
-      "sha": "79bb8957e93a699591fa21f08addc9604db88e73197785189fb15168d259fee1",
+      "sha": "4578b55eb4cabc641a1d6c9f5cdf50266615c96851f8a4fa2818e0a056aa2aea",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2872,7 +2872,7 @@
       "sensitive_reasons": [
         "含敏感词:access_token"
       ],
-      "size": 4432,
+      "size": 4459,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2901,7 +2901,7 @@
         "六、风险评估",
         "七、关联文档"
       ],
-      "sha": "597f59722e21e2f5880a0dfd473d84e88f4ac20d3f32561605cb7ef94effb6a4",
+      "sha": "a1f2cf96a8c87b1694659339c72e28656053b13032e1b2fb1ab4f0661cbb0cd3",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2919,7 +2919,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 5631,
+      "size": 5611,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2950,7 +2950,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "2397f92585972da3b0047e2d6a626d54918e00d13ed3f31046a8ce734835d947",
+      "sha": "2ee5c3ac6851c435307432237568aa0d06d2158cc9ebe4c41a5b89a1426ea6d5",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -2967,7 +2967,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 5492,
+      "size": 5495,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -2996,7 +2996,7 @@
         "六、风险评估",
         "七、关联文档"
       ],
-      "sha": "8311f844e8b40426edb3d1925752d12f34e9c150c60e2bde892c17cd6f81d257",
+      "sha": "15971bda6e5789c793704be2d630ead4b890484116976d5de766dff13178d41a",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3014,7 +3014,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 5044,
+      "size": 5024,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -3045,7 +3045,7 @@
         "六、风险评估",
         "七、关联文档"
       ],
-      "sha": "9a8e913e2fea0ba6a1ce2d2eb8a8b793188f88e66a7b46c246795a87ac81a53f",
+      "sha": "b7a4bd06fa514aa74e38e99ff31cc29df730d69cb906ab14bca7c6020c2ce016",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3063,7 +3063,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 5653,
+      "size": 5643,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -3097,7 +3097,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "7e643b9b5671a090b241ec77a5cfbf1e267532a27432638fa8934471ad4e0c4b",
+      "sha": "f2573bdc73c4a45920fc5dd6b5221a455f4495cab1f948841c2dcc6fea23be50",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3113,7 +3113,7 @@
       "sensitive_reasons": [
         "含敏感词:密码"
       ],
-      "size": 5743,
+      "size": 5749,
       "classification": "内部",
       "tags": [
         "核心文档",
@@ -3135,7 +3135,7 @@
         "五、关键设计约束基线",
         "六、关联文档"
       ],
-      "sha": "8565f65547348359fe4aa281b3c2f592cbfc1a693675433a539c86916e429b05",
+      "sha": "7d018c9b54574afc1401eb9f8118ccbfc364064deedcb0eb1ff055689afb5ada",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3149,7 +3149,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 6846,
+      "size": 6837,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3187,7 +3187,7 @@
         "三、演进与新增规则",
         "四、关联文档"
       ],
-      "sha": "74a50fbb0c4f9492d6ef0dc757501b82b15b8d7d83fcde343ae4908288b676f4",
+      "sha": "389737975f4e08268aa89fb6747dd030d297435aaa04bcb2c984f516d78a2803",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3203,7 +3203,7 @@
         "含敏感词:密钥",
         "含敏感词:密码"
       ],
-      "size": 5990,
+      "size": 5934,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3231,7 +3231,7 @@
         "十、关联文档",
         "关联文档"
       ],
-      "sha": "9cce52c929a323c6b24aa58cbbb20f06b88e68b757219d653ff3e085e84c931f",
+      "sha": "fefb508064e875d0641a6d9a0a00350efc5062cba3210ad3341d911f07ce4b84",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3246,7 +3246,7 @@
       "sensitive_reasons": [
         "含敏感词:密码"
       ],
-      "size": 9108,
+      "size": 9049,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3477,7 +3477,7 @@
         "九、项目目录结构",
         "十、关联文档"
       ],
-      "sha": "d7c17c2dc4af687cb819d83f40cbf2b19e7d0116799162dd0a8d61078f8f8d3a",
+      "sha": "e6aa4ebfa688746a45291a79a57a40ccda35f81e093124ba8a9337d5939df618",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -3493,7 +3493,7 @@
       "sensitive_reasons": [
         "含敏感词:密码"
       ],
-      "size": 19469,
+      "size": 19284,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3531,7 +3531,7 @@
         "关联文档",
         "ADR-016：JWT 签名算法升级与密钥轮换方案"
       ],
-      "sha": "73f9958344158bdc5365133b58989036a099312b2f1d5a0201db0440ebf3cb88",
+      "sha": "97195965b8372a42f2f9fd8ac2d2b0ce10d2233796eee2f250b421243451575c",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -3551,7 +3551,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 19338,
+      "size": 19297,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3573,7 +3573,7 @@
         "五、大盘与巡检",
         "六、关联文档"
       ],
-      "sha": "54b940a478ab42d32601e89ad163ca5d927ce2cc9b844889dfc2b0d77ca0540a",
+      "sha": "75d36331cc51cbeb7b8c2dbd6280ee89eba39e01542f239fdad9db202cfa174a",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3589,7 +3589,7 @@
         "含敏感词:密码",
         "含敏感词:明文"
       ],
-      "size": 3218,
+      "size": 3219,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3614,7 +3614,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "1fbab46fc1dfcb731c8f98bafb227c419a0a6c40d4472ac2a6e6aa2b2a07cf77",
+      "sha": "569526986b5465ebb45f311ed9325fa77d73232b0d59ed2791a29a7dfc78b3bf",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3631,7 +3631,7 @@
         "含敏感词:密码",
         "含敏感词:明文"
       ],
-      "size": 6150,
+      "size": 6134,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3677,7 +3677,7 @@
         "六、关联文档",
         "关联文档"
       ],
-      "sha": "92acdbdf1ad4765db3675a36eaf129ac521f1e1489d53d05202517b4c5d683a5",
+      "sha": "5792bff41b487d9ad478d58dbd9fa10e7f92211f09c9d4597530ac821ba8f6da",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3690,7 +3690,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 5790,
+      "size": 5787,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3714,7 +3714,7 @@
         "六、监控与告警",
         "七、关联文档"
       ],
-      "sha": "951314a81974123bfaea91ea8511565f08233de04f9670f91ce81a8563f89841",
+      "sha": "b8ba274937c838c4fcb8be5423531cede2d8b309764136bf74c623d44bdf025c",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3730,7 +3730,7 @@
         "含敏感词:密码",
         "含敏感词:明文"
       ],
-      "size": 5363,
+      "size": 5354,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3776,7 +3776,7 @@
         "四、与上下游的关系",
         "五、关联文档"
       ],
-      "sha": "fe5afe1add0af057a0306cc7ab9a7771e2b104cf422b1a5bd6b5ac9c578d424b",
+      "sha": "e46f7d6f82afdf94334be1607974ffe933ecb7731d855f99afd541409e195ec4",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3789,7 +3789,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 5574,
+      "size": 5521,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3819,7 +3819,7 @@
         "十二、SuperAdmin 强制降级流程（ARCH-012 修复）",
         "十三、关联文档"
       ],
-      "sha": "4eef86258708dada96bcaebde689255d09c67e6675afe5f201a4f9e02355896a",
+      "sha": "2aadd9cead3226b2c415ff7156a9400d979462ee36d59c2d2186574e5d4cf90e",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3836,7 +3836,7 @@
         "含敏感词:手机号",
         "含敏感词:refresh_token"
       ],
-      "size": 11986,
+      "size": 11973,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3861,7 +3861,7 @@
         "八、校验流程总览",
         "九、关联文档"
       ],
-      "sha": "8c88cad98db3d59cee79f4854c80cb03f03cfd58f857741cd1345d2d3452789a",
+      "sha": "b038ae981a0fffa51cebc5e2463ac01fc4318d384b203dd445074946385cfd9b",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3875,7 +3875,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 10231,
+      "size": 10227,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3911,7 +3911,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "5e61f14ae32ec829daab5f1c4e27264fc2e68400863e2ff26c735d57f461d284",
+      "sha": "c08a0a8aa4c859d941a00fdb9c6c129ae842ce06bf61f2150ea172c0db02943c",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3925,7 +3925,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 12328,
+      "size": 12290,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -3976,7 +3976,7 @@
         "十、与上下游方案的关系",
         "十一、关联文档"
       ],
-      "sha": "3f360ab2dd085f69d131be09a3fcaeecbc0bf787ddd4eaccdc4bbdcb7d692d6b",
+      "sha": "03290d288cc14c95de83ec8b19bce22c2bd2290c679b037d8a1088bc7b7e52e7",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -3994,7 +3994,7 @@
         "含敏感词:密码",
         "含敏感词:明文"
       ],
-      "size": 11169,
+      "size": 11125,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4020,7 +4020,7 @@
         "六、高可用与运维",
         "七、关联文档"
       ],
-      "sha": "0fb1f6dd110c3de54863a035acf9476198e0e7949df80d136b72d1d8dfc63d92",
+      "sha": "e13251b1cf0eb886ae5d5ef4243e2b4f91b495eca52349ec1c66c9a1a40eff70",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4035,7 +4035,7 @@
       "sensitive_reasons": [
         "含敏感词:密码"
       ],
-      "size": 4921,
+      "size": 4909,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4060,7 +4060,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "b43cd46b396798d610dcba5577aa03e61dfcf6230e3c5b85f9a1a932f16a79c3",
+      "sha": "8cfe7938b226b1a07a2d1fd53fe4a167784592af832630fbfdfc4bd9d9a752a8",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4073,7 +4073,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 5129,
+      "size": 5123,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4117,7 +4117,7 @@
         "四、与上下游的关系",
         "五、关联文档"
       ],
-      "sha": "b600f86ea950be79daed000c97b3fcd64a19617bed4cbf91d8d4378449e1effa",
+      "sha": "f794617cefa8404bb69c174b2714c9d7b82a589460fdfa49faf71d1328fc67d1",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4130,7 +4130,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 5075,
+      "size": 5069,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4148,12 +4148,12 @@
         "依赖",
         "编写顺序"
       ],
-      "sha": "a4fc11104808e322bb0dd125d0e24a88520c0c207fb304ad2d379e12b0e41374",
+      "sha": "750a16fe88e267f7be7cd4dada4a73738b5adee723be8ed5e4eeca922cb82ce5",
       "meta": {},
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 1033,
+      "size": 1018,
       "classification": "内部",
       "tags": []
     },
@@ -4175,7 +4175,7 @@
         "八、错误码段（80xxx 摘要）",
         "九、关联文档"
       ],
-      "sha": "064ded690ee041ab8af390f26cc9f5851c300cc57b3e3133025d02609a2170ba",
+      "sha": "1518b1771206b6920a8a1ca27a9ccd9d08e26c2e1a68ec9cdb66de9f64211c44",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4191,7 +4191,7 @@
         "含敏感词:密码",
         "含敏感词:明文"
       ],
-      "size": 5810,
+      "size": 5811,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4215,7 +4215,7 @@
         "七、重置密码（忘记密码）",
         "八、关联文档"
       ],
-      "sha": "380ec4d5b7df216945b482fc637cb38a790cb56fad8baf1c372852558044bb7d",
+      "sha": "4492d23778faf5199b50d703f1434465b2921149e516c0b9ccb5160fb4be02ef",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4233,7 +4233,7 @@
         "含敏感词:access_token",
         "含敏感词:refresh_token"
       ],
-      "size": 5925,
+      "size": 5926,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4250,12 +4250,12 @@
         "必含项（每份统一）",
         "依赖"
       ],
-      "sha": "2a00dfe05f6234321e905536d01446a912ae1a92bc57312419e52c151ca8a9d1",
+      "sha": "e7558eb0194d1984d9f373a36f4f0c910a221dcfb2f8826e1d08fc894f68b10b",
       "meta": {},
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 1969,
+      "size": 1956,
       "classification": "内部",
       "tags": []
     },
@@ -4274,7 +4274,7 @@
         "六、关联文档",
         "关联文档"
       ],
-      "sha": "278e326b7a5ad464a804b41b62791d0a77c41855775ab41cb85008873efb50bf",
+      "sha": "e22f4567b6a2ec4dac4d60793367f36895cb5bf3367fb3fd8837b8433e79b054",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4287,7 +4287,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 3306,
+      "size": 3291,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4311,7 +4311,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "7e3873cf6036623b63f11cb57aae32e28cb16e240273d6d0007da38f391fb57f",
+      "sha": "e5a6c1ca8032ba94ea27fc070a1e0584b2466f3e6d5d9ac55537ccbfe3501e1d",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4326,7 +4326,7 @@
       "sensitive_reasons": [
         "含敏感词:密码"
       ],
-      "size": 3577,
+      "size": 3581,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4354,7 +4354,7 @@
         "十一、关联文档",
         "关联文档"
       ],
-      "sha": "7eada85d242fde558064036b5fc9c972968fc8541ceeb101d9bffc8057b2b68c",
+      "sha": "7c0a2bea17614f2c40574d2fc20eda6daffd95eace9498e00b9d0380cea0cb36",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4367,7 +4367,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 3852,
+      "size": 3853,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4399,7 +4399,7 @@
         "十二、关联文档",
         "关联文档"
       ],
-      "sha": "3ccf7ca4645648e0c8ca90676b1772f712f7d90a68b0d1b3384084b3c9f49448",
+      "sha": "ffb16d79f9ce7acd5609b4fad86c547b5292f42f0e9bf9b4d1cca43364923a64",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4415,7 +4415,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 7884,
+      "size": 7891,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4444,7 +4444,7 @@
         "十二、关联文档",
         "关联文档"
       ],
-      "sha": "c29674fe7f6a965301172e6d9a715991e70539b36ab0f1d8ffcf086bb62b1073",
+      "sha": "f34fee13a19a8c423cc4c7508558c173a90d78ec593c7d5e8ef0ac7f23ca67cb",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4457,7 +4457,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 4309,
+      "size": 4310,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4478,7 +4478,7 @@
         "四、错误码段（70xxx 摘要）",
         "五、关联文档"
       ],
-      "sha": "04e7dea7ef52402bd5418d7b42d27cbd35d1b17a90273299927b404b987a870e",
+      "sha": "df3ba13582fd371024b6c4468edbf5c9e853f2f25dddaa6e758007cd452e65a1",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4494,7 +4494,7 @@
         "含敏感词:密码",
         "含敏感词:明文"
       ],
-      "size": 2978,
+      "size": 2976,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4516,7 +4516,7 @@
         "五、与上下游的关系",
         "六、关联文档"
       ],
-      "sha": "0e311f8b9ff38a39d8e7d083083bb5ebc6689634ae53382dfef30c1c695491f0",
+      "sha": "4ca1ab733761f121fd160be52a7cf76be8d0f3a73367ebcd09882fb985b618e6",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4561,7 +4561,7 @@
         "七、与上下游的关系",
         "八、关联文档"
       ],
-      "sha": "31949ca3261f84bb0d292dadae9ae280d96e02603f8ac805d7300e93651b166a",
+      "sha": "e8999801b683408069fc9f0b06a9e0baadedf130919b6a7a664a83593583d7d1",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4581,7 +4581,7 @@
         "含敏感词:邮箱",
         "含敏感词:refresh_token"
       ],
-      "size": 14695,
+      "size": 14689,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4604,7 +4604,7 @@
         "五、与上下游的关系",
         "六、关联文档"
       ],
-      "sha": "a80245aa66b1657e8c5a22bc371332c0005db8302a0da4675aaa9b2da82e97b7",
+      "sha": "e3e7744b000a0d3ba0f4e1121521e7e60ee39235d1c45026eca364a41c4b24dd",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4620,7 +4620,7 @@
         "含敏感词:密码",
         "含敏感词:明文"
       ],
-      "size": 6308,
+      "size": 6295,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4638,12 +4638,12 @@
         "必含项",
         "依赖"
       ],
-      "sha": "138de2d956f71542bfa5f288db48c644402ecc9b058dcbde77ae2dd4860c391d",
+      "sha": "e87567b4bb87962154209696befa7074a5d726dc6299d105796b31a8c827c459",
       "meta": {},
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 1689,
+      "size": 1682,
       "classification": "内部",
       "tags": []
     },
@@ -4662,7 +4662,7 @@
         "六、与上下游的关系",
         "七、关联文档"
       ],
-      "sha": "36fc6e13229d81e972b50f93a74ef472664dbee38b1c123948955d83181aac06",
+      "sha": "e5c29ee7caba7547c60316de13776794172ffd516e841cb6a26f983dfa4375bf",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4675,7 +4675,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 7931,
+      "size": 7912,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4702,7 +4702,7 @@
         "九、与上下游的关系",
         "十、关联文档"
       ],
-      "sha": "04fe222f290898a94e24f2466ca81134194602261ed8479468ab581d2e1d74e0",
+      "sha": "c4ce2f684bf0f3cc573d60250778beab2988b16d509586c9df528f6f354bfbac",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4715,7 +4715,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 8926,
+      "size": 8923,
       "classification": "内部",
       "tags": [
         "技术方案",
@@ -4732,7 +4732,7 @@
         "文档信息",
         "文档导航"
       ],
-      "sha": "750e16c3c3c511fb7b571d3eb9e83cbd99f683749b6cbf82864245453671a649",
+      "sha": "684ae92b13c7758872aa34d41f13104208aa51a2b02c3d78b25a31cf5af17cdc",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -4746,7 +4746,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 1028,
+      "size": 1016,
       "classification": "内部",
       "tags": [
         "需求PRD",
@@ -6449,7 +6449,7 @@
         "模块导航",
         "设计规范文档索引"
       ],
-      "sha": "8fec66d084b7e03bd2fc8ccd779002cf6fb844108495d710762d3a6c8b7d58bd",
+      "sha": "feed94b41eff1b092ecf3f97f61927845ef65bf9f94909739301728db3dfad54",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.1",
@@ -6463,7 +6463,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 1929,
+      "size": 2127,
       "classification": "内部",
       "tags": [
         "原型设计",
@@ -6708,7 +6708,7 @@
         "五、关联文档",
         "关联文档"
       ],
-      "sha": "4e6276da2a7750fb46f11cc8efc87650d17db8a26905fabacb5cd73550a2c6b7",
+      "sha": "066a53a35dd6450c1538c2ddda62add88026dff40d5e2cc9498e52bd081a0802",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -6724,7 +6724,7 @@
         "含敏感词:密码",
         "含敏感词:access_token"
       ],
-      "size": 6465,
+      "size": 6608,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -6771,7 +6771,7 @@
         "6.4 错误码",
         "七、关联文档"
       ],
-      "sha": "f1d6ef9fc5d6ce646e8e2e11c7574bcf92eff422e67d002e5892a0bb4a621ced",
+      "sha": "bbeb38e7828920bd524976c66a465719f3d6ca36a9e8e810dc1cb34d04ecb493",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -6790,7 +6790,7 @@
         "含敏感词:access_token",
         "含敏感词:refresh_token"
       ],
-      "size": 11503,
+      "size": 11477,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -6838,7 +6838,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "0aef927d3ddbdcde0bc3d2d15e44975a34e158b81c0b992b1d8958fb61ed0f5e",
+      "sha": "23b256036370615126f529dd9d66d8187a2a7d825d36ea278081b5388a182a70",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -6857,7 +6857,7 @@
         "含敏感词:access_token",
         "含敏感词:refresh_token"
       ],
-      "size": 10011,
+      "size": 9982,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -6905,7 +6905,7 @@
         "七、关联文档",
         "关联文档"
       ],
-      "sha": "8d9aa1ca72348b92abd21cf121d8ed78be3544b8188c674cde1604d092f1bcdf",
+      "sha": "d83ba65f6c2ff0d3dd4c4d27013e0960a7e3940d76f40beec371b6ea058c6089",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -6918,7 +6918,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 11543,
+      "size": 11517,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -6960,7 +6960,7 @@
         "5.4 错误码",
         "六、关联文档"
       ],
-      "sha": "13a85a1ff1b889dbad1e0871d96231ea5a2ea8e3ebe53e8299d0bb59f26faaf2",
+      "sha": "947c50460ec2b47df8802e8619d1e3aeb7be809ed37a3fc82d1317ff43acb447",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -6977,7 +6977,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 8094,
+      "size": 8068,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -7030,7 +7030,7 @@
         "八、关联文档",
         "关联文档"
       ],
-      "sha": "2dbfe4109c9737711ac9c69de1202bf13863375df84ea0c6e24320f9e3212ff7",
+      "sha": "cd97f266ecda0a6e72a37ba3093f97118da0d8d9b7774dcc726a6be2da892530",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -7046,7 +7046,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 11846,
+      "size": 11820,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -7104,7 +7104,7 @@
         "九、关联文档",
         "关联文档"
       ],
-      "sha": "e9ef06c1364ffc9bf7885af98ccca605e54b932f381d0e11477f05c88a20463e",
+      "sha": "ea758df49ad007a43e94f95bcd6c7b7c8cc0ee64cc4018c55f70f2d97a5cc439",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -7120,7 +7120,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 13058,
+      "size": 13032,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -7177,7 +7177,7 @@
         "8.4 错误码",
         "九、关联文档"
       ],
-      "sha": "ab9f340a0269a8e5a485ce28500114b9b8bd33515a6eccecd25bf4a70e05026d",
+      "sha": "2d19256fa78e4c62b7a5099014867a7a6cc50f31480603f1d26fa16baf231e64",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -7193,7 +7193,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 12219,
+      "size": 12193,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -7225,7 +7225,7 @@
         "3.4 错误码",
         "四、关联文档"
       ],
-      "sha": "5fa953a6d71eb2c6140805c0e64495701208ce6f0fbfbe9c4af65e01e437511f",
+      "sha": "9413406f6b66e056dcf6153f9bd603e5c9a57f96ae45e91a9308be34c39372f4",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.1.0",
@@ -7238,7 +7238,7 @@
       "visibility": "internal",
       "pii_flag": false,
       "sensitive_reasons": [],
-      "size": 7759,
+      "size": 7733,
       "classification": "内部",
       "tags": [
         "接口文档",
@@ -7269,7 +7269,7 @@
         "十四、错误码速查表（按 Code 排序）",
         "十五、关联文档"
       ],
-      "sha": "6720ae0ac42e3d767a7178794e16a9244bd303af38abeb4148957bd86d5b07e1",
+      "sha": "e493b5b7bf1a1481122b28549605fad101659ce3a4b2a5b248fad0d0a2c804b6",
       "meta": {
         "文档密级": "内部",
         "文档版本": "V1.0.0",
@@ -7287,7 +7287,7 @@
         "含敏感词:手机号",
         "含敏感词:邮箱"
       ],
-      "size": 9790,
+      "size": 9439,
       "classification": "内部",
       "tags": [
         "错误码",
@@ -7439,6 +7439,13 @@
     {
       "source": "README.md",
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "README.md",
+      "target": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -7893,6 +7900,13 @@
     },
     {
       "source": "01-项目总览/02-标准与规范/标准与规范.md",
+      "target": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/02-标准与规范/标准与规范.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
@@ -7917,28 +7931,28 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/02-标准与规范/02-设计规范/04-小程序设计规范.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/06-微信小程序代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/02-标准与规范/02-设计规范/04-小程序设计规范.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/02-标准与规范/02-设计规范/04-小程序设计规范.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M8-前端H5与微信小程序.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/02-标准与规范/02-设计规范/设计规范.md",
@@ -8085,7 +8099,7 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块/权限管理模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/02-标准与规范/03-分端代码规范/02-Web代码规范.md",
@@ -8225,7 +8239,7 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
@@ -8246,14 +8260,14 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
@@ -8295,14 +8309,14 @@
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/02-Web代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M7-前端Web管理后台.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M7-前端Web管理后台.md",
@@ -8435,14 +8449,14 @@
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M3-账号管理与RBAC权限引擎.md",
       "target": "03-架构与方案设计/04-链路实现/链路实现.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M3-账号管理与RBAC权限引擎.md",
@@ -8491,14 +8505,14 @@
       "target": "03-架构与方案设计/04-链路实现/链路实现.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M2-核心认证能力.md",
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M2-核心认证能力.md",
@@ -8617,21 +8631,21 @@
       "target": "01-项目总览/项目总览.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
@@ -8645,7 +8659,7 @@
       "target": "03-架构与方案设计/06-横切专项/02-容灾多活与高可用.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
@@ -8701,7 +8715,7 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
@@ -8771,21 +8785,21 @@
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M8-前端H5与微信小程序.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/06-微信小程序代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M8-前端H5与微信小程序.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M8-前端H5与微信小程序.md",
@@ -8813,14 +8827,14 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M1-项目脚手架与数据库初始化.md",
       "target": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
@@ -8855,21 +8869,21 @@
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
       "target": "03-架构与方案设计/04-链路实现/链路实现.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
@@ -8932,14 +8946,14 @@
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
@@ -8974,21 +8988,21 @@
       "target": "03-架构与方案设计/06-横切专项/02-容灾多活与高可用.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M12-生产部署与上线.md",
       "target": "06-部署运维与应急故障/04-K8s部署清单/K8s部署清单.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M12-生产部署与上线.md",
       "target": "06-部署运维与应急故障/09-监控告警体系/监控告警体系.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M14-P2功能开发.md",
@@ -9016,14 +9030,14 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/02-账号管理模块/04-第三方身份绑定.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M14-P2功能开发.md",
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M10-前端Android原生App.md",
@@ -9058,14 +9072,14 @@
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/04-安卓Kotlin代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M10-前端Android原生App.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M10-前端Android原生App.md",
@@ -9107,7 +9121,7 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M4-组织管理.md",
@@ -9149,14 +9163,14 @@
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/05-苹果Swift代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M9-前端iOS原生App.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M9-前端iOS原生App.md",
@@ -9205,7 +9219,7 @@
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M13-前端鸿蒙HarmonyOS.md",
@@ -9240,14 +9254,14 @@
       "target": "05-测试与质量保障/01-测试策略/测试策略.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M11-集成测试与安全审查.md",
       "target": "05-测试与质量保障/03-测试用例规范/测试用例规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M11-集成测试与安全审查.md",
@@ -9268,7 +9282,7 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/架构与方案设计.md",
@@ -9289,7 +9303,7 @@
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/02-ADR汇总定稿.md",
@@ -9310,7 +9324,7 @@
       "target": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/02-ADR汇总定稿.md",
@@ -9324,7 +9338,7 @@
       "target": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/02-ADR汇总定稿.md",
@@ -9338,7 +9352,7 @@
       "target": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/02-ADR汇总定稿.md",
@@ -9387,21 +9401,21 @@
       "target": "03-架构与方案设计/06-横切专项/01-安全专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/02-ADR汇总定稿.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/02-ADR汇总定稿.md",
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/02-ADR汇总定稿.md",
@@ -9471,14 +9485,14 @@
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/01-非功能需求落地映射.md",
       "target": "03-架构与方案设计/06-横切专项/02-容灾多活与高可用.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/01-非功能需求落地映射.md",
@@ -9499,21 +9513,21 @@
       "target": "03-架构与方案设计/06-横切专项/01-安全专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/01-非功能需求落地映射.md",
       "target": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/01-非功能需求落地映射.md",
       "target": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/01-非功能需求落地映射.md",
@@ -9534,14 +9548,14 @@
       "target": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/01-非功能需求落地映射.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/01-非功能需求落地映射.md",
@@ -9569,7 +9583,7 @@
       "target": "03-架构与方案设计/06-横切专项/03-可观测性方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/07-收口/01-非功能需求落地映射.md",
@@ -9835,7 +9849,7 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/01-基座/01-整体架构设计.md",
@@ -9856,7 +9870,7 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
@@ -10003,14 +10017,14 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/06-横切专项/03-可观测性方案.md",
       "target": "03-架构与方案设计/05-支撑域/02-缓存设计方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/06-横切专项/03-可观测性方案.md",
@@ -10080,14 +10094,14 @@
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/06-横切专项/01-安全专项方案.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/06-横切专项/01-安全专项方案.md",
@@ -10150,7 +10164,7 @@
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/06-横切专项/02-容灾多活与高可用.md",
@@ -10178,7 +10192,7 @@
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/03-审计日志方案.md",
@@ -10199,14 +10213,14 @@
       "target": "03-架构与方案设计/05-支撑域/01-账号生命周期与身份方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/03-审计日志方案.md",
       "target": "03-架构与方案设计/06-横切专项/02-容灾多活与高可用.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/03-审计日志方案.md",
@@ -10220,28 +10234,28 @@
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "target": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "target": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "target": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
@@ -10255,14 +10269,14 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
@@ -10276,7 +10290,7 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/04-链路实现/02-业务流程时序图集.md",
@@ -10297,21 +10311,21 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块/权限管理模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
@@ -10325,14 +10339,14 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块/04-权限继承.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
@@ -10346,28 +10360,28 @@
       "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/03-组织管理模块/组织管理模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
@@ -10381,7 +10395,7 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块/03-数据范围控制.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
@@ -10395,7 +10409,7 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
@@ -10444,21 +10458,21 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块/04-Token管理.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
@@ -10472,14 +10486,14 @@
       "target": "03-架构与方案设计/06-横切专项/03-可观测性方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
@@ -10500,14 +10514,14 @@
       "target": "03-架构与方案设计/02-核心域/02-RBAC权限引擎方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/05-支撑域/02-缓存设计方案.md",
       "target": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/05-支撑域/02-缓存设计方案.md",
@@ -10521,14 +10535,14 @@
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/05-支撑域/02-缓存设计方案.md",
       "target": "03-架构与方案设计/06-横切专项/03-可观测性方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/05-支撑域/03-第三方集成统一方案.md",
@@ -10542,14 +10556,14 @@
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/05-支撑域/03-第三方集成统一方案.md",
       "target": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/05-支撑域/03-第三方集成统一方案.md",
@@ -10598,7 +10612,7 @@
       "target": "03-架构与方案设计/02-核心域/03-JWT鉴权链与Token方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/05-支撑域/01-账号生命周期与身份方案.md",
@@ -10619,14 +10633,14 @@
       "target": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/数据模型与契约.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/07-超管接口.md",
@@ -10647,7 +10661,7 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/03-权限域.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/07-超管接口.md",
@@ -10661,7 +10675,7 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/01-账号与认证域.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/01-认证接口.md",
@@ -10738,7 +10752,7 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
@@ -10766,21 +10780,21 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块/权限管理模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/03-权限域.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
@@ -10794,21 +10808,21 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/02-账号管理模块/账号管理模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/01-账号与认证域.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
       "target": "03-架构与方案设计/05-支撑域/01-账号生命周期与身份方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
@@ -10843,7 +10857,7 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/02-租户域.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
@@ -10871,14 +10885,14 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/02-租户域.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块/权限管理模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
@@ -10913,7 +10927,7 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/02-租户域.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
@@ -10934,14 +10948,14 @@
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/04-审计域.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
       "target": "03-架构与方案设计/04-链路实现/03-审计日志方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
@@ -10955,7 +10969,7 @@
       "target": "03-架构与方案设计/04-链路实现/03-审计日志方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/04-审计域.md",
@@ -10969,14 +10983,14 @@
       "target": "03-架构与方案设计/05-支撑域/01-账号生命周期与身份方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/04-审计域.md",
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/09-审计日志模块/审计日志模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/04-审计域.md",
@@ -10997,7 +11011,7 @@
       "target": "03-架构与方案设计/05-支撑域/01-账号生命周期与身份方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/01-账号与认证域.md",
@@ -11018,7 +11032,7 @@
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/01-账号与认证域.md",
@@ -11095,21 +11109,21 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/05-ER图与全局约定.md",
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/03-权限域.md",
@@ -11123,21 +11137,21 @@
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块/权限管理模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/03-权限域.md",
       "target": "03-架构与方案设计/05-支撑域/02-缓存设计方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/03-权限域.md",
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/03-权限域.md",
@@ -11186,7 +11200,7 @@
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/02-租户域.md",
@@ -11207,7 +11221,7 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "02-需求与产品设计/需求与产品设计.md",
@@ -13118,42 +13132,42 @@
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "02-需求与产品设计/02-原型与UI设计/原型与UI设计.md",
       "target": "01-项目总览/02-标准与规范/02-设计规范/00-全局设计规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "02-需求与产品设计/02-原型与UI设计/原型与UI设计.md",
       "target": "01-项目总览/02-标准与规范/02-设计规范/01-网页端设计规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "02-需求与产品设计/02-原型与UI设计/原型与UI设计.md",
       "target": "01-项目总览/02-标准与规范/02-设计规范/02-桌面端设计规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "02-需求与产品设计/02-原型与UI设计/原型与UI设计.md",
       "target": "01-项目总览/02-标准与规范/02-设计规范/03-移动端设计规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "02-需求与产品设计/02-原型与UI设计/原型与UI设计.md",
       "target": "01-项目总览/02-标准与规范/02-设计规范/04-小程序设计规范.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "07-合规安全与数据治理/合规安全与数据治理.md",
@@ -13283,59 +13297,59 @@
     },
     {
       "source": "04-接口文档/接口文档.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/01-认证接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/接口文档.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/接口文档.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/接口文档.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/接口文档.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/接口文档.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/接口文档.md",
       "target": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/接口文档.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/接口文档.md",
@@ -13352,8 +13366,8 @@
       "drift": false
     },
     {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
+      "source": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
+      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块/用户认证模块.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -13363,21 +13377,28 @@
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/01-认证接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/07-超级管理员模块/超级管理员模块.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
@@ -13388,17 +13409,24 @@
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块/权限管理模块.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
@@ -13423,31 +13451,45 @@
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/02-账号管理模块/账号管理模块.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/05-小组管理模块/小组管理模块.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
@@ -13458,17 +13500,24 @@
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/03-组织管理模块/组织管理模块.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
@@ -13479,165 +13528,74 @@
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/04-团队管理模块/团队管理模块.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
+      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/09-审计日志模块/审计日志模块.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/02-错误码/01-多租户底座.md",
       "target": "README.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "04-接口文档/02-错误码/01-多租户底座.md",
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/02-账号管理模块/账号管理模块.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     }
   ],
-  "potential_links": [],
-  "broken_links": [
+  "potential_links": [
     {
-      "source": "README.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "raw": "./01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md"
-    },
-    {
-      "source": "09-团队资产与培训模板/团队资产与培训模板.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "raw": "../01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md"
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/标准与规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "raw": "./04-开发规范/01-全局开发规范.md"
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "01-项目总览/02-标准与规范/02-需求与产品设计/02.02-产品PRD/02-用户认证模块/03-Token管理/Token管理",
-      "raw": "../02-需求与产品设计/02.02-产品PRD/02-用户认证模块/03-Token管理/Token管理"
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "raw": "../04-开发规范/01-全局开发规范.md"
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/02-Git版本管控规范.md",
-      "raw": "../04-开发规范/02-Git版本管控规范.md"
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "raw": "./01-全局开发规范.md"
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/错误码",
-      "raw": "./错误码"
-    },
-    {
-      "source": "01-项目总览/03-里程碑/01-多租户底座/M1-项目脚手架与数据库初始化.md",
-      "target": "01-项目总览/01-项目总览/标准与规范/04-开发规范/01-全局开发规范",
-      "raw": "../../01-项目总览/标准与规范/04-开发规范/01-全局开发规范"
-    },
-    {
-      "source": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
-      "target": "01-项目总览/02-需求与产品设计/01-产品PRD/审核记录",
-      "raw": "../../02-需求与产品设计/01-产品PRD/审核记录/"
-    },
-    {
-      "source": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
-      "target": ".zcode/plans/plan-sess_3defe108-0f8d-40ab-b157-375a0a97046c.md",
-      "raw": "../../../.zcode/plans/plan-sess_3defe108-0f8d-40ab-b157-375a0a97046c.md"
-    },
-    {
-      "source": "03-架构与方案设计/01-基座/01-整体架构设计.md",
-      "target": "标准与规范/04-开发规范/01-全局开发规范",
-      "raw": "../../标准与规范/04-开发规范/01-全局开发规范"
-    },
-    {
-      "source": "03-架构与方案设计/01-基座/01-整体架构设计.md",
-      "target": "标准与规范/03-分端代码规范",
-      "raw": "../../标准与规范/03-分端代码规范/"
-    },
-    {
-      "source": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
-      "target": "04-接口文档/01-标准接口/02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块",
-      "raw": "../02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块"
-    },
-    {
-      "source": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
-      "target": "04-接口文档/01-标准接口/02-需求与产品设计/01-产品PRD/01-多租户底座/07-超级管理员模块",
-      "raw": "../02-需求与产品设计/01-产品PRD/01-多租户底座/07-超级管理员模块"
-    },
-    {
-      "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
-      "target": "04-接口文档/01-标准接口/02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块",
-      "raw": "../02-需求与产品设计/01-产品PRD/01-多租户底座/06-权限管理模块"
-    },
-    {
-      "source": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
-      "target": "04-接口文档/01-标准接口/02-需求与产品设计/01-产品PRD/01-多租户底座/02-账号管理模块",
-      "raw": "../02-需求与产品设计/01-产品PRD/01-多租户底座/02-账号管理模块"
-    },
-    {
-      "source": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
-      "target": "04-接口文档/01-标准接口/02-需求与产品设计/01-产品PRD/01-多租户底座/05-小组管理模块",
-      "raw": "../02-需求与产品设计/01-产品PRD/01-多租户底座/05-小组管理模块"
-    },
-    {
-      "source": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
-      "target": "04-接口文档/01-标准接口/02-需求与产品设计/01-产品PRD/01-多租户底座/03-组织管理模块",
-      "raw": "../02-需求与产品设计/01-产品PRD/01-多租户底座/03-组织管理模块"
-    },
-    {
-      "source": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
-      "target": "04-接口文档/01-标准接口/02-需求与产品设计/01-产品PRD/01-多租户底座/04-团队管理模块",
-      "raw": "../02-需求与产品设计/01-产品PRD/01-多租户底座/04-团队管理模块"
-    },
-    {
-      "source": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
-      "target": "04-接口文档/01-标准接口/02-需求与产品设计/01-产品PRD/01-多租户底座/08-审计日志模块",
-      "raw": "../02-需求与产品设计/01-产品PRD/01-多租户底座/08-审计日志模块"
-    },
-    {
-      "source": "04-接口文档/02-错误码/01-多租户底座.md",
-      "target": "../03-技术架构与方案设计/03.04-核心技术专项方案/接口设计/01-多租户底座/认证模块",
-      "raw": "../../../03-技术架构与方案设计/03.04-核心技术专项方案/接口设计/01-多租户底座/认证模块"
-    },
-    {
-      "source": "04-接口文档/02-错误码/01-多租户底座.md",
-      "target": "../03-技术架构与方案设计/03.04-核心技术专项方案/接口设计/01-多租户底座/邀请模块",
-      "raw": "../../../03-技术架构与方案设计/03.04-核心技术专项方案/接口设计/01-多租户底座/邀请模块"
+      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/01-认证接口.md",
+      "target": "04-接口文档/接口文档.md",
+      "type": "potential",
+      "confidence": 0.75,
+      "shared_terms": [
+        "接口",
+        "认证"
+      ]
     }
   ],
+  "broken_links": [],
   "dir_links": [
     {
       "source": "README.md",

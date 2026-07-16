@@ -28,13 +28,13 @@
 
 ## 一、定位与 PRD 来源
 
-PRD Token 管理模块（[04-Token管理](../02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块/04-Token管理)）定义：
+PRD Token 管理模块（[04-Token管理](../../02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块/04-Token管理.md)）定义：
 
 - Token 刷新（FR-AUTH-009）：Refresh 有效且未撤销时返回新 Access + 新 Refresh。
 - 登出（FR-AUTH-010）：同时使 Access 与 Refresh 失效。
 - 非功能：Access 30min / Refresh 7d（NFR-SEC-004）、HS256 可升级 RS256（NFR-SEC-005）。
 
-决策依据：[ADR-003 Session 与 JWT 共存](../../01-基座/02-ADR架构决策记录.md)；约束基线 [C3/C6](../../01-基座/01-整体架构设计.md)。
+决策依据：[ADR-003 Session 与 JWT 共存](../01-基座/02-ADR架构决策记录.md)；约束基线 [C3/C6](../01-基座/01-整体架构设计.md)。
 
 ---
 
@@ -187,7 +187,7 @@ sequenceDiagram
 - **PG 为强一致主操作**：sessions 撤销是安全基线，必须成功。
 - **Redis 黑名单为加速手段**：黑名单的目的是让 Access Token 立即失效而非 30min 后自然过期。若 Redis 写入失败，安全性降级但不破坏（Access 最长 30min 窗口期）。
 - **补偿机制**：Redis 写入失败时，记录补偿日志（`compensation_log` 表或 Redis Stream），后台任务每分钟扫描并重试写入，最多重试 3 次。
-- **告警**：Redis 黑名单写入失败时触发告警（[P6 可观测性](../../06-横切专项/03-可观测性方案.md)），运维确认 Redis 健康。
+- **告警**：Redis 黑名单写入失败时触发告警（[P6 可观测性](../06-横切专项/03-可观测性方案.md)），运维确认 Redis 健康。
 
 ### 9.3 不一致场景分析
 
@@ -203,7 +203,7 @@ sequenceDiagram
 
 | 下游方案 | 本方案提供什么 |
 |----------|----------------|
-| [数据库设计](../03-数据模型与契约/01-数据库设计/README.md) | `sessions`（Refresh 有状态）、`token_blacklist` 结构 |
+| [数据库设计](../../README.md) | `sessions`（Refresh 有状态）、`token_blacklist` 结构 |
 | [接口设计](../03-数据模型与契约/02-接口设计/README.md) | 登录/刷新/登出/改密契约与错误码 |
 | [中间件链](../04-链路实现/README.md) | JWTValidator、TokenBlacklist 实现 |
 | [审计日志](../04-链路实现/README.md) | 登录/登出/刷新/异常行为审计 |
