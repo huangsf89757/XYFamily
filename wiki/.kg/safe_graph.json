@@ -491,17 +491,6 @@
       ],
       "visibility": "internal"
     },
-    "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md": {
-      "path": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
-      "title": "02-接口文档规范.md",
-      "classification": "内部",
-      "tags": [
-        "接口规范",
-        "设计标准",
-        "核心文档"
-      ],
-      "visibility": "internal"
-    },
     "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md": {
       "path": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
       "title": "01-Git版本管控规范.md",
@@ -513,13 +502,13 @@
       ],
       "visibility": "internal"
     },
-    "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md": {
-      "path": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "title": "01-全局开发规范.md",
+    "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md": {
+      "path": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
+      "title": "02-接口文档规范.md",
       "classification": "内部",
       "tags": [
-        "开发规范",
-        "Go",
+        "接口规范",
+        "设计标准",
         "核心文档"
       ],
       "visibility": "internal"
@@ -1622,89 +1611,12 @@
       "tags": [
         "接口文档",
         "API",
-        "核心文档"
+        "总览"
       ],
       "visibility": "internal"
     },
-    "04-接口文档/05-小组接口/05-小组接口.md": {
-      "path": "04-接口文档/05-小组接口/05-小组接口.md",
-      "title": "05-小组接口.md",
-      "classification": "内部",
-      "tags": [
-        "接口文档",
-        "小组",
-        "API"
-      ],
-      "visibility": "internal"
-    },
-    "04-接口文档/04-团队接口/04-团队接口.md": {
-      "path": "04-接口文档/04-团队接口/04-团队接口.md",
-      "title": "04-团队接口.md",
-      "classification": "内部",
-      "tags": [
-        "接口文档",
-        "团队",
-        "API"
-      ],
-      "visibility": "internal"
-    },
-    "04-接口文档/02-错误码/01-多租户底座.md": {
-      "path": "04-接口文档/02-错误码/01-多租户底座.md",
-      "title": "01-多租户底座.md",
-      "classification": "内部",
-      "tags": [
-        "错误码",
-        "核心文档"
-      ],
-      "visibility": "internal"
-    },
-    "04-接口文档/08-审计接口/08-审计接口.md": {
-      "path": "04-接口文档/08-审计接口/08-审计接口.md",
-      "title": "08-审计接口.md",
-      "classification": "内部",
-      "tags": [
-        "接口文档",
-        "审计日志",
-        "API"
-      ],
-      "visibility": "internal"
-    },
-    "04-接口文档/06-权限接口/06-权限接口.md": {
-      "path": "04-接口文档/06-权限接口/06-权限接口.md",
-      "title": "06-权限接口.md",
-      "classification": "内部",
-      "tags": [
-        "接口文档",
-        "RBAC",
-        "权限",
-        "API"
-      ],
-      "visibility": "internal"
-    },
-    "04-接口文档/02-账号接口/02-账号接口.md": {
-      "path": "04-接口文档/02-账号接口/02-账号接口.md",
-      "title": "02-账号接口.md",
-      "classification": "内部",
-      "tags": [
-        "接口文档",
-        "账号管理",
-        "API"
-      ],
-      "visibility": "internal"
-    },
-    "04-接口文档/03-组织接口/03-组织接口.md": {
-      "path": "04-接口文档/03-组织接口/03-组织接口.md",
-      "title": "03-组织接口.md",
-      "classification": "内部",
-      "tags": [
-        "接口文档",
-        "组织",
-        "API"
-      ],
-      "visibility": "internal"
-    },
-    "04-接口文档/01-认证接口/01-认证接口.md": {
-      "path": "04-接口文档/01-认证接口/01-认证接口.md",
+    "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md": {
+      "path": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
       "title": "01-认证接口.md",
       "classification": "内部",
       "tags": [
@@ -1714,14 +1626,90 @@
       ],
       "visibility": "internal"
     },
-    "04-接口文档/07-超级管理员接口/07-超级管理员接口.md": {
-      "path": "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
-      "title": "07-超级管理员接口",
+    "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md": {
+      "path": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "title": "07-超级管理员接口.md",
       "classification": "内部",
       "tags": [
         "接口文档",
         "超级管理员",
         "API"
+      ],
+      "visibility": "internal"
+    },
+    "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md": {
+      "path": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "title": "06-权限接口.md",
+      "classification": "内部",
+      "tags": [
+        "接口文档",
+        "权限管理",
+        "API"
+      ],
+      "visibility": "internal"
+    },
+    "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md": {
+      "path": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+      "title": "02-账号接口.md",
+      "classification": "内部",
+      "tags": [
+        "接口文档",
+        "账号管理",
+        "API"
+      ],
+      "visibility": "internal"
+    },
+    "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md": {
+      "path": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "title": "05-小组接口.md",
+      "classification": "内部",
+      "tags": [
+        "接口文档",
+        "小组管理",
+        "API"
+      ],
+      "visibility": "internal"
+    },
+    "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md": {
+      "path": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "title": "03-组织接口.md",
+      "classification": "内部",
+      "tags": [
+        "接口文档",
+        "组织管理",
+        "API"
+      ],
+      "visibility": "internal"
+    },
+    "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md": {
+      "path": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "title": "04-团队接口.md",
+      "classification": "内部",
+      "tags": [
+        "接口文档",
+        "团队管理",
+        "API"
+      ],
+      "visibility": "internal"
+    },
+    "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md": {
+      "path": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
+      "title": "08-审计接口.md",
+      "classification": "内部",
+      "tags": [
+        "接口文档",
+        "审计日志",
+        "API"
+      ],
+      "visibility": "internal"
+    },
+    "04-接口文档/02-错误码/01-多租户底座.md": {
+      "path": "04-接口文档/02-错误码/01-多租户底座.md",
+      "title": "错误码",
+      "classification": "内部",
+      "tags": [
+        "错误码",
+        "核心文档"
       ],
       "visibility": "internal"
     }
@@ -1876,13 +1864,6 @@
     },
     {
       "source": "README.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "README.md",
       "target": "06-部署运维与应急故障/05-日常运维手册/日常运维手册.md",
       "type": "reference",
       "confidence": 1.0,
@@ -1961,6 +1942,27 @@
     {
       "source": "README.md",
       "target": "02-需求与产品设计/01-产品PRD/审核记录/PRD审核记录.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "README.md",
+      "target": "01-项目总览/02-标准与规范/03-分端代码规范/05-苹果Swift代码规范.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "README.md",
+      "target": "01-项目总览/02-标准与规范/03-分端代码规范/04-安卓Kotlin代码规范.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "README.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -2148,13 +2150,6 @@
       "drift": false
     },
     {
-      "source": "09-团队资产与培训模板/团队资产与培训模板.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
       "source": "05-测试与质量保障/测试与质量保障.md",
       "target": "05-测试与质量保障/01-测试策略/测试策略.md",
       "type": "reference",
@@ -2261,6 +2256,13 @@
     },
     {
       "source": "01-项目总览/项目总览.md",
+      "target": "01-项目总览/03-里程碑/里程碑.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/项目总览.md",
       "target": "01-项目总览/04-客诉支撑/客诉支撑.md",
       "type": "reference",
       "confidence": 1.0,
@@ -2304,13 +2306,6 @@
     {
       "source": "01-项目总览/02-标准与规范/标准与规范.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/标准与规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -2407,6 +2402,20 @@
       "drift": false
     },
     {
+      "source": "01-项目总览/02-标准与规范/02-设计规范/03-移动端设计规范.md",
+      "target": "01-项目总览/02-标准与规范/03-分端代码规范/05-苹果Swift代码规范.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/02-标准与规范/02-设计规范/03-移动端设计规范.md",
+      "target": "01-项目总览/02-标准与规范/03-分端代码规范/04-安卓Kotlin代码规范.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "01-项目总览/02-标准与规范/02-设计规范/01-网页端设计规范.md",
       "target": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
       "type": "reference",
@@ -2449,13 +2458,6 @@
       "drift": false
     },
     {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/05-苹果Swift代码规范.md",
-      "target": "03-架构与方案设计/审核记录/架构评审记录.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
       "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "type": "reference",
@@ -2470,55 +2472,6 @@
       "drift": false
     },
     {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/01-认证接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/01-账号与认证域.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块/04-Token管理.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块/02-登录认证.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/01-用户认证模块/用户认证模块.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "02-需求与产品设计/01-产品PRD/审核记录/PRD审核记录.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
       "source": "01-项目总览/02-标准与规范/03-分端代码规范/04-安卓Kotlin代码规范.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "type": "reference",
@@ -2528,41 +2481,6 @@
     {
       "source": "01-项目总览/02-标准与规范/03-分端代码规范/04-安卓Kotlin代码规范.md",
       "target": "04-接口文档/接口文档.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/04-安卓Kotlin代码规范.md",
-      "target": "03-架构与方案设计/审核记录/架构评审记录.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "target": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "target": "03-架构与方案设计/审核记录/架构评审记录.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -2625,13 +2543,6 @@
     },
     {
       "source": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
-      "target": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/04-安卓Kotlin代码规范.md",
       "type": "reference",
       "confidence": 1.0,
@@ -2661,6 +2572,13 @@
     {
       "source": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
       "target": "01-项目总览/02-标准与规范/03-分端代码规范/02-Web代码规范.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/02-标准与规范/03-分端代码规范/07-前端通用代码规范.md",
+      "target": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -2715,6 +2633,13 @@
       "drift": false
     },
     {
+      "source": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
+      "target": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
       "target": "README.md",
       "type": "reference",
@@ -2757,43 +2682,15 @@
       "drift": false
     },
     {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
+      "source": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
     },
     {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "target": "04-接口文档/接口文档.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "target": "01-项目总览/02-标准与规范/03-分端代码规范/01-后端Go代码规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M7-前端Web管理后台.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -2825,6 +2722,13 @@
       "type": "reference",
       "confidence": 1.0,
       "drift": true
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M7-前端Web管理后台.md",
+      "target": "04-接口文档/接口文档.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M7-前端Web管理后台.md",
@@ -2926,7 +2830,21 @@
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M3-账号管理与RBAC权限引擎.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M3-账号管理与RBAC权限引擎.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M2-核心认证能力.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M3-账号管理与RBAC权限引擎.md",
+      "target": "04-接口文档/接口文档.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -2960,8 +2878,29 @@
       "drift": false
     },
     {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M3-账号管理与RBAC权限引擎.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M2-核心认证能力.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M2-核心认证能力.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M1-项目脚手架与数据库初始化.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M2-核心认证能力.md",
+      "target": "04-接口文档/接口文档.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -3150,6 +3089,13 @@
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M4-组织管理.md",
       "type": "reference",
       "confidence": 1.0,
@@ -3158,6 +3104,13 @@
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
+      "target": "04-接口文档/接口文档.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -3179,6 +3132,41 @@
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M8-前端H5与微信小程序.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -3219,18 +3207,25 @@
       "drift": true
     },
     {
-      "source": "01-项目总览/03-里程碑/01-多租户底座/M1-项目脚手架与数据库初始化.md",
-      "target": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M8-前端H5与微信小程序.md",
+      "target": "04-接口文档/接口文档.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M1-项目脚手架与数据库初始化.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M1-项目脚手架与数据库初始化.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M1-项目脚手架与数据库初始化.md",
@@ -3248,6 +3243,13 @@
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
       "type": "reference",
       "confidence": 1.0,
@@ -3256,6 +3258,13 @@
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M7-前端Web管理后台.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
+      "target": "04-接口文档/接口文档.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -3310,11 +3319,32 @@
       "drift": false
     },
     {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
       "target": "02-需求与产品设计/01-产品PRD/产品PRD.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
@@ -3333,6 +3363,13 @@
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M0-文档与设计冻结.md",
       "target": "04-接口文档/接口文档.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M12-生产部署与上线.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -3374,7 +3411,21 @@
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M14-P2功能开发.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M14-P2功能开发.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M13-前端鸿蒙HarmonyOS.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M14-P2功能开发.md",
+      "target": "04-接口文档/接口文档.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -3392,6 +3443,13 @@
       "type": "reference",
       "confidence": 1.0,
       "drift": true
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M10-前端Android原生App.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M10-前端Android原生App.md",
@@ -3429,6 +3487,20 @@
       "drift": true
     },
     {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M10-前端Android原生App.md",
+      "target": "04-接口文档/接口文档.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M4-组织管理.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M4-组织管理.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M3-账号管理与RBAC权限引擎.md",
       "type": "reference",
@@ -3444,6 +3516,13 @@
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M4-组织管理.md",
+      "target": "04-接口文档/接口文档.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M4-组织管理.md",
       "target": "03-架构与方案设计/03-数据模型与契约/01-数据库设计/数据库设计.md",
       "type": "reference",
       "confidence": 1.0,
@@ -3452,6 +3531,13 @@
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M4-组织管理.md",
       "target": "03-架构与方案设计/审核记录/架构评审记录.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M9-前端iOS原生App.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -3492,6 +3578,20 @@
       "drift": true
     },
     {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M9-前端iOS原生App.md",
+      "target": "04-接口文档/接口文档.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M13-前端鸿蒙HarmonyOS.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M13-前端鸿蒙HarmonyOS.md",
       "target": "01-项目总览/03-里程碑/01-多租户底座/M9-前端iOS原生App.md",
       "type": "reference",
@@ -3525,6 +3625,20 @@
       "type": "reference",
       "confidence": 1.0,
       "drift": true
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M13-前端鸿蒙HarmonyOS.md",
+      "target": "04-接口文档/接口文档.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "01-项目总览/03-里程碑/01-多租户底座/M11-集成测试与安全审查.md",
+      "target": "01-项目总览/03-里程碑/01-多租户底座/多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
     },
     {
       "source": "01-项目总览/03-里程碑/01-多租户底座/M11-集成测试与安全审查.md",
@@ -3940,6 +4054,62 @@
       "drift": false
     },
     {
+      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
+      "target": "04-接口文档/接口文档.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "03-架构与方案设计/审核记录/架构评审记录.md",
       "target": "03-架构与方案设计/04-链路实现/01-中间件链专项方案.md",
       "type": "reference",
@@ -4038,6 +4208,20 @@
       "drift": false
     },
     {
+      "source": "03-架构与方案设计/审核记录/架构评审记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/审核记录/架构评审记录.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "03-架构与方案设计/01-基座/基座.md",
       "target": "03-架构与方案设计/01-基座/01-整体架构设计.md",
       "type": "reference",
@@ -4074,10 +4258,10 @@
     },
     {
       "source": "03-架构与方案设计/01-基座/01-整体架构设计.md",
-      "target": "01-项目总览/02-标准与规范/04-开发规范/01-全局开发规范.md",
+      "target": "01-项目总览/03-里程碑/里程碑.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": true
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/01-基座/02-ADR架构决策记录.md",
@@ -5018,6 +5202,13 @@
       "drift": true
     },
     {
+      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
       "target": "02-需求与产品设计/01-产品PRD/01-多租户底座/02-账号管理模块/账号管理模块.md",
       "type": "reference",
@@ -5046,6 +5237,13 @@
       "drift": false
     },
     {
+      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
       "target": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
       "type": "reference",
@@ -5069,6 +5267,13 @@
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
@@ -5102,6 +5307,13 @@
       "drift": false
     },
     {
+      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
       "target": "03-架构与方案设计/02-核心域/01-多租户隔离方案.md",
       "type": "reference",
@@ -5121,6 +5333,20 @@
       "type": "reference",
       "confidence": 1.0,
       "drift": true
+    },
+    {
+      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
     },
     {
       "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
@@ -7476,94 +7702,227 @@
     },
     {
       "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/01-认证接口/01-认证接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/02-账号接口/02-账号接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/03-组织接口/03-组织接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/04-团队接口/04-团队接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/05-小组接口/05-小组接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/06-权限接口/06-权限接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/08-审计接口/08-审计接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/接口文档.md",
-      "target": "04-接口文档/02-错误码/01-多租户底座.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/05-小组接口/05-小组接口.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/01-认证接口.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": true
     },
     {
-      "source": "04-接口文档/05-小组接口/05-小组接口.md",
-      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "source": "04-接口文档/接口文档.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
       "type": "reference",
       "confidence": 1.0,
-      "drift": false
+      "drift": true
     },
     {
-      "source": "04-接口文档/04-团队接口/04-团队接口.md",
+      "source": "04-接口文档/接口文档.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/接口文档.md",
       "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": true
     },
     {
-      "source": "04-接口文档/04-团队接口/04-团队接口.md",
+      "source": "04-接口文档/接口文档.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/接口文档.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/接口文档.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/接口文档.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/接口文档.md",
       "target": "04-接口文档/02-错误码/01-多租户底座.md",
       "type": "reference",
       "confidence": 1.0,
       "drift": false
+    },
+    {
+      "source": "04-接口文档/接口文档.md",
+      "target": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/接口文档.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/01-认证接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
+      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+      "target": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": false
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
+      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
+    },
+    {
+      "source": "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
+      "target": "04-接口文档/02-错误码/01-多租户底座.md",
+      "type": "reference",
+      "confidence": 1.0,
+      "drift": true
     },
     {
       "source": "04-接口文档/02-错误码/01-多租户底座.md",
@@ -7578,382 +7937,7 @@
       "type": "reference",
       "confidence": 1.0,
       "drift": true
-    },
-    {
-      "source": "04-接口文档/08-审计接口/08-审计接口.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": true
-    },
-    {
-      "source": "04-接口文档/08-审计接口/08-审计接口.md",
-      "target": "04-接口文档/02-错误码/01-多租户底座.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/06-权限接口/06-权限接口.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": true
-    },
-    {
-      "source": "04-接口文档/06-权限接口/06-权限接口.md",
-      "target": "04-接口文档/02-错误码/01-多租户底座.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/02-账号接口/02-账号接口.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/02-账号接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": true
-    },
-    {
-      "source": "04-接口文档/02-账号接口/02-账号接口.md",
-      "target": "04-接口文档/02-错误码/01-多租户底座.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/03-组织接口/03-组织接口.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": true
-    },
-    {
-      "source": "04-接口文档/03-组织接口/03-组织接口.md",
-      "target": "04-接口文档/02-错误码/01-多租户底座.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/01-认证接口/01-认证接口.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/01-认证接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": true
-    },
-    {
-      "source": "04-接口文档/01-认证接口/01-认证接口.md",
-      "target": "04-接口文档/02-错误码/01-多租户底座.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
-    },
-    {
-      "source": "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
-      "target": "03-架构与方案设计/03-数据模型与契约/02-接口设计/07-超管接口.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": true
-    },
-    {
-      "source": "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
-      "target": "04-接口文档/02-错误码/01-多租户底座.md",
-      "type": "reference",
-      "confidence": 1.0,
-      "drift": false
     }
   ],
-  "potential_links": [
-    {
-      "source": "README.md",
-      "target": "04-接口文档/06-权限接口/06-权限接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "权限",
-        "角色"
-      ]
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/03-分端代码规范/03-H5代码规范.md",
-      "target": "04-接口文档/01-认证接口/01-认证接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "token",
-        "认证"
-      ]
-    },
-    {
-      "source": "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
-      "target": "04-接口文档/01-认证接口/01-认证接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "token",
-        "接口",
-        "认证"
-      ]
-    },
-    {
-      "source": "01-项目总览/03-里程碑/01-多租户底座/M3-账号管理与RBAC权限引擎.md",
-      "target": "04-接口文档/02-账号接口/02-账号接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "账号"
-      ]
-    },
-    {
-      "source": "01-项目总览/03-里程碑/01-多租户底座/M5-团队与小组管理.md",
-      "target": "04-接口文档/04-团队接口/04-团队接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "团队",
-        "小组",
-        "接口",
-        "角色"
-      ]
-    },
-    {
-      "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
-      "target": "04-接口文档/08-审计接口/08-审计接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "审计",
-        "接口"
-      ]
-    },
-    {
-      "source": "01-项目总览/03-里程碑/01-多租户底座/M6-审计日志与超级管理员.md",
-      "target": "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "审计",
-        "接口"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/审核记录/数据模型与契约审核记录.md",
-      "target": "04-接口文档/02-账号接口/02-账号接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "账号"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/审核记录/架构评审记录.md",
-      "target": "04-接口文档/接口文档.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/审核记录/架构评审记录.md",
-      "target": "04-接口文档/08-审计接口/08-审计接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "审计",
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/审核记录/架构评审记录.md",
-      "target": "04-接口文档/02-账号接口/02-账号接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "账号"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/审核记录/架构评审记录.md",
-      "target": "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "审计",
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/07-超管接口.md",
-      "target": "04-接口文档/接口文档.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/07-超管接口.md",
-      "target": "04-接口文档/08-审计接口/08-审计接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "审计",
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/06-权限接口.md",
-      "target": "04-接口文档/接口文档.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
-      "target": "04-接口文档/接口文档.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/05-小组接口.md",
-      "target": "04-接口文档/04-团队接口/04-团队接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "小组",
-        "接口",
-        "角色",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
-      "target": "04-接口文档/接口文档.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/03-组织接口.md",
-      "target": "04-接口文档/04-团队接口/04-团队接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "团队",
-        "接口",
-        "角色",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
-      "target": "04-接口文档/接口文档.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
-      "target": "04-接口文档/05-小组接口/05-小组接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "小组",
-        "接口",
-        "角色",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/04-团队接口.md",
-      "target": "04-接口文档/03-组织接口/03-组织接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "团队",
-        "接口",
-        "角色",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
-      "target": "04-接口文档/接口文档.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "03-架构与方案设计/03-数据模型与契约/02-接口设计/08-审计接口.md",
-      "target": "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "审计",
-        "接口",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "04-接口文档/05-小组接口/05-小组接口.md",
-      "target": "04-接口文档/04-团队接口/04-团队接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "小组",
-        "接口",
-        "角色",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "04-接口文档/04-团队接口/04-团队接口.md",
-      "target": "04-接口文档/03-组织接口/03-组织接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "团队",
-        "接口",
-        "角色",
-        "鉴权"
-      ]
-    },
-    {
-      "source": "04-接口文档/08-审计接口/08-审计接口.md",
-      "target": "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
-      "type": "potential",
-      "confidence": 0.75,
-      "shared_terms": [
-        "审计",
-        "接口",
-        "鉴权"
-      ]
-    }
-  ]
+  "potential_links": []
 }
