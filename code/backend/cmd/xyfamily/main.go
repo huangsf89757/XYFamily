@@ -44,15 +44,19 @@ func main() {
 	accountService := service.NewAccountService(accountRepo, sessionRepo, cacheRepo, auditRepo)
 	orgService := service.NewOrgService(tenantRepo, cacheRepo, auditRepo)
 	teamService := service.NewTeamService(tenantRepo, auditRepo)
+	adminService := service.NewAdminService(accountRepo, rbacRepo, tenantRepo, auditRepo, cacheRepo)
+	auditConsumer := service.NewAuditConsumer(db.Pool, cacheRepo)
+	_ = middleware.NewAuditMiddleware(cacheRepo) // reserved for audit middleware
 	authMW := middleware.NewAuthMiddleware(jwtMgr, cacheRepo)
 	rateLimitMW := middleware.NewRateLimitMiddleware(cacheRepo, cfg.Security.RateLimitThreshold, cfg.Security.RateLimitWindow, cfg.Security.RateLimitLock)
 	membershipMW := middleware.NewMembershipValidator(rbacRepo, cacheRepo)
-	_ = middleware.NewPermissionChecker(rbacRepo, cacheRepo) // reserved for future route-level permission checks
+	_ = middleware.NewPermissionChecker(rbacRepo, cacheRepo) // reserved for permission checks
 	healthHandler := handler.NewHealthHandler(db, redisClient)
 	authHandler := handler.NewAuthHandler(authService, rateLimitMW)
 	accountHandler := handler.NewAccountHandler(accountService)
 	orgHandler := handler.NewOrgHandler(orgService)
 	teamHandler := handler.NewTeamHandler(teamService)
+	adminHandler := handler.NewAdminHandler(adminService)
 gin.SetMode(cfg.Server.Mode)
 	r := gin.New()
 	r.Use(gin.Recovery())
@@ -118,9 +122,25 @@ gin.SetMode(cfg.Server.Mode)
 				groups.PUT("/:group_id", teamHandler.UpdateGroup)
 				groups.DELETE("/:group_id", teamHandler.DeleteGroup)
 			}
+			audit := protected.Group("/audit-logs")
+			audit.Use(membershipMW.ValidateScope())
+			{
+				audit.GET("", adminHandler.GlobalAuditList)
+				audit.GET("/:id", adminHandler.AuditDetail)
+			}
+			admin := protected.Group("/admin")
+			{
+				admin.POST("/init", adminHandler.Init)
+				admin.GET("/config", adminHandler.GetConfig)
+				admin.PUT("/config", adminHandler.UpdateConfig)
+				admin.POST("/force-downgrade", adminHandler.ForceDowngrade)
+				admin.GET("/audit-logs", adminHandler.GlobalAuditList)
+				admin.GET("/audit-logs/:id", adminHandler.AuditDetail)
+			}
 		}
 	}
 	addr := fmt.Sprintf(":%d", cfg.Server.Port)
 	logger.Get().Info("server starting", zap.String("addr", addr))
+	go auditConsumer.Start(context.Background())
 	if err := r.Run(addr); err != nil { logger.Get().Fatal("server failed", zap.Error(err)) }
 }

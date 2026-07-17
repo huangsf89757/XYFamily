@@ -39,12 +39,13 @@ const (
 	ErrPasswordSame       ErrCode = 200005
 	ErrDeactivating       ErrCode = 200007
 	ErrOldPasswordWrong   ErrCode = 200011
-
 	// General 80xxx
 	ErrBadRequest  ErrCode = 100001
 	ErrInternal    ErrCode = 800001
 	ErrNotFound     ErrCode = 800002
 	ErrForbidden    ErrCode = 800003
+	ErrSuperAdminExists  ErrCode = 800010
+	ErrConfigInvalid    ErrCode = 800011
 )
 
 func (e ErrCode) Int() int { return int(e) }
