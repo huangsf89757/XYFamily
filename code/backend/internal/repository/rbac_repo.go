@@ -84,3 +84,15 @@ func (r *RBACRepository) GetAllPermissions(ctx context.Context) ([]string, error
 	}
 	return perms, nil
 }
+func (r *RBACRepository) GetTeamRoleByAccountID(ctx context.Context, accountID, teamID uuid.UUID) (string, error) {
+	query := "SELECT role FROM team_members WHERE account_id = $1 AND team_id = $2 AND deleted_at IS NULL"
+	row := r.db.Pool.QueryRow(ctx, query, accountID, teamID)
+	var role string; err := row.Scan(&role)
+	if err == pgx.ErrNoRows { return "", nil }; if err != nil { return "", fmt.Errorf("scan role: %w", err) }; return role, nil
+}
+func (r *RBACRepository) GetGroupRoleByAccountID(ctx context.Context, accountID, groupID uuid.UUID) (string, error) {
+	query := "SELECT role FROM group_members WHERE account_id = $1 AND group_id = $2 AND deleted_at IS NULL"
+	row := r.db.Pool.QueryRow(ctx, query, accountID, groupID)
+	var role string; err := row.Scan(&role)
+	if err == pgx.ErrNoRows { return "", nil }; if err != nil { return "", fmt.Errorf("scan role: %w", err) }; return role, nil
+}

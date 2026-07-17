@@ -5,11 +5,9 @@ import (
 	"fmt"
 	"os"
 	"time"
-
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-
 	"xyfamily/internal/handler"
 	initpkg "xyfamily/internal/init"
 	"xyfamily/internal/middleware"
@@ -22,67 +20,52 @@ import (
 
 func main() {
 	cfg, err := config.Load("configs/config.yaml")
-	if err != nil {
-		fmt.Printf("load config failed: %v\n", err)
-		os.Exit(1)
-	}
-
-	if err := logger.Init(cfg.Log.Level, cfg.Log.Format); err != nil {
-		fmt.Printf("init logger failed: %v\n", err)
-		os.Exit(1)
-	}
+	if err != nil { fmt.Printf("load config failed: %v\n", err); os.Exit(1) }
+	if err := logger.Init(cfg.Log.Level, cfg.Log.Format); err != nil { fmt.Printf("init logger failed: %v\n", err); os.Exit(1) }
 	defer logger.Sync()
-
 	logger.Get().Info("starting xyfamily backend", zap.String("mode", cfg.Server.Mode))
-
 	db, err := repository.NewDB(cfg)
-	if err != nil {
-		logger.Get().Fatal("connect database failed", zap.Error(err))
-	}
+	if err != nil { logger.Get().Fatal("connect database failed", zap.Error(err)) }
 	defer db.Close()
-
 	redisClient, err := repository.NewRedis(cfg)
-	if err != nil {
-		logger.Get().Fatal("connect redis failed", zap.Error(err))
-	}
+	if err != nil { logger.Get().Fatal("connect redis failed", zap.Error(err)) }
 	defer redisClient.Close()
-
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
-	if err := initpkg.SeedAll(ctx, db.Pool); err != nil {
-		logger.Get().Error("seed data failed", zap.Error(err))
-	}
-
+	if err := initpkg.SeedAll(ctx, db.Pool); err != nil { logger.Get().Error("seed data failed", zap.Error(err)) }
 	jwtMgr := jwt.NewManager(cfg.JWT.Secret, cfg.JWT.Issuer, cfg.JWT.AccessTTL, cfg.JWT.RefreshTTL)
-
 	accountRepo := repository.NewAccountRepository(db)
 	sessionRepo := repository.NewSessionRepository(db)
 	cacheRepo := repository.NewCacheRepository(redisClient)
 	rbacRepo := repository.NewRBACRepository(db)
 	auditRepo := repository.NewAuditRepository(db)
-
+	tenantRepo := repository.NewTenantRepository(db)
 	authService := service.NewAuthService(accountRepo, sessionRepo, cacheRepo, rbacRepo, auditRepo, jwtMgr, cfg)
+	accountService := service.NewAccountService(accountRepo, sessionRepo, cacheRepo, auditRepo)
+	orgService := service.NewOrgService(tenantRepo, cacheRepo, auditRepo)
+	teamService := service.NewTeamService(tenantRepo, auditRepo)
 	authMW := middleware.NewAuthMiddleware(jwtMgr, cacheRepo)
 	rateLimitMW := middleware.NewRateLimitMiddleware(cacheRepo, cfg.Security.RateLimitThreshold, cfg.Security.RateLimitWindow, cfg.Security.RateLimitLock)
-
+	membershipMW := middleware.NewMembershipValidator(rbacRepo, cacheRepo)
+	_ = middleware.NewPermissionChecker(rbacRepo, cacheRepo) // reserved for future route-level permission checks
 	healthHandler := handler.NewHealthHandler(db, redisClient)
 	authHandler := handler.NewAuthHandler(authService, rateLimitMW)
-
-	gin.SetMode(cfg.Server.Mode)
+	accountHandler := handler.NewAccountHandler(accountService)
+	orgHandler := handler.NewOrgHandler(orgService)
+	teamHandler := handler.NewTeamHandler(teamService)
+gin.SetMode(cfg.Server.Mode)
 	r := gin.New()
 	r.Use(gin.Recovery())
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     cfg.CORS.Origins,
-		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization", "X-Organization-ID", "X-Team-ID", "X-Group-ID"},
-		ExposeHeaders:    []string{"Content-Length"},
+		AllowOrigins: cfg.CORS.Origins,
+		AllowMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders: []string{"Origin", "Content-Type", "Authorization", "X-Organization-ID", "X-Team-ID", "X-Group-ID"},
+		ExposeHeaders: []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
-
 	api := r.Group("/api/v1")
 	{
 		api.GET("/healthz", healthHandler.Healthz)
-
 		auth := api.Group("/auth")
 		{
 			auth.POST("/verification-codes", authHandler.SendCode)
@@ -92,15 +75,52 @@ func main() {
 			auth.POST("/reset-password", authHandler.ResetPassword)
 			authProtected := auth.Group("")
 			authProtected.Use(authMW.RequireAuth())
+			authProtected.POST("/logout", authHandler.Logout)
+		}
+		protected := api.Group("")
+		protected.Use(authMW.RequireAuth())
+		{
+			account := protected.Group("/account")
 			{
-				authProtected.POST("/logout", authHandler.Logout)
+				account.GET("/profile", accountHandler.GetProfile)
+				account.PUT("/profile", accountHandler.UpdateProfile)
+				account.PUT("/password", accountHandler.ChangePassword)
+				account.POST("/deactivate", accountHandler.Deactivate)
+				account.POST("/undeactivate", accountHandler.Undeactivate)
+			}
+			orgs := protected.Group("/organizations")
+			orgs.Use(membershipMW.ValidateScope())
+			{
+				orgs.POST("", orgHandler.Create)
+				orgs.GET("/:organization_id", orgHandler.GetInfo)
+				orgs.PUT("/:organization_id", orgHandler.Update)
+				orgs.POST("/:organization_id/disable", orgHandler.Disable)
+				orgs.POST("/:organization_id/enable", orgHandler.Enable)
+				orgs.POST("/:organization_id/members/invitations", orgHandler.Invite)
+				orgs.GET("/:organization_id/members", orgHandler.ListMembers)
+				orgs.PUT("/:organization_id/members/:account_id/role", orgHandler.AssignRole)
+				orgs.POST("/:organization_id/members/:account_id/downgrade", orgHandler.Downgrade)
+				orgs.DELETE("/:organization_id/members/:account_id", orgHandler.RemoveMember)
+				orgs.POST("/:organization_id/teams", teamHandler.Create)
+			}
+			teams := protected.Group("/teams")
+			teams.Use(membershipMW.ValidateScope())
+			{
+				teams.GET("/:team_id", teamHandler.GetInfo)
+				teams.PUT("/:team_id", teamHandler.Update)
+				teams.POST("/:team_id/archive", teamHandler.Archive)
+				teams.POST("/:team_id/groups", teamHandler.CreateGroup)
+			}
+			groups := protected.Group("/groups")
+			groups.Use(membershipMW.ValidateScope())
+			{
+				groups.GET("/:group_id", teamHandler.GetGroup)
+				groups.PUT("/:group_id", teamHandler.UpdateGroup)
+				groups.DELETE("/:group_id", teamHandler.DeleteGroup)
 			}
 		}
 	}
-
 	addr := fmt.Sprintf(":%d", cfg.Server.Port)
 	logger.Get().Info("server starting", zap.String("addr", addr))
-	if err := r.Run(addr); err != nil {
-		logger.Get().Fatal("server failed", zap.Error(err))
-	}
+	if err := r.Run(addr); err != nil { logger.Get().Fatal("server failed", zap.Error(err)) }
 }
