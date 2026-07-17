@@ -1,71 +1,60 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+go.work.sum
 
-## User settings
-xcuserdata/
+# Build output
+bin/
+*.exe
 
-## Obj-C/Swift specific
-*.hmap
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-## App packaging
-*.ipa
-*.dSYM.zip
-*.dSYM
+# OS files
+.DS_Store
+Thumbs.db
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
+# Environment files
+.env
+.env.local
+.env.*.local
 
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-# Package.resolved
-# *.xcodeproj
-#
-# Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
-# hence it is not needed unless you have added a package configuration file to your project
-# .swiftpm
+# Config secrets (do not commit)
+configs/config.local.yaml
 
-.build/
+# Docker
+.docker/
 
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+# Logs
+*.log
+logs/
 
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+# Coverage
+coverage.out
+coverage.html
 
-Carthage/Build/
+# Frontend
+node_modules/
+dist/
+.next/
+.nuxt/
+.cache/
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo.
-# Instead, use fastlane to re-generate the screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
+# Swift/Xcode (legacy)
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
 
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
-
-# Agent/tool generated dirs
-.serena/
-.workbuddy/
-
-# Generated / build artifacts
-__pycache__/
-graphify-out/
-.obsidian/
+# Temporary files
+tmp/
+temp/

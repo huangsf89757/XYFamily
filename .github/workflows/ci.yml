@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint-test-build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: xyfamily
+          POSTGRES_PASSWORD: xyfamily_ci
+          POSTGRES_DB: xyfamily
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U xyfamily"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Install golangci-lint
+        run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+      - name: Lint
+        working-directory: code/backend
+        run: golangci-lint run ./...
+
+      - name: Test
+        working-directory: code/backend
+        env:
+          XY_DB_PASSWORD: xyfamily_ci
+        run: go test -v -race -coverprofile=coverage.out ./...
+
+      - name: Build
+        working-directory: code/backend
+        run: go build -o bin/xyfamily ./cmd/xyfamily/
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: code/backend/coverage.out

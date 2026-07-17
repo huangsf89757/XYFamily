@@ -1,0 +1,106 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	"time"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
+
+	"xyfamily/internal/handler"
+	initpkg "xyfamily/internal/init"
+	"xyfamily/internal/middleware"
+	"xyfamily/internal/repository"
+	"xyfamily/internal/service"
+	"xyfamily/pkg/config"
+	"xyfamily/pkg/jwt"
+	"xyfamily/pkg/logger"
+)
+
+func main() {
+	cfg, err := config.Load("configs/config.yaml")
+	if err != nil {
+		fmt.Printf("load config failed: %v\n", err)
+		os.Exit(1)
+	}
+
+	if err := logger.Init(cfg.Log.Level, cfg.Log.Format); err != nil {
+		fmt.Printf("init logger failed: %v\n", err)
+		os.Exit(1)
+	}
+	defer logger.Sync()
+
+	logger.Get().Info("starting xyfamily backend", zap.String("mode", cfg.Server.Mode))
+
+	db, err := repository.NewDB(cfg)
+	if err != nil {
+		logger.Get().Fatal("connect database failed", zap.Error(err))
+	}
+	defer db.Close()
+
+	redisClient, err := repository.NewRedis(cfg)
+	if err != nil {
+		logger.Get().Fatal("connect redis failed", zap.Error(err))
+	}
+	defer redisClient.Close()
+
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+	if err := initpkg.SeedAll(ctx, db.Pool); err != nil {
+		logger.Get().Error("seed data failed", zap.Error(err))
+	}
+
+	jwtMgr := jwt.NewManager(cfg.JWT.Secret, cfg.JWT.Issuer, cfg.JWT.AccessTTL, cfg.JWT.RefreshTTL)
+
+	accountRepo := repository.NewAccountRepository(db)
+	sessionRepo := repository.NewSessionRepository(db)
+	cacheRepo := repository.NewCacheRepository(redisClient)
+	rbacRepo := repository.NewRBACRepository(db)
+	auditRepo := repository.NewAuditRepository(db)
+
+	authService := service.NewAuthService(accountRepo, sessionRepo, cacheRepo, rbacRepo, auditRepo, jwtMgr, cfg)
+	authMW := middleware.NewAuthMiddleware(jwtMgr, cacheRepo)
+	rateLimitMW := middleware.NewRateLimitMiddleware(cacheRepo, cfg.Security.RateLimitThreshold, cfg.Security.RateLimitWindow, cfg.Security.RateLimitLock)
+
+	healthHandler := handler.NewHealthHandler(db, redisClient)
+	authHandler := handler.NewAuthHandler(authService, rateLimitMW)
+
+	gin.SetMode(cfg.Server.Mode)
+	r := gin.New()
+	r.Use(gin.Recovery())
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     cfg.CORS.Origins,
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization", "X-Organization-ID", "X-Team-ID", "X-Group-ID"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+	}))
+
+	api := r.Group("/api/v1")
+	{
+		api.GET("/healthz", healthHandler.Healthz)
+
+		auth := api.Group("/auth")
+		{
+			auth.POST("/verification-codes", authHandler.SendCode)
+			auth.POST("/register", authHandler.Register)
+			auth.POST("/login", authHandler.Login)
+			auth.POST("/refresh", authHandler.Refresh)
+			auth.POST("/reset-password", authHandler.ResetPassword)
+			authProtected := auth.Group("")
+			authProtected.Use(authMW.RequireAuth())
+			{
+				authProtected.POST("/logout", authHandler.Logout)
+			}
+		}
+	}
+
+	addr := fmt.Sprintf(":%d", cfg.Server.Port)
+	logger.Get().Info("server starting", zap.String("addr", addr))
+	if err := r.Run(addr); err != nil {
+		logger.Get().Fatal("server failed", zap.Error(err))
+	}
+}

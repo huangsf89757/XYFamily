@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: xyfamily
+      POSTGRES_PASSWORD: xyfamily_dev
+      POSTGRES_DB: xyfamily
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations/V001__init.sql:/docker-entrypoint-initdb.d/V001__init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U xyfamily"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
