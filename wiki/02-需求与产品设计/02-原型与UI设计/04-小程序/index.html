@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>XYFamily 小程序原型 · WeChat Mini Program</title>
+<style id="theme-vars">
+  :root {
+    --brand-500:#007AFF; --brand-400:#2E8DFF; --brand-600:#0064D6;
+    --background-50:#FFFFFF; --background-100:#F7F7FA; --background-200:#F2F2F7; --background-300:#E5E5EA;
+    --background-400:#D1D1D6; --background-500:#AEAEB2; --background-600:#8E8E93; --background-700:#3A3A3C; --background-800:#1C1C1E; --background-900:#000000;
+    --text-300:#AEAEB2; --text-400:#8E8E93; --text-500:#6E6E73; --text-600:#48484A; --text-700:#3C3C43; --text-800:#1D1D1F;
+    --state-success:#34C759; --state-success-surface:#E9F9EE;
+    --state-error:#FF3B30; --state-error-surface:#FFECEA;
+    --state-warning:#FF9500; --state-warning-surface:#FFF4E6;
+    --state-info:#5AC8FA;
+    --chart-4:#5856D6;
+    --background:var(--background-50); --foreground:var(--text-800);
+    --card:var(--background-50); --card-foreground:var(--text-800);
+    --primary:var(--brand-500); --primary-foreground:#FFFFFF;
+    --secondary:var(--background-200); --secondary-foreground:var(--text-800);
+    --muted:var(--background-200); --muted-foreground:var(--text-400);
+    --accent:var(--background-100); --accent-foreground:var(--text-800);
+    --destructive:var(--state-error); --success:var(--state-success);
+    --border:var(--background-300); --input:var(--background-400);
+    --icon:var(--text-800); --icon-muted:var(--text-500);
+    --shadow-sm:0 1px 2px 0 rgba(0,0,0,0.05),0 1px 3px -1px rgba(0,0,0,0.05);
+    --font-sans:system-ui,-apple-system,"Helvetica Neue","PingFang SC",sans-serif;
+  }
+  [data-theme="dark"] {
+    --background:var(--background-900); --foreground:#F5F5F7;
+    --card:var(--background-800); --card-foreground:#F5F5F7;
+    --primary:var(--brand-400); --primary-foreground:var(--background-900);
+    --secondary:var(--background-800); --muted-foreground:var(--text-400);
+    --accent:var(--background-700); --border:var(--background-700); --input:var(--background-700);
+    --icon:#F5F5F7; --icon-muted:var(--text-500); --shadow-sm:none;
+  }
+</style>
+<style>
+  /* rpx → px 换算：750rpx = 375px，1px = 2rpx（设计基准 iPhone 6） */
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  body { font-family:var(--font-sans); background:#48484A; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:24px; color:var(--foreground); font-size:16px; }
+
+  .phone { width:375px; height:780px; background:var(--background); border-radius:40px; box-shadow:0 30px 80px -20px rgba(0,0,0,0.55); border:10px solid #1c1c1e; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+  .statusbar { height:44px; display:flex; align-items:center; justify-content:space-between; padding:0 22px; font-size:14px; font-weight:600; flex-shrink:0; z-index:20; }
+  .statusbar .icons { display:flex; gap:5px; align-items:center; }
+  /* 微信胶囊按钮示意 */
+  .capsule { position:absolute; top:11px; right:14px; width:87px; height:32px; background:rgba(255,255,255,0.7); border:0.5px solid rgba(0,0,0,0.1); border-radius:16px; display:flex; align-items:center; justify-content:center; gap:14px; z-index:25; font-size:15px; color:#1d1d1f; }
+  [data-theme="dark"] .capsule { background:rgba(60,60,60,0.6); color:#fff; }
+  .capsule .c-dot { font-size:13px; }
+
+  .screen { flex:1; display:flex; flex-direction:column; min-height:0; }
+  .navbar { padding:10px 16px; flex-shrink:0; display:flex; align-items:center; gap:10px; border-bottom:0.5px solid var(--border); }
+  .navbar h1 { font-size:17px; font-weight:600; }
+  .navbar .back { width:36px; height:36px; display:flex; align-items:center; justify-content:center; color:var(--foreground); cursor:pointer; }
+  .navbar .act { margin-left:auto; color:var(--primary); font-size:14px; cursor:pointer; display:flex; align-items:center; }
+  .scroll { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; background:var(--secondary); }
+  .scroll.pad { padding:16px; }
+
+  .view { display:none; } .view.active { display:block; }
+
+  .card { background:var(--card); border-radius:12px; box-shadow:var(--shadow-sm); padding:16px; margin-bottom:16px; }
+  .card-title { font-size:18px; font-weight:600; }
+  .card-sub { font-size:14px; color:var(--muted-foreground); margin-top:6px; }
+
+  /* 首页 */
+  .dash-head { background:var(--card); border-radius:12px; padding:16px; margin-bottom:16px; display:flex; align-items:center; gap:12px; }
+  .dash-head .av { width:48px; height:48px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:18px; }
+  .stat-row { display:flex; background:var(--card); border-radius:12px; box-shadow:var(--shadow-sm); overflow:hidden; margin-bottom:16px; }
+  .stat { flex:1; text-align:center; padding:14px 0; border-right:0.5px solid var(--border); }
+  .stat:last-child { border-right:none; }
+  .stat .v { font-size:22px; font-weight:700; }
+  .stat .l { font-size:12px; color:var(--muted-foreground); margin-top:2px; }
+  .quick { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .quick .qi { background:var(--card); border-radius:12px; box-shadow:var(--shadow-sm); padding:14px 0; display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; }
+  .quick .qi .ic { width:44px; height:44px; border-radius:12px; background:var(--brand-50,#E8F2FF); color:var(--primary); display:flex; align-items:center; justify-content:center; }
+  .quick .qi .ic svg { width:22px; height:22px; }
+  .quick .qi .ql { font-size:12px; }
+  .sec-title { font-size:14px; font-weight:600; color:var(--foreground); margin:4px 4px 12px; }
+
+  /* Cell 列表（iOS 风格分组） */
+  .cell-group { background:var(--card); border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:16px; }
+  .cell { display:flex; align-items:center; gap:12px; min-height:56px; padding:12px 16px; border-bottom:0.5px solid var(--border); cursor:pointer; }
+  .cell:last-child { border-bottom:none; }
+  .cell:active { background:var(--accent); }
+  .cell .ci { width:24px; height:24px; display:flex; align-items:center; justify-content:center; color:var(--primary); flex-shrink:0; }
+  .cell .ci svg { width:20px; height:20px; }
+  .cell .ct { flex:1; }
+  .cell .ct .t { font-size:16px; }
+  .cell .ct .s { font-size:14px; color:var(--muted-foreground); margin-top:2px; }
+  .cell .cv { font-size:14px; color:var(--muted-foreground); }
+  .cell .arrow { color:var(--icon-muted); }
+  .cell .arrow svg { width:16px; height:16px; }
+  .avatar { width:40px; height:40px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:600; flex-shrink:0; }
+  .unread { width:8px; height:8px; border-radius:50%; background:var(--primary); }
+  .dot-num { min-width:16px; height:16px; border-radius:8px; background:var(--state-error); color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center; padding:0 4px; }
+
+  .tag { display:inline-flex; align-items:center; height:20px; padding:0 8px; border-radius:999px; font-size:11px; font-weight:600; }
+  .tag.org { background:var(--primary); color:#fff; }
+  .tag.team { background:var(--state-success); color:#fff; }
+  .tag.ok { background:var(--state-success-surface); color:var(--state-success); }
+  .tag.warn { background:var(--state-warning-surface); color:var(--state-warning); }
+
+  /* 按钮（小程序尺寸：88rpx 高 = 44px） */
+  .btn { display:flex; align-items:center; justify-content:center; gap:8px; height:44px; border-radius:8px; border:none; font-size:16px; font-weight:500; cursor:pointer; width:100%; font-family:var(--font-sans); }
+  .btn svg { width:20px; height:20px; }
+  .btn-primary { background:var(--primary); color:#fff; }
+  .btn-primary:active { background:var(--brand-600); }
+  .btn-default { background:var(--secondary); color:var(--foreground); }
+  .btn-danger { background:var(--state-error); color:#fff; }
+  .btn-wechat { background:#07C160; color:#fff; }
+  .link { color:var(--primary); font-size:14px; }
+  .muted { color:var(--muted-foreground); }
+
+  /* tabBar */
+  .tabbar { height:56px; flex-shrink:0; background:var(--card); border-top:0.5px solid var(--border); display:flex; }
+  .tab { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; cursor:pointer; color:var(--background-600); position:relative; }
+  .tab svg { width:24px; height:24px; }
+  .tab .tl { font-size:11px; }
+  .tab.active { color:var(--primary); }
+  .tab .badge { position:absolute; top:4px; right:50%; margin-right:-20px; min-width:16px; height:16px; border-radius:8px; background:var(--state-error); color:#fff; font-size:10px; display:flex; align-items:center; justify-content:center; padding:0 4px; }
+
+  /* 弹层 / 分享 */
+  .mask { position:absolute; inset:0; background:rgba(0,0,0,0.45); display:none; z-index:40; }
+  .mask.show { display:block; }
+  .sheet { position:absolute; left:0; right:0; bottom:0; background:var(--secondary); border-radius:16px 16px 0 0; padding:8px; transform:translateY(100%); transition:transform 300ms ease; z-index:41; }
+  .sheet.show { transform:translateY(0); }
+  .sheet .grip { width:36px; height:5px; border-radius:3px; background:var(--background-400); margin:6px auto; }
+  .sheet .s-item { height:56px; display:flex; align-items:center; justify-content:center; font-size:17px; color:var(--foreground); border-bottom:0.5px solid var(--border); cursor:pointer; }
+  .sheet .s-item:active { background:var(--card); }
+  .sheet .s-cancel { height:56px; display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:600; color:var(--primary); margin-top:8px; border-radius:8px; background:var(--card); cursor:pointer; }
+  .sheet .s-item.danger { color:var(--state-error); }
+
+  /* 登录页（自定义导航） */
+  .wx-login { position:absolute; inset:0; background:var(--background); display:flex; flex-direction:column; align-items:center; padding:0 32px; z-index:50; }
+  .wx-login .logo { width:72px; height:72px; border-radius:18px; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:700; margin-top:90px; }
+  .wx-login h1 { font-size:20px; font-weight:700; margin-top:16px; }
+  .wx-login .sl { font-size:14px; color:var(--muted-foreground); margin-top:6px; margin-bottom:60px; }
+  .agreement { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--muted-foreground); margin-top:16px; }
+  .agreement .box { width:16px; height:16px; border-radius:4px; border:1px solid var(--input); display:flex; align-items:center; justify-content:center; color:#fff; }
+  .agreement .box.on { background:var(--primary); border-color:var(--primary); }
+
+  /* 扫码加入页 */
+  .scan-box { width:200px; height:200px; border:2px dashed var(--primary); border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:var(--primary); margin:40px auto; cursor:pointer; }
+  .scan-box svg { width:48px; height:48px; }
+  .scan-box .t { font-size:14px; }
+
+  /* 分享页小程序码 */
+  .wxacode { width:160px; height:160px; border-radius:12px; margin:20px auto; background:var(--brand-50,#E8F2FF); display:flex; align-items:center; justify-content:center; }
+  .wxacode svg { width:90px; height:90px; color:var(--primary); }
+
+  .toast { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.8); color:#fff; padding:12px 18px; border-radius:10px; font-size:14px; opacity:0; pointer-events:none; transition:opacity 200ms; z-index:60; text-align:center; }
+  .toast.show { opacity:1; }
+  .hidden { display:none !important; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="statusbar"><span id="clock">9:41</span><span class="icons">●●● &nbsp;📶</span></div>
+  <div class="capsule"><span class="c-dot">●●</span><span>⊙</span></div>
+
+  <div class="screen">
+    <!-- 首页 -->
+    <div class="view active" id="v-dashboard">
+      <div class="navbar"><h1>XYFamily</h1><div class="act" onclick="toast('扫码（演示）')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M3 12h18"/></svg></div></div>
+      <div class="scroll pad">
+        <div class="dash-head">
+          <div class="av">技</div>
+          <div class="ct"><div style="font-weight:600">技术部</div><div class="muted" style="font-size:13px"><span class="tag org">组织管理员</span></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><div class="v">86</div><div class="l">成员</div></div>
+          <div class="stat"><div class="v">6</div><div class="l">团队</div></div>
+          <div class="stat"><div class="v">9</div><div class="l">待处理消息</div></div>
+        </div>
+        <div class="sec-title">快捷入口</div>
+        <div class="quick">
+          <div class="qi" onclick="go('#/scan')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M3 12h18"/></svg></span><span class="ql">扫码加入</span></div>
+          <div class="qi" onclick="go('#/invite')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5 15.4 17.5M15.4 6.5 8.6 10.5"/></svg></span><span class="ql">邀请成员</span></div>
+          <div class="qi" onclick="go('#/message')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span><span class="ql">消息</span></div>
+          <div class="qi" onclick="go('#/profile')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><span class="ql">我的</span></div>
+        </div>
+        <div class="sec-title">最近消息</div>
+        <div class="cell-group">
+          <div class="cell" onclick="go('#/message-detail')"><div class="ct"><div class="t">审批待办 · 3 项</div><div class="s">外部合作方申请加入</div></div><span class="dot-num">3</span></div>
+          <div class="cell" onclick="go('#/message-detail')"><div class="ct"><div class="t">角色已更新</div><div class="s">你被任命为产品组团队管理员</div></div><div class="unread"></div></div>
+          <div class="cell" onclick="go('#/message')"><div class="ct"><div class="t">查看全部</div></div><div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 组织列表 -->
+    <div class="view" id="v-org">
+      <div class="navbar"><h1>组织</h1></div>
+      <div class="scroll pad">
+        <div class="cell-group">
+          <div class="cell" onclick="go('#/org-detail')"><div class="avatar">技</div><div class="ct"><div class="t">技术部</div><div class="s">组织管理员 · 86 人</div></div><div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></div></div>
+          <div class="cell" onclick="go('#/org-detail')"><div class="avatar">产</div><div class="ct"><div class="t">产品组</div><div class="s">团队管理员 · 42 人</div></div><div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></div></div>
+          <div class="cell" onclick="go('#/org-detail')"><div class="avatar">市</div><div class="ct"><div class="t">市场外联</div><div class="s">普通成员 · 28 人</div></div><div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        </div>
+        <button class="btn btn-default" onclick="go('#/scan')" style="margin-top:8px">+ 扫码加入组织</button>
+      </div>
+    </div>
+
+    <!-- 组织详情 -->
+    <div class="view" id="v-org-detail">
+      <div class="navbar"><div class="back" onclick="go('#/org')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></div><h1>组织详情</h1><div class="act" onclick="go('#/invite')">分享</div></div>
+      <div class="scroll pad">
+        <div class="card" style="text-align:center">
+          <div class="avatar" style="margin:0 auto 10px;width:64px;height:64px;font-size:26px">技</div>
+          <div style="font-size:20px;font-weight:700">技术部</div>
+          <div style="margin-top:8px"><span class="tag org">组织管理员</span></div>
+          <div class="stat-row" style="margin-top:16px;margin-bottom:0;box-shadow:none">
+            <div class="stat" style="box-shadow:none"><div class="v">86</div><div class="l">成员</div></div>
+            <div class="stat" style="box-shadow:none"><div class="v">6</div><div class="l">团队</div></div>
+          </div>
+        </div>
+        <div class="cell-group">
+          <div class="cell"><div class="ct"><div class="t">创建时间</div></div><div class="cv">2025-03-12</div></div>
+          <div class="cell"><div class="ct"><div class="t">状态</div></div><span class="tag ok">活跃</span></div>
+          <div class="cell" onclick="toast('成员列表（演示）')"><div class="ct"><div class="t">成员管理</div></div><div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        </div>
+        <div class="cell-group">
+          <div class="cell"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div><div class="ct"><div class="t">消息通知</div></div><div class="switch" id="sw1" style="width:51px;height:31px;border-radius:999px;background:var(--state-success);position:relative"><div style="position:absolute;top:2px;right:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm)"></div></div></div>
+          <div class="cell" onclick="openSheet('exit')"><div class="ci" style="color:var(--state-error)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></div><div class="ct"><div class="t" style="color:var(--state-error)">退出组织</div></div></div>
+        </div>
+        <div style="display:flex;gap:12px;padding:0 4px">
+          <button class="btn btn-primary" style="flex:1" onclick="go('#/invite')">邀请成员</button>
+          <button class="btn btn-default" style="flex:1" onclick="go('#/invite')">分享组织</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 消息列表 -->
+    <div class="view" id="v-message">
+      <div class="navbar"><h1>消息</h1><div class="act" onclick="toast('全部已读（演示）')">全部已读</div></div>
+      <div class="scroll pad">
+        <div class="cell-group">
+          <div class="cell" onclick="go('#/message-detail')"><div class="avatar" style="width:40px;height:40px;background:var(--brand-50,#E8F2FF);color:var(--primary)">审</div><div class="ct"><div class="t">审批待办 · 3 项</div><div class="s">外部合作方申请加入技术部</div></div><span class="dot-num">3</span></div>
+          <div class="cell" onclick="go('#/message-detail')"><div class="avatar" style="width:40px;height:40px;background:var(--brand-50,#E8F2FF);color:var(--primary)">角</div><div class="ct"><div class="t">角色已更新</div><div class="s">你被任命为产品组团队管理员</div></div><div class="unread"></div></div>
+          <div class="cell" onclick="go('#/message-detail')"><div class="avatar" style="width:40px;height:40px;background:var(--brand-50,#E8F2FF);color:var(--primary)">邀</div><div class="ct"><div class="t">新成员加入</div><div class="s">寇豆码 加入了技术部</div></div><div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 消息详情 -->
+    <div class="view" id="v-message-detail">
+      <div class="navbar"><div class="back" onclick="go('#/message')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></div><h1>消息详情</h1></div>
+      <div class="scroll pad">
+        <div class="card">
+          <div style="font-weight:600;margin-bottom:6px">角色已更新</div>
+          <div class="muted" style="font-size:12px;margin-bottom:10px">今天 09:50 · 系统通知</div>
+          <div style="font-size:15px;line-height:1.6">你已被任命为「产品组」团队管理员，可在小程序内查看团队信息与成员列表，管理操作请前往 Web / 桌面端。</div>
+        </div>
+        <button class="btn btn-primary" onclick="toast('已查看（演示）')">查看组织</button>
+      </div>
+    </div>
+
+    <!-- 扫码加入 -->
+    <div class="view" id="v-scan">
+      <div class="navbar"><div class="back" onclick="go('#/dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></div><h1>加入组织</h1></div>
+      <div class="scroll pad" style="text-align:center">
+        <div class="scan-box" onclick="toast('调起 wx.scanCode（演示）')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M3 12h18"/></svg>
+          <div class="t">扫描组织邀请码</div>
+        </div>
+        <div class="muted" style="font-size:13px">扫描组织分享的小程序码，即可申请加入</div>
+      </div>
+    </div>
+
+    <!-- 邀请分享 -->
+    <div class="view" id="v-invite">
+      <div class="navbar"><div class="back" onclick="go('#/org-detail')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></div><h1>邀请成员</h1></div>
+      <div class="scroll pad" style="text-align:center">
+        <div class="card" style="margin-top:8px">
+          <div style="font-weight:600">技术部</div>
+          <div class="muted" style="font-size:13px;margin-top:4px">邀请好友加入组织</div>
+          <div class="wxacode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M3 12h18"/></svg></div>
+          <div class="muted" style="font-size:12px">扫码即可加入组织</div>
+        </div>
+        <button class="btn btn-wechat" onclick="toast('调起 onShareAppMessage（演示）')">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M9 4C4.9 4 1.5 6.8 1.5 10.2c0 1.9 1 3.6 2.7 4.8L3.3 17l2.4-1.3c.8.2 1.7.4 2.6.4h.6c-.2-.6-.3-1.2-.3-1.9 0-3.2 3.1-5.7 6.9-5.7h.6C15.3 6 12.4 4 9 4z"/></svg>
+          分享给微信好友
+        </button>
+        <button class="btn btn-primary" style="margin-top:12px" onclick="toast('保存小程序码（演示）')">保存小程序码</button>
+      </div>
+    </div>
+
+    <!-- 我的 -->
+    <div class="view" id="v-profile">
+      <div class="navbar"><h1>我的</h1></div>
+      <div class="scroll pad">
+        <div class="card" style="text-align:center">
+          <div class="avatar" style="margin:0 auto 10px;width:64px;height:64px;font-size:26px">管</div>
+          <div style="font-size:19px;font-weight:700">严过关</div>
+          <div class="muted" style="font-size:13px;margin-top:2px">138****8000</div>
+          <div style="margin-top:8px"><span class="tag org">超级管理员</span></div>
+        </div>
+        <div class="cell-group">
+          <div class="cell" onclick="openSheet('org')"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div><div class="ct"><div class="t">当前组织</div></div><div class="cv">技术部</div><div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        </div>
+        <div class="cell-group">
+          <div class="cell"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div><div class="ct"><div class="t">消息通知</div></div><div class="switch" id="sw2" style="width:51px;height:31px;border-radius:999px;background:var(--state-success);position:relative"><div style="position:absolute;top:2px;right:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm)"></div></div></div>
+          <div class="cell" onclick="toggleDark()"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><div class="ct"><div class="t">深色模式</div></div><div class="switch" id="sw3" style="width:51px;height:31px;border-radius:999px;background:var(--background-300);position:relative"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm)"></div></div></div>
+        </div>
+        <div class="cell-group">
+          <div class="cell" onclick="toast('关于（演示）')"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div><div class="ct"><div class="t">关于 XYFamily</div></div><div class="cv">V1.0.0</div><div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        </div>
+        <button class="btn btn-danger" style="margin:8px 4px 16px;width:calc(100% - 8px)" onclick="toast('已退出登录（演示）')">退出登录</button>
+      </div>
+    </div>
+
+    <!-- tabBar -->
+    <div class="tabbar" id="tabbar">
+      <div class="tab active" data-tab="dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5 12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span class="tl">首页</span></div>
+      <div class="tab" data-tab="org"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg><span class="tl">组织</span></div>
+      <div class="tab" data-tab="message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="tl">消息</span><span class="badge">3</span></div>
+      <div class="tab" data-tab="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg><span class="tl">我的</span></div>
+    </div>
+  </div>
+
+  <!-- 底部弹层 -->
+  <div class="mask" id="mask" onclick="closeSheet()"></div>
+  <div class="sheet" id="sheet">
+    <div class="grip"></div>
+    <div id="sheetItems"></div>
+    <div class="s-cancel" onclick="closeSheet()">取消</div>
+  </div>
+
+  <!-- 微信授权登录浮层 -->
+  <div class="wx-login hidden" id="loginView">
+    <div class="logo">X</div>
+    <h1>XYFamily</h1>
+    <div class="sl">多租户账号权限管理平台</div>
+    <button class="btn btn-wechat" onclick="closeLogin()" style="max-width:280px">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M9 4C4.9 4 1.5 6.8 1.5 10.2c0 1.9 1 3.6 2.7 4.8L3.3 17l2.4-1.3c.8.2 1.7.4 2.6.4h.6c-.2-.6-.3-1.2-.3-1.9 0-3.2 3.1-5.7 6.9-5.7h.6C15.3 6 12.4 4 9 4z"/></svg>
+      微信一键登录
+    </button>
+    <div class="agreement" onclick="this.querySelector('.box').classList.toggle('on')">
+      <span class="box" id="agreeBox"></span>
+      <span>已阅读并同意</span><span class="link">《用户协议》</span><span>和</span><span class="link">《隐私政策》</span>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+  const $ = s => document.querySelector(s);
+  function go(hash){
+    const map = { '#/dashboard':'v-dashboard','#/org':'v-org','#/org-detail':'v-org-detail','#/message':'v-message','#/message-detail':'v-message-detail','#/scan':'v-scan','#/invite':'v-invite','#/profile':'v-profile' };
+    const tid = { 'v-dashboard':'dashboard','v-org':'org','v-org-detail':'org','v-message':'message','v-message-detail':'message','v-scan':'dashboard','v-invite':'org','v-profile':'profile' };
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    const vid = map[hash] || 'v-dashboard';
+    $('#'+vid).classList.add('active');
+    document.querySelectorAll('.tab').forEach(x=> x.classList.toggle('active', x.dataset.tab===tid[vid]));
+    $('.scroll').scrollTop = 0;
+  }
+  document.querySelectorAll('.tab').forEach(t=> t.addEventListener('click', ()=> go('#/'+t.dataset.tab)));
+  let toastTimer;
+  function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1700); }
+
+  const sheetMap = {
+    org:[['技术部（当前）',''],['切换组织',''],['查看全部组织','']],
+    exit:[['确认退出组织','danger']]
+  };
+  function openSheet(kind){ const items=sheetMap[kind]||[]; const box=$('#sheetItems'); box.innerHTML=''; items.forEach(([label,cls])=>{ const d=document.createElement('div'); d.className='s-item'+(cls?' '+cls:''); d.textContent=label; d.onclick=()=>{ closeSheet(); toast(label+'（演示）'); }; box.appendChild(d); }); $('#mask').classList.add('show'); requestAnimationFrame(()=>$('#sheet').classList.add('show')); }
+  function closeSheet(){ $('#sheet').classList.remove('show'); setTimeout(()=>$('#mask').classList.remove('show'),300); }
+
+  function toggleDark(){ const on=document.documentElement.dataset.theme==='dark'; document.documentElement.dataset.theme = on?'light':'dark'; const sw=$('#sw3'); if(sw){ if(on){ sw.style.background='var(--background-300)'; sw.firstElementChild.style.left='2px'; } else { sw.style.background='var(--state-success)'; sw.firstElementChild.style.left='22px'; } } }
+
+  function closeLogin(){ $('#loginView').classList.add('hidden'); toast('微信登录成功（演示）'); }
+  // $('#loginView').classList.remove('hidden'); // 如需先看授权登录页，取消注释
+
+  function tick(){ const d=new Date(); $('#clock').textContent = d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'); }
+  tick(); setInterval(tick,30000);
+</script>
+</body>
+</html>

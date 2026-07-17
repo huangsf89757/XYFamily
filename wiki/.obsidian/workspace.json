@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "241d6e4963f726ff",
+    "type": "split",
+    "children": [
+      {
+        "id": "e32a05d2804eb7c2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "94ea95290d6b7d35",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cb2949682e410d0b",
+    "type": "split",
+    "children": [
+      {
+        "id": "4e9c2fb36fcc6983",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0c5bb682890f6fd7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "151947f8419b934b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "line:(V1.0.0.md)",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "2446e7a412007041",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4f4d309cbfdc14ac",
+    "type": "split",
+    "children": [
+      {
+        "id": "16910b3d2b09adbe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a17570be1b678f3a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "fd904a66f8a1d099",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "01-项目总览/04-客诉支撑/客诉支撑.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "客诉支撑 的出链列表"
+            }
+          },
+          {
+            "id": "d795d16ff8494008",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "3bd3615cb1f93f85",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "a45a5614ef25c77e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "01-项目总览/04-客诉支撑/客诉支撑.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "客诉支撑 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "94ea95290d6b7d35",
+  "lastOpenFiles": [
+    "02-需求与产品设计/02-原型与UI设计/04-小程序/XYFamily-小程序原型.zip",
+    "02-需求与产品设计/02-原型与UI设计/04-小程序/EXPORT-README.md",
+    "02-需求与产品设计/02-原型与UI设计/04-小程序/index.html",
+    "02-需求与产品设计/02-原型与UI设计/03-移动端/XYFamily-移动端原型.zip",
+    "02-需求与产品设计/02-原型与UI设计/03-移动端/EXPORT-README.md",
+    "02-需求与产品设计/02-原型与UI设计/03-移动端/index.html",
+    "02-需求与产品设计/02-原型与UI设计/02-桌面端/XYFamily-桌面端原型.zip",
+    "02-需求与产品设计/02-原型与UI设计/02-桌面端/EXPORT-README.md",
+    "02-需求与产品设计/02-原型与UI设计/02-桌面端/index.html",
+    "01-项目总览/03-里程碑/02-插件功能开发/插件功能开发.md",
+    "01-项目总览/03-里程碑/02-插件功能开发",
+    "04-接口文档/01-标准接口/01-多租户底座/09-邀请接口.md",
+    "02-需求与产品设计/02-原型与UI设计/原型与UI设计.md",
+    "01-项目总览/03-里程碑/里程碑.md",
+    "01-项目总览/项目总览.md",
+    "README.md",
+    "05-测试与质量保障/测试与质量保障.md",
+    "03-架构与方案设计/架构与方案设计.md",
+    "01-基座",
+    "04-接口文档/接口文档.md",
+    "01-设计规范",
+    "08-审计接口",
+    "04-接口文档/01-标准接口/01-多租户底座/08-审计接口.md",
+    "04-接口文档/01-标准接口/01-多租户底座/07-超级管理员接口.md",
+    "04-接口文档/01-标准接口/01-多租户底座/06-权限接口.md",
+    "04-接口文档/01-标准接口/01-多租户底座/05-小组接口.md",
+    "04-接口文档/01-标准接口/01-多租户底座/04-团队接口.md",
+    "04-接口文档/01-标准接口/01-多租户底座/03-组织接口.md",
+    "04-接口文档/01-标准接口/01-多租户底座/02-账号接口.md",
+    "04-接口文档/01-标准接口/01-多租户底座/01-认证接口.md",
+    "01-项目总览/02-标准与规范/04-开发规范/02-接口文档规范.md",
+    "01-项目总览/02-标准与规范/04-开发规范/01-Git版本管控规范.md",
+    "04-接口文档/08-审计接口/08-审计接口.md",
+    "04-链路实现",
+    "04-接口文档/07-超级管理员接口/07-超级管理员接口.md",
+    "04-接口文档/06-权限接口/06-权限接口.md"
+  ]
+}

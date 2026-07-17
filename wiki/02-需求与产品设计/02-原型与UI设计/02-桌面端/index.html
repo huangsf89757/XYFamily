@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>XYFamily 桌面端原型 · Desktop Client</title>
+<style id="theme-vars">
+  /* ===== 全局设计令牌（来自 00-全局设计规范 · Pinguo 设计语言） ===== */
+  :root {
+    /* 原始色板 - 品牌 */
+    --brand-50:#E8F2FF; --brand-100:#CFE5FF; --brand-200:#9FCBFF; --brand-300:#66ABFF;
+    --brand-400:#2E8DFF; --brand-500:#007AFF; --brand-600:#0064D6; --brand-700:#004FAD;
+    --brand-800:#003B82; --brand-900:#00275A;
+    /* 原始色板 - 背景 */
+    --background-50:#FFFFFF; --background-100:#F7F7FA; --background-200:#F2F2F7;
+    --background-300:#E5E5EA; --background-400:#D1D1D6; --background-500:#AEAEB2;
+    --background-600:#8E8E93; --background-700:#3A3A3C; --background-800:#1C1C1E; --background-900:#000000;
+    /* 原始色板 - 文字 */
+    --text-300:#AEAEB2; --text-400:#8E8E93; --text-500:#6E6E73; --text-600:#48484A;
+    --text-700:#3C3C43; --text-800:#1D1D1F;
+    /* 状态色 */
+    --state-success:#34C759; --state-success-surface:#E9F9EE;
+    --state-error:#FF3B30; --state-error-surface:#FFECEA;
+    --state-warning:#FF9500; --state-warning-surface:#FFF4E6;
+    --state-info:#5AC8FA; --state-info-surface:#E6F7FE;
+    /* 图表色 */
+    --chart-1:#34C759; --chart-2:#007AFF; --chart-3:#FF9500; --chart-4:#5856D6; --chart-5:#AF52DE;
+    /* 语义令牌 - Light */
+    --background:var(--background-50); --foreground:var(--text-800);
+    --card:var(--background-50); --card-foreground:var(--text-800);
+    --popover:var(--background-50); --popover-foreground:var(--text-800);
+    --primary:var(--brand-500); --primary-foreground:var(--background-50);
+    --secondary:var(--background-200); --secondary-foreground:var(--text-800);
+    --muted:var(--background-200); --muted-foreground:var(--text-400);
+    --accent:var(--background-100); --accent-foreground:var(--text-800);
+    --destructive:var(--state-error); --destructive-foreground:#FFFFFF;
+    --success:var(--state-success); --success-foreground:#FFFFFF;
+    --border:var(--background-300); --input:var(--background-400); --ring:var(--brand-500);
+    --icon:var(--text-800); --icon-muted:var(--text-500);
+    /* 侧边栏令牌 */
+    --sidebar:var(--background-200); --sidebar-foreground:var(--text-800);
+    --sidebar-primary:var(--brand-500); --sidebar-primary-foreground:var(--background-50);
+    --sidebar-accent:var(--background-300); --sidebar-accent-foreground:var(--text-800);
+    --sidebar-border:var(--background-300); --sidebar-ring:var(--brand-500);
+    /* 圆角 */
+    --brand-radius-sm:8px; --brand-radius-md:12px; --radius-lg:19.2px;
+    /* 阴影 */
+    --shadow-sm:0 1px 2px 0 rgba(0,0,0,0.05),0 1px 3px -1px rgba(0,0,0,0.05);
+    --shadow-md:0 4px 8px -2px rgba(0,0,0,0.06),0 2px 4px -2px rgba(0,0,0,0.05);
+    --shadow-lg:0 8px 24px -8px rgba(0,0,0,0.08),0 4px 8px -4px rgba(0,0,0,0.05);
+    --shadow-2xl:0 24px 64px -12px rgba(0,0,0,0.12);
+    /* 桌面端专用令牌 */
+    --desktop-titlebar-height:40px; --desktop-traffic-safezone:80px;
+    --desktop-offline-banner-height:40px; --desktop-update-banner-height:48px;
+    /* 字体 */
+    --font-sans:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    /* 间距 */
+    --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
+    --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+  }
+  [data-theme="dark"] {
+    --background:var(--background-900); --foreground:var(--text-50);
+    --card:var(--background-800); --card-foreground:var(--text-50);
+    --popover:var(--background-700); --popover-foreground:var(--text-50);
+    --primary:var(--brand-400); --primary-foreground:var(--background-900);
+    --secondary:var(--background-800); --secondary-foreground:var(--text-50);
+    --muted:var(--background-800); --muted-foreground:var(--text-400);
+    --accent:var(--background-700); --accent-foreground:var(--text-50);
+    --destructive:var(--state-error); --destructive-foreground:#FFFFFF;
+    --success:var(--state-success); --success-foreground:#FFFFFF;
+    --border:var(--background-700); --input:var(--background-700); --ring:var(--brand-400);
+    --icon:var(--text-50); --icon-muted:var(--text-500);
+    --sidebar:var(--background-800); --sidebar-foreground:var(--text-50);
+    --sidebar-primary:var(--brand-400); --sidebar-primary-foreground:var(--background-900);
+    --sidebar-accent:var(--background-700); --sidebar-accent-foreground:var(--text-50);
+    --sidebar-border:var(--background-700); --sidebar-ring:var(--brand-400);
+    --shadow-sm:0 1px 2px 0 rgba(0,0,0,0.40);
+    --shadow-md:0 4px 8px -2px rgba(0,0,0,0.44);
+    --shadow-lg:0 8px 24px -8px rgba(0,0,0,0.50);
+    --shadow-2xl:0 24px 64px -12px rgba(0,0,0,0.55);
+  }
+</style>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { height:100%; }
+  body {
+    font-family:var(--font-sans);
+    background:#48484A;
+    color:var(--foreground);
+    -webkit-font-smoothing:antialiased;
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+  }
+  /* ===== 桌面窗口外壳 ===== */
+  .window {
+    width:1180px; height:760px; max-width:100%;
+    background:var(--background);
+    border-radius:14px;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,0.55);
+    display:flex; flex-direction:column;
+    overflow:hidden;
+    border:1px solid rgba(0,0,0,0.12);
+  }
+  /* 标题栏 */
+  .titlebar {
+    height:var(--desktop-titlebar-height);
+    display:flex; align-items:center;
+    flex-shrink:0;
+    background:var(--background-100);
+    border-bottom:1px solid var(--sidebar-border);
+    position:relative;
+    user-select:none;
+  }
+  .titlebar.macos { -webkit-app-region:drag; }
+  .titlebar.win {
+    background:var(--card);
+    justify-content:space-between;
+    padding:0 12px;
+  }
+  /* macOS 交通灯 */
+  .traffic { display:flex; gap:8px; padding-left:16px; align-items:center; }
+  .traffic .light { width:12px; height:12px; border-radius:50%; }
+  .traffic .red{background:#FF5F57;} .traffic .yellow{background:#FEBC2E;} .traffic .green{background:#28C840;}
+  .traffic-safe { width:var(--desktop-traffic-safezone); }
+  .title-center {
+    position:absolute; left:0; right:0; text-align:center;
+    font-size:13px; font-weight:500; color:var(--muted-foreground);
+    pointer-events:none;
+  }
+  /* Windows 控制按钮 */
+  .win-ctrls { display:flex; align-items:center; gap:2px; }
+  .win-ctrls button {
+    width:46px; height:var(--desktop-titlebar-height); border:none; background:transparent;
+    color:var(--muted-foreground); cursor:pointer; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .win-ctrls button:hover { background:var(--background-200); }
+  .win-ctrls .close:hover { background:var(--state-error); color:#fff; }
+  .win-title { font-size:13px; font-weight:500; color:var(--muted-foreground); }
+  .win-left { display:flex; align-items:center; gap:10px; }
+
+  /* ===== 横幅 ===== */
+  .banner { display:flex; align-items:center; gap:10px; padding:0 16px; font-size:13px; flex-shrink:0; }
+  .banner.offline { height:var(--desktop-offline-banner-height); background:var(--state-warning-surface); color:var(--state-warning); }
+  .banner.update { height:var(--desktop-update-banner-height); background:var(--state-info-surface); color:#0a6cae; }
+  .banner .spacer { flex:1; }
+  .banner button { border:none; background:transparent; cursor:pointer; font-size:13px; font-weight:500; }
+  .banner.offline button { color:var(--state-warning); }
+  .banner.update .act { color:#0a6cae; }
+  .banner.update .later { color:var(--muted-foreground); }
+
+  /* ===== 主体 ===== */
+  .body { flex:1; display:flex; min-height:0; }
+  /* 侧边栏 */
+  .sidebar {
+    width:260px; flex-shrink:0;
+    background:var(--sidebar);
+    border-right:1px solid var(--sidebar-border);
+    display:flex; flex-direction:column;
+    transition:width 250ms cubic-bezier(0.4,0,0.2,1);
+    overflow:hidden;
+  }
+  .sidebar.collapsed { width:72px; }
+  .sidebar .brand { display:flex; align-items:center; gap:10px; padding:16px 18px; height:60px; }
+  .sidebar .brand .logo { width:30px; height:30px; border-radius:8px; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
+  .sidebar .brand .name { font-weight:700; font-size:15px; white-space:nowrap; }
+  .sidebar.collapsed .brand .name, .sidebar.collapsed .nav-label, .sidebar.collapsed .group-title { display:none; }
+  .nav-scroll { flex:1; overflow-y:auto; padding:8px; }
+  .group-title { font-size:11px; color:var(--muted-foreground); padding:14px 12px 6px; text-transform:uppercase; letter-spacing:.04em; }
+  .nav-item {
+    display:flex; align-items:center; gap:12px; height:40px; padding:0 12px;
+    border-radius:var(--brand-radius-sm); color:var(--sidebar-foreground);
+    cursor:pointer; font-size:14px; white-space:nowrap; position:relative;
+    margin-bottom:2px;
+  }
+  .nav-item:hover { background:var(--sidebar-accent); }
+  .nav-item.active { background:var(--sidebar-primary); color:var(--sidebar-primary-foreground); font-weight:500; }
+  .nav-item svg { width:20px; height:20px; flex-shrink:0; }
+  .nav-item .badge { margin-left:auto; background:var(--state-error); color:#fff; font-size:11px; min-width:18px; height:18px; border-radius:9px; display:flex; align-items:center; justify-content:center; padding:0 5px; }
+  .sidebar-foot { padding:8px; border-top:1px solid var(--sidebar-border); }
+  .sidebar-foot .nav-item { margin:0; }
+
+  /* 内容区 */
+  .content { flex:1; display:flex; flex-direction:column; min-width:0; background:var(--background); }
+  .topbar {
+    height:56px; flex-shrink:0; border-bottom:1px solid var(--border);
+    display:flex; align-items:center; gap:12px; padding:0 24px; background:var(--background);
+  }
+  .topbar h1 { font-size:18px; font-weight:600; }
+  .topbar .crumb { color:var(--muted-foreground); font-size:13px; }
+  .topbar .spacer { flex:1; }
+  .icon-btn { width:38px; height:38px; border-radius:var(--brand-radius-sm); border:1px solid var(--border); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--icon); }
+  .icon-btn:hover { background:var(--accent); }
+  .icon-btn svg { width:18px; height:18px; }
+  .search-pill { display:flex; align-items:center; gap:8px; background:var(--secondary); border-radius:8px; padding:8px 12px; color:var(--muted-foreground); font-size:13px; cursor:pointer; }
+  .search-pill kbd { background:var(--card); border:1px solid var(--border); border-radius:4px; padding:1px 6px; font-family:var(--font-mono); font-size:11px; }
+  .avatar { width:34px; height:34px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; cursor:pointer; flex-shrink:0; }
+
+  .scroll { flex:1; overflow-y:auto; padding:24px; }
+  .view { display:none; } .view.active { display:block; }
+
+  /* 通用组件 */
+  .card { background:var(--card); border-radius:var(--brand-radius-md); box-shadow:var(--shadow-sm); padding:20px; border:1px solid var(--border); }
+  .card h3 { font-size:15px; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+  .grid { display:grid; gap:16px; }
+  .grid.cols-4 { grid-template-columns:repeat(4,1fr); }
+  .grid.cols-3 { grid-template-columns:repeat(3,1fr); }
+  .grid.cols-2 { grid-template-columns:repeat(2,1fr); }
+  .stat { background:var(--card); border:1px solid var(--border); border-radius:var(--brand-radius-md); padding:18px; box-shadow:var(--shadow-sm); }
+  .stat .label { font-size:13px; color:var(--muted-foreground); }
+  .stat .value { font-size:28px; font-weight:700; margin-top:6px; }
+  .stat .sub { font-size:12px; color:var(--muted-foreground); margin-top:4px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 16px; border-radius:var(--brand-radius-sm); border:none; font-size:14px; font-weight:500; cursor:pointer; font-family:var(--font-sans); }
+  .btn svg { width:16px; height:16px; }
+  .btn-primary { background:var(--primary); color:var(--primary-foreground); }
+  .btn-primary:hover { background:var(--brand-600); }
+  .btn-primary:active { transform:scale(.98); }
+  .btn-ghost { background:var(--secondary); color:var(--secondary-foreground); }
+  .btn-ghost:hover { background:var(--background-300); }
+  .btn-sm { height:32px; padding:0 12px; font-size:13px; }
+
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  thead th { text-align:left; font-size:12px; color:var(--muted-foreground); font-weight:500; padding:10px 14px; border-bottom:1px solid var(--border); }
+  tbody td { padding:12px 14px; border-bottom:1px solid var(--border); }
+  tbody tr { cursor:context-menu; }
+  tbody tr:hover { background:var(--accent); }
+  tbody tr:last-child td { border-bottom:none; }
+
+  .tag { display:inline-flex; align-items:center; height:22px; padding:0 10px; border-radius:999px; font-size:11px; font-weight:600; }
+  .tag.super { background:var(--chart-4); color:#fff; }
+  .tag.org { background:var(--primary); color:#fff; }
+  .tag.team { background:var(--state-success); color:#fff; }
+  .tag.member { background:var(--background-500); color:#fff; }
+  .tag.guest { background:var(--background-400); color:var(--text-800); }
+  .tag.ok { background:var(--state-success-surface); color:var(--state-success); }
+  .tag.warn { background:var(--state-warning-surface); color:var(--state-warning); }
+  .tag.err { background:var(--state-error-surface); color:var(--state-error); }
+
+  .row-actions { display:flex; gap:6px; opacity:0; }
+  tbody tr:hover .row-actions { opacity:1; }
+  .mini { width:28px; height:28px; border-radius:6px; border:1px solid var(--border); background:var(--card); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--icon); }
+  .mini:hover { background:var(--accent); }
+  .mini svg { width:15px; height:15px; }
+
+  .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); background:rgba(0,0,0,0.82); color:#fff; padding:12px 20px; border-radius:10px; font-size:14px; opacity:0; transition:all 250ms cubic-bezier(0.4,0,0.2,1); z-index:50; pointer-events:none; }
+  .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+  /* 命令面板 */
+  .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.4); display:none; align-items:flex-start; justify-content:center; z-index:60; padding-top:140px; }
+  .overlay.show { display:flex; }
+  .cmd { width:560px; max-width:92%; background:var(--popover); border-radius:var(--brand-radius-md); box-shadow:var(--shadow-2xl); overflow:hidden; border:1px solid var(--border); }
+  .cmd input { width:100%; border:none; outline:none; background:transparent; padding:16px 18px; font-size:15px; color:var(--popover-foreground); border-bottom:1px solid var(--border); font-family:var(--font-sans); }
+  .cmd-list { max-height:320px; overflow-y:auto; padding:6px; }
+  .cmd-item { display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:8px; cursor:pointer; font-size:14px; color:var(--popover-foreground); }
+  .cmd-item:hover, .cmd-item.active { background:var(--primary); color:var(--primary-foreground); }
+  .cmd-item svg { width:18px; height:18px; }
+  .cmd-item .k { margin-left:auto; font-size:11px; opacity:.7; }
+
+  /* 右键菜单 */
+  .ctx { position:fixed; min-width:200px; background:var(--popover); border-radius:var(--brand-radius-md); box-shadow:var(--shadow-lg); border:1px solid var(--border); padding:6px; display:none; z-index:70; }
+  .ctx.show { display:block; }
+  .ctx-item { display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:6px; font-size:13px; cursor:pointer; color:var(--popover-foreground); }
+  .ctx-item:hover { background:var(--primary); color:var(--primary-foreground); }
+  .ctx-item svg { width:15px; height:15px; }
+  .ctx-item.danger { color:var(--state-error); }
+  .ctx-item.danger:hover { background:var(--state-error); color:#fff; }
+  .ctx-sep { height:1px; background:var(--border); margin:5px 4px; }
+
+  /* 登录页 */
+  .login-wrap { position:absolute; inset:0; background:var(--background); display:none; align-items:center; justify-content:center; z-index:80; }
+  .login-wrap.show { display:flex; }
+  .login-card { width:380px; text-align:center; }
+  .login-logo { width:64px; height:64px; border-radius:16px; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:700; margin:0 auto 16px; }
+  .login-card h2 { font-size:22px; font-weight:700; }
+  .login-card p { color:var(--muted-foreground); font-size:14px; margin:6px 0 28px; }
+  .field { text-align:left; margin-bottom:16px; }
+  .field label { display:block; font-size:13px; color:var(--muted-foreground); margin-bottom:6px; }
+  .field input { width:100%; height:44px; border:1px solid var(--input); border-radius:var(--brand-radius-sm); padding:0 14px; font-size:15px; font-family:var(--font-sans); background:var(--card); color:var(--foreground); outline:none; }
+  .field input:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(0,122,255,.18); }
+  .login-card .btn { width:100%; justify-content:center; height:44px; margin-top:6px; }
+  .login-hint { margin-top:14px; font-size:12px; color:var(--muted-foreground); }
+
+  /* 平台切换 */
+  .plat-toggle { display:flex; gap:4px; background:var(--secondary); border-radius:8px; padding:3px; }
+  .plat-toggle button { border:none; background:transparent; padding:5px 10px; border-radius:6px; font-size:12px; cursor:pointer; color:var(--muted-foreground); font-family:var(--font-sans); }
+  .plat-toggle button.on { background:var(--card); color:var(--foreground); box-shadow:var(--shadow-xs); }
+
+  .empty { text-align:center; color:var(--muted-foreground); padding:60px; }
+  .muted { color:var(--muted-foreground); }
+  .sec-title { font-size:13px; font-weight:600; color:var(--muted-foreground); margin:24px 0 12px; text-transform:uppercase; letter-spacing:.04em; }
+  .kv { font-size:14px; } .kv .k { color:var(--muted-foreground); }
+</style>
+</head>
+<body>
+<div class="window">
+  <!-- 标题栏 -->
+  <div class="titlebar macos" id="titlebar">
+    <div class="traffic-safe"></div>
+    <div class="traffic"><span class="light red"></span><span class="light yellow"></span><span class="light green"></span></div>
+    <div class="title-center" id="titleCenter">XYFamily · 控制台</div>
+    <div class="win-ctrls" style="display:none">
+      <button title="最小化">—</button><button title="最大化">▢</button><button class="close" title="关闭">✕</button>
+    </div>
+  </div>
+
+  <!-- 离线横幅 -->
+  <div class="banner offline" id="offlineBanner" style="display:none">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.58 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+    <span>网络连接已断开，正在以离线模式运行</span>
+  </div>
+  <!-- 更新横幅 -->
+  <div class="banner update" id="updateBanner" style="display:none">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+    <span>发现新版本 V1.1.0，点击查看更新内容</span>
+    <div class="spacer"></div>
+    <button class="act" onclick="document.getElementById('updateBanner').style.display='none'">立即更新</button>
+    <button class="later" onclick="document.getElementById('updateBanner').style.display='none'">稍后提醒</button>
+  </div>
+
+  <!-- 主体 -->
+  <div class="body">
+    <!-- 侧边栏 -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="logo">X</div><div class="name">XYFamily</div></div>
+      <div class="nav-scroll" id="navScroll">
+        <div class="group-title">工作台</div>
+        <div class="nav-item active" data-route="#/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg><span class="nav-label">控制台</span></div>
+        <div class="nav-item" data-route="#/org"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg><span class="nav-label">组织管理</span></div>
+        <div class="nav-item" data-route="#/team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="nav-label">团队管理</span></div>
+        <div class="nav-item" data-route="#/group"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="nav-label">小组管理</span></div>
+        <div class="group-title">权限与安全</div>
+        <div class="nav-item" data-route="#/permissions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="nav-label">角色权限</span></div>
+        <div class="nav-item" data-route="#/audit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><span class="nav-label">审计日志</span><span class="badge">3</span></div>
+        <div class="nav-item" data-route="#/superadmin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="nav-label">超级管理员</span></div>
+      </div>
+      <div class="sidebar-foot">
+        <div class="nav-item" id="collapseBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg><span class="nav-label">收起侧边栏</span></div>
+      </div>
+    </aside>
+
+    <!-- 内容区 -->
+    <main class="content">
+      <div class="topbar">
+        <button class="icon-btn" id="sideToggle" title="切换侧边栏 (Cmd/Ctrl+B)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <div>
+          <div class="crumb" id="crumb">工作台 / 控制台</div>
+          <h1 id="pageTitle">控制台</h1>
+        </div>
+        <div class="spacer"></div>
+        <div class="search-pill" id="openCmd"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>搜索 <kbd>⌘K</kbd></div>
+        <button class="icon-btn" id="themeBtn" title="切换主题 (⌘⇧T)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <button class="icon-btn" id="offlineToggle" title="模拟离线"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg></button>
+        <button class="icon-btn" id="updateToggle" title="模拟更新"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></button>
+        <div class="avatar" id="meAvatar" title="管理员 · 切换角色">管</div>
+      </div>
+
+      <div class="scroll" id="scroll">
+        <!-- 控制台 -->
+        <section class="view active" id="v-dashboard">
+          <div class="grid cols-4">
+            <div class="stat"><div class="label">我的组织</div><div class="value">4</div><div class="sub">2 个待审批</div></div>
+            <div class="stat"><div class="label">团队成员</div><div class="value">186</div><div class="sub">本月 +12</div></div>
+            <div class="stat"><div class="label">待处理审批</div><div class="value">5</div><div class="sub">3 项超时</div></div>
+            <div class="stat"><div class="label">待读消息</div><div class="value">9</div><div class="sub">2 条系统公告</div></div>
+          </div>
+          <div class="sec-title">快捷操作</div>
+          <div class="grid cols-3">
+            <div class="card" style="cursor:pointer" onclick="go('#/org')"><h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>新建组织</h3><div class="muted" style="font-size:13px">创建新的多租户组织单元</div></div>
+            <div class="card" style="cursor:pointer" onclick="go('#/org')"><h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>邀请成员</h3><div class="muted" style="font-size:13px">通过邮箱或链接邀请加入</div></div>
+            <div class="card" style="cursor:pointer" onclick="go('#/audit')"><h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>查看审计日志</h3><div class="muted" style="font-size:13px">追溯登录与操作记录</div></div>
+          </div>
+          <div class="sec-title">最近动态</div>
+          <div class="card" style="padding:0">
+            <table>
+              <thead><tr><th>事件</th><th>组织</th><th>操作人</th><th>时间</th><th>状态</th></tr></thead>
+              <tbody>
+                <tr><td>新增成员</td><td>技术部</td><td>寇豆码</td><td>10:24</td><td><span class="tag ok">成功</span></td></tr>
+                <tr><td>角色变更</td><td>产品组</td><td>严过关</td><td>09:50</td><td><span class="tag ok">成功</span></td></tr>
+                <tr><td>异地登录</td><td>—</td><td>系统</td><td>08:12</td><td><span class="tag warn">待核验</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 组织管理 -->
+        <section class="view" id="v-org">
+          <div class="card" style="padding:0">
+            <table>
+              <thead><tr><th>组织名称</th><th>角色</th><th>成员数</th><th>状态</th><th>创建时间</th><th></th></tr></thead>
+              <tbody>
+                <tr><td>技术部</td><td><span class="tag org">组织管理员</span></td><td>86</td><td><span class="tag ok">活跃</span></td><td>2025-03-12</td><td><div class="row-actions"><button class="mini" title="查看"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="mini" title="编辑"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></div></td></tr>
+                <tr><td>产品组</td><td><span class="tag team">团队管理员</span></td><td>42</td><td><span class="tag ok">活跃</span></td><td>2025-05-20</td><td><div class="row-actions"><button class="mini" title="查看"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="mini" title="编辑"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></div></td></tr>
+                <tr><td>市场外联</td><td><span class="tag member">普通成员</span></td><td>28</td><td><span class="tag err">已停用</span></td><td>2025-01-08</td><td><div class="row-actions"><button class="mini" title="查看"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="mini" title="编辑"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></div></td></tr>
+                <tr><td>外部合作方</td><td><span class="tag guest">访客</span></td><td>9</td><td><span class="tag warn">待审核</span></td><td>2025-07-01</td><td><div class="row-actions"><button class="mini" title="查看"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="mini" title="编辑"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="muted" style="font-size:12px;margin-top:12px">提示：在表格行上右键可呼出桌面端原生右键菜单（查看详情 / 编辑 / 复制 ID / 删除）。</p>
+        </section>
+
+        <!-- 团队/小组/权限/审计/超级管理员：占位统一态 -->
+        <section class="view" id="v-team"><div class="card"><h3>团队管理</h3><div class="kv"><div><span class="k">说明：</span>复用 Web 端团队管理视图，桌面端增强右键菜单、列宽拖拽、虚拟滚动与多选操作栏。</div></div><div class="empty" style="padding:40px">团队列表（演示占位）· 与 Web 端共享组件库</div></div></section>
+        <section class="view" id="v-group"><div class="card"><h3>小组管理</h3><div class="empty" style="padding:40px">小组列表（演示占位）· 与 Web 端共享组件库</div></div></section>
+        <section class="view" id="v-permissions"><div class="card"><h3>角色权限矩阵</h3><div class="kv"><div><span class="k">角色体系：</span>9 种预定义角色，6 层继承，45 个权限点。</div></div><div class="empty" style="padding:40px">权限矩阵（演示占位）· 严格复用 Web 端权限矩阵视图</div></div></section>
+        <section class="view" id="v-audit"><div class="card" style="padding:0"><table><thead><tr><th>类型</th><th>操作人</th><th>IP</th><th>时间</th><th>结果</th></tr></thead><tbody>
+          <tr><td>登录审计</td><td>严过关</td><td>10.12.3.4</td><td>10:24</td><td><span class="tag ok">成功</span></td></tr>
+          <tr><td>权限变更</td><td>寇豆码</td><td>10.12.3.9</td><td>09:50</td><td><span class="tag ok">成功</span></td></tr>
+          <tr><td>异地登录</td><td>未知</td><td>203.0.113.7</td><td>08:12</td><td><span class="tag err">拦截</span></td></tr>
+        </tbody></table></div></section>
+        <section class="view" id="v-superadmin"><div class="card"><h3>超级管理员</h3><div class="kv"><div><span class="k">系统配置：</span>全局参数、强制降级、全局审计。</div><div style="margin-top:8px"><span class="k">强制降级：</span>紧急时将租户降级至安全基线（需二次确认）。</div></div><div class="empty" style="padding:40px">超级管理员视图（演示占位）</div></div></section>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- 登录浮层（演示切换器） -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-card">
+    <div class="login-logo">X</div>
+    <h2>登录 XYFamily</h2>
+    <p>多租户账号权限管理平台 · 桌面客户端</p>
+    <div class="field"><label>账号 / 邮箱</label><input value="admin@xyfamily.io" /></div>
+    <div class="field"><label>密码</label><input type="password" value="••••••••" /></div>
+    <button class="btn btn-primary" onclick="closeLogin()">登录</button>
+    <div class="login-hint">提示：桌面端登录态由系统 Keychain / 凭据管理器加密存储，支持离线自动恢复。</div>
+  </div>
+</div>
+
+<!-- 命令面板 -->
+<div class="overlay" id="cmdOverlay">
+  <div class="cmd">
+    <input id="cmdInput" placeholder="搜索页面、成员、操作…" autocomplete="off" />
+    <div class="cmd-list" id="cmdList">
+      <div class="cmd-item" data-route="#/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/></svg>跳转：控制台<span class="k">⌘1</span></div>
+      <div class="cmd-item" data-route="#/org"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>跳转：组织管理<span class="k">⌘2</span></div>
+      <div class="cmd-item" data-route="#/permissions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>跳转：角色权限<span class="k">⌘3</span></div>
+      <div class="cmd-item" data-route="#/audit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>跳转：审计日志<span class="k">⌘4</span></div>
+      <div class="cmd-item" id="cmdTheme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>切换 浅色 / 深色 主题<span class="k">⌘⇧T</span></div>
+      <div class="cmd-item" id="cmdOffline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0"/></svg>模拟 离线 / 在线 状态</div>
+    </div>
+  </div>
+</div>
+
+<!-- 右键菜单 -->
+<div class="ctx" id="ctxMenu">
+  <div class="ctx-item" data-act="查看详情"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>查看详情</div>
+  <div class="ctx-item" data-act="编辑"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>编辑</div>
+  <div class="ctx-item" data-act="复制 ID"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>复制 ID</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item danger" data-act="删除"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>删除</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const $ = s => document.querySelector(s);
+  const routes = {
+    '#/dashboard':['工作台 / 控制台','控制台'],
+    '#/org':['权限与安全 / 组织管理','组织管理'],
+    '#/team':['权限与安全 / 团队管理','团队管理'],
+    '#/group':['权限与安全 / 小组管理','小组管理'],
+    '#/permissions':['权限与安全 / 角色权限','角色权限'],
+    '#/audit':['权限与安全 / 审计日志','审计日志'],
+    '#/superadmin':['权限与安全 / 超级管理员','超级管理员']
+  };
+  function go(hash){
+    location.hash = hash;
+    $('#cmdOverlay').classList.remove('show');
+  }
+  function render(){
+    const hash = location.hash || '#/dashboard';
+    const map = { '#/dashboard':'v-dashboard','#/org':'v-org','#/team':'v-team','#/group':'v-group','#/permissions':'v-permissions','#/audit':'v-audit','#/superadmin':'v-superadmin' };
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    const vid = map[hash] || 'v-dashboard';
+    $('#'+vid).classList.add('active');
+    document.querySelectorAll('.nav-item[data-route]').forEach(n=>n.classList.toggle('active', n.dataset.route===hash));
+    const meta = routes[hash] || routes['#/dashboard'];
+    $('#crumb').textContent = meta[0]; $('#pageTitle').textContent = meta[1];
+    $('#titleCenter').textContent = 'XYFamily · ' + meta[1];
+    $('#scroll').scrollTop = 0;
+  }
+  window.addEventListener('hashchange', render);
+
+  // 侧边栏收起
+  $('#collapseBtn').addEventListener('click', ()=> $('#sidebar').classList.toggle('collapsed'));
+  $('#sideToggle').addEventListener('click', ()=> $('#sidebar').classList.toggle('collapsed'));
+  document.querySelectorAll('.nav-item[data-route]').forEach(n=> n.addEventListener('click', ()=> go(n.dataset.route)));
+
+  // 主题
+  function toggleTheme(){ const r=document.documentElement; r.dataset.theme = r.dataset.theme==='light'?'dark':'light'; }
+  $('#themeBtn').addEventListener('click', toggleTheme);
+
+  // 离线 / 更新 横幅
+  $('#offlineToggle').addEventListener('click', ()=>{ const b=$('#offlineBanner'); b.style.display = b.style.display==='none'?'flex':'none'; });
+  $('#updateToggle').addEventListener('click', ()=>{ const b=$('#updateBanner'); b.style.display = b.style.display==='none'?'flex':'none'; });
+
+  // 命令面板
+  const cmd = $('#cmdOverlay');
+  $('#openCmd').addEventListener('click', ()=>{ cmd.classList.add('show'); $('#cmdInput').focus(); });
+  cmd.addEventListener('click', e=>{ if(e.target===cmd) cmd.classList.remove('show'); });
+  document.querySelectorAll('.cmd-item[data-route]').forEach(i=> i.addEventListener('click', ()=> go(i.dataset.route)));
+  $('#cmdTheme').addEventListener('click', ()=>{ toggleTheme(); cmd.classList.remove('show'); });
+  $('#cmdOffline').addEventListener('click', ()=>{ $('#offlineToggle').click(); cmd.classList.remove('show'); });
+
+  // 右键菜单
+  const ctx = $('#ctxMenu');
+  document.addEventListener('contextmenu', e=>{
+    const row = e.target.closest('tbody tr');
+    if(row){ e.preventDefault(); ctx.style.left = e.clientX+'px'; ctx.style.top = e.clientY+'px'; ctx.classList.add('show'); }
+  });
+  document.addEventListener('click', ()=> ctx.classList.remove('show'));
+  ctx.querySelectorAll('.ctx-item').forEach(i=> i.addEventListener('click', ()=>{
+    const act = i.dataset.act;
+    ctx.classList.remove('show');
+    toast(act === '删除' ? '已删除（演示）' : act + '（演示）');
+  }));
+
+  // Toast
+  let toastTimer;
+  function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),1800); }
+
+  // 平台切换（macOS / Windows）
+  const tb = $('#titlebar');
+  // 顶部加一个平台切换器（演示）
+  const plat = document.createElement('div');
+  plat.className='plat-toggle'; plat.style.position='fixed'; plat.style.top='30px'; plat.style.right='36px'; plat.style.zIndex='90';
+  plat.innerHTML = '<button class="on" data-p="mac">macOS</button><button data-p="win">Windows</button>';
+  document.body.appendChild(plat);
+  plat.querySelectorAll('button').forEach(b=> b.addEventListener('click', ()=>{
+    plat.querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+    const win = b.dataset.p==='win';
+    tb.classList.toggle('win', win); tb.classList.toggle('macos', !win);
+    tb.querySelector('.traffic').style.display = win?'none':'flex';
+    tb.querySelector('.title-center').style.display = win?'none':'block';
+    tb.querySelector('.win-ctrls').style.display = win?'flex':'none';
+    tb.querySelector('.win-left') && (tb.querySelector('.win-left').style.display = win?'flex':'none');
+    if(win){ tb.querySelector('.win-title').textContent='XYFamily'; }
+  }));
+  // 给 windows 标题栏加左侧 logo+名称
+  const wl = document.createElement('div'); wl.className='win-left';
+  wl.innerHTML = '<div style="width:20px;height:20px;border-radius:5px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px">X</div><span class="win-title">XYFamily</span>';
+  tb.insertBefore(wl, tb.querySelector('.win-ctrls'));
+  wl.style.display='none';
+
+  // 快捷键
+  document.addEventListener('keydown', e=>{
+    const mod = e.metaKey || e.ctrlKey;
+    if(mod && e.key==='k'){ e.preventDefault(); cmd.classList.toggle('show'); $('#cmdInput').focus(); }
+    else if(mod && e.shiftKey && e.key.toLowerCase()==='t'){ e.preventDefault(); toggleTheme(); }
+    else if(mod && e.key.toLowerCase()==='b'){ e.preventDefault(); $('#sidebar').classList.toggle('collapsed'); }
+    else if(e.key==='Escape'){ cmd.classList.remove('show'); ctx.classList.remove('show'); $('#loginWrap').classList.remove('show'); }
+  });
+
+  // 演示登录切换
+  $('#meAvatar').addEventListener('click', ()=> $('#loginWrap').classList.add('show'));
+  function closeLogin(){ $('#loginWrap').classList.remove('show'); toast('登录成功（演示）'); }
+
+  render();
+</script>
+</body>
+</html>
