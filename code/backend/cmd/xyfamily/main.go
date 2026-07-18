@@ -23,6 +23,13 @@ func main() {
 	if err != nil { fmt.Printf("load config failed: %v\n", err); os.Exit(1) }
 	if err := logger.Init(cfg.Log.Level, cfg.Log.Format); err != nil { fmt.Printf("init logger failed: %v\n", err); os.Exit(1) }
 	defer logger.Sync()
+	// 安全加固（RISK-001）：JWT 密钥必须通过配置或环境变量 XYFAMILY_JWT_SECRET 注入，缺失则阻断启动
+	if v := os.Getenv("XYFAMILY_JWT_SECRET"); v != "" {
+		cfg.JWT.Secret = v
+	}
+	if cfg.JWT.Secret == "" {
+		logger.Get().Fatal("jwt secret is empty; set configs jwt.secret or environment variable XYFAMILY_JWT_SECRET before starting")
+	}
 	logger.Get().Info("starting xyfamily backend", zap.String("mode", cfg.Server.Mode))
 	db, err := repository.NewDB(cfg)
 	if err != nil { logger.Get().Fatal("connect database failed", zap.Error(err)) }
@@ -60,12 +67,21 @@ func main() {
 gin.SetMode(cfg.Server.Mode)
 	r := gin.New()
 	r.Use(gin.Recovery())
+	// CORS 安全加固：禁止 "*" 与凭证（AllowCredentials）同时开启，浏览器禁止该组合；含 "*" 时自动关闭凭证
+	corsOrigins := cfg.CORS.Origins
+	allowCreds := true
+	for _, o := range corsOrigins {
+		if o == "*" {
+			allowCreds = false
+			break
+		}
+	}
 	r.Use(cors.New(cors.Config{
-		AllowOrigins: cfg.CORS.Origins,
+		AllowOrigins: corsOrigins,
 		AllowMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders: []string{"Origin", "Content-Type", "Authorization", "X-Organization-ID", "X-Team-ID", "X-Group-ID"},
 		ExposeHeaders: []string{"Content-Length"},
-		AllowCredentials: true,
+		AllowCredentials: allowCreds,
 	}))
 	api := r.Group("/api/v1")
 	{

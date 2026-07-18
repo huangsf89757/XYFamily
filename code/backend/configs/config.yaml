@@ -19,7 +19,7 @@ redis:
   db: 0
 
 jwt:
-  secret: ""
+  secret: ""   # 禁止留空上线：生产必须通过环境变量 XYFAMILY_JWT_SECRET 注入
   access_ttl: 1800
   refresh_ttl: 604800
   issuer: xyfamily
@@ -39,8 +39,11 @@ pii:
   index_key: ""
 
 cors:
+  # 生产请用环境变量 XYFAMILY_CORS_ORIGINS（逗号分隔）覆盖；禁止使用 "*" 与凭证同时开启
   origins:
-    - "*"
+    - "http://localhost:3000"
+    - "http://localhost:5173"
+    - "http://127.0.0.1:3000"
 
 log:
   level: info
