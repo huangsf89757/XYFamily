@@ -11,10 +11,14 @@
             "id": "94ea95290d6b7d35",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "09-接口文档/02-错误码/01-多租户底座.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01-多租户底座"
             }
           }
         ]
@@ -153,12 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "09-接口文档/02-错误码/01-多租户底座.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "01-多租户底座 的大纲"
             }
           }
         ],
@@ -181,6 +186,7 @@
   },
   "active": "94ea95290d6b7d35",
   "lastOpenFiles": [
+    "未命名 2.canvas",
     "未命名 1.canvas",
     "未命名.canvas",
     "05-技术方案预研/03-生态扩展/生态扩展技术方案预研报告.md",
