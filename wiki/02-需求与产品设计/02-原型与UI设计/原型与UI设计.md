@@ -30,7 +30,7 @@
 
 | 序号 | 模块 | 目录 | 状态 | 说明 |
 |------|------|------|------|------|
-| 01 | 设计规范 | [01-设计规范](../../README.md) | ✅ 已填充 | 全局设计令牌 + 各端适配规范（5 篇文档） |
+| 01 | 设计规范 | [XYFamily Wiki - 知识库](../../README.md) | ✅ 已填充 | 全局设计令牌 + 各端适配规范（5 篇文档） |
 | 02 | 效果图 | [各端原型交付索引](#各端原型交付索引) | ✅ 已填充 | 网页端/桌面端/移动端/小程序四端高保真交互原型（index.html + ZIP） |
 
 ### 设计规范文档索引
@@ -51,10 +51,10 @@
 
 | 端 | 目录入口 | 主交付物（HTML） | 分发包（ZIP） | 设计说明（README） |
 |----|----------|------------------|---------------|--------------------|
-| 网页端 | [01-网页端/](./01-网页端/) | [index.html](./01-网页端/index.html) | [XYFamily-网页端原型.zip](./01-网页端/XYFamily-网页端原型.zip) | [EXPORT-README.md](./01-网页端/EXPORT-README.md) |
-| 桌面端 | [02-桌面端/](./02-桌面端/) | [index.html](./02-桌面端/index.html) | [XYFamily-桌面端原型.zip](./02-桌面端/XYFamily-桌面端原型.zip) | [EXPORT-README.md](./02-桌面端/EXPORT-README.md) |
-| 移动端 | [03-移动端/](./03-移动端/) | [index.html](./03-移动端/index.html) | [XYFamily-移动端原型.zip](./03-移动端/XYFamily-移动端原型.zip) | [EXPORT-README.md](./03-移动端/EXPORT-README.md) |
-| 小程序 | [04-小程序/](./04-小程序/) | [index.html](./04-小程序/index.html) | [XYFamily-小程序原型.zip](./04-小程序/XYFamily-小程序原型.zip) | [EXPORT-README.md](./04-小程序/EXPORT-README.md) |
+| 网页端 | [01-网页端/](./01-网页端/) | [index.html](./01-网页端/index.html) | [XYFamily-网页端原型.zip](./01-网页端/XYFamily-网页端原型.zip) | [原型导出说明 - 网页端](./01-网页端/EXPORT-README.md) |
+| 桌面端 | [02-桌面端/](./02-桌面端/) | [index.html](./02-桌面端/index.html) | [XYFamily-桌面端原型.zip](./02-桌面端/XYFamily-桌面端原型.zip) | [原型导出说明 - 桌面端](./02-桌面端/EXPORT-README.md) |
+| 移动端 | [03-移动端/](./03-移动端/) | [index.html](./03-移动端/index.html) | [XYFamily-移动端原型.zip](./03-移动端/XYFamily-移动端原型.zip) | [原型导出说明 - 移动端](./03-移动端/EXPORT-README.md) |
+| 小程序 | [04-小程序/](./04-小程序/) | [index.html](./04-小程序/index.html) | [XYFamily-小程序原型.zip](./04-小程序/XYFamily-小程序原型.zip) | [原型导出说明 - 小程序](./04-小程序/EXPORT-README.md) |
 
 ### 覆盖范围摘要
 
