@@ -1,4 +1,4 @@
-# PRD: 多租户底座 - 用户认证 - Token 管理
+# 用户认证 · Token 管理
 
 > Token 刷新与登出功能，管理用户会话生命周期。基于 JWT 双 Token 机制（Access Token + Refresh Token），支持 Token Rotation 与黑名单机制。
 

@@ -58,3 +58,7 @@ DerivedData/
 # Temporary files
 tmp/
 temp/
+
+# Python cache
+__pycache__/
+*.pyc

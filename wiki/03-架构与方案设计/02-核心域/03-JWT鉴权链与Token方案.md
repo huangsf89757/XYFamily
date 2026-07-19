@@ -1,4 +1,4 @@
-# 03-JWT 鉴权链与 Token 方案
+# 核心域 · JWT 鉴权链与 Token 方案
 
 > P2 核心域之三。定义双 Token 机制（Access + Refresh）、Token 上下文 Claims、签名与轮换、黑名单/失效、Refresh Rotation、防重放与多端会话安全。本方案驱动数据库设计（`sessions` / `token_blacklist`）、接口设计（登录/刷新/登出契约）与中间件链（JWTValidator / TokenBlacklist）。
 
