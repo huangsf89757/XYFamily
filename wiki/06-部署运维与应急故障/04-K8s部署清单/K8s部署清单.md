@@ -1,4 +1,4 @@
-# K8s 部署清单
+# K8s部署清单
 
 > XYFamily Kubernetes 部署清单，定义 Deployment / Service / ConfigMap / Secret / Ingress 资源配置。
 

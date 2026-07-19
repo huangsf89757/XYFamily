@@ -1,4 +1,4 @@
-# Web 代码规范
+# Web代码规范
 
 > XYFamily Web 管理后台（React + TypeScript）**项目特定约定与选型**。通用 React/TypeScript 编码规范请直接参考官方与业界标准，本文不再重复。
 

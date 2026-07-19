@@ -1,4 +1,4 @@
-# 安卓（Kotlin）代码规范
+# 安卓Kotlin代码规范
 
 > XYFamily 安卓端（Kotlin + Jetpack Compose）**项目特定约定与选型**。通用 Kotlin/Android 编码规范请直接参考官方与业界标准，本文不再重复。
 

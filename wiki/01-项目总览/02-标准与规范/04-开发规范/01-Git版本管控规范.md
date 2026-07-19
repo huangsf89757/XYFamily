@@ -1,4 +1,4 @@
-# Git 版本管控规范
+# Git版本管控规范
 
 > XYFamily Git 分支策略、提交信息规范、Code Review 规则、版本标签规范。
 
